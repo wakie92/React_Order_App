@@ -1,0 +1,17 @@
+.CategoryBar{
+  width : 100%;
+  background-color: rgb(255, 174, 0);
+  display : flex;
+  justify-content: center;
+  align-items: flex-start;
+  grid-area : c;
+
+  .All {
+    width: 100%;
+    border: 1px solid black;
+    text-align: center;
+    font-size : 3vh;
+    cursor: pointer;
+    padding : 10px 0 ;
+  }
+}

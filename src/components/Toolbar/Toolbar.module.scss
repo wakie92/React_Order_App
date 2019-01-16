@@ -1,0 +1,15 @@
+.Toolbar{
+  width : 100%;
+  height: 100px;
+  background-color: chartreuse;
+  display : flex;
+  align-items: center;
+  justify-content: center;
+  .Logo {
+    cursor: pointer;
+    font-size: 3vh;
+    font-weight: 700;
+    border: 2px solid green;
+    padding : 20px;
+  }
+}
