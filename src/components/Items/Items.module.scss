@@ -1,4 +1,11 @@
 .Items {
   overflow: hidden scroll;
   grid-area: i;
+  width: 100%;
+  background-color: mediumpurple;
+  display : grid;
+
+  grid-template-columns: repeat(4, minmax(0px, 1fr));
+  grid-auto-rows: minmax(auto,300px);
+  grid-gap : 10px;
 }
