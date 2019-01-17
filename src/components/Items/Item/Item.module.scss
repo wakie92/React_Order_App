@@ -1,0 +1,40 @@
+.Item {
+  border : 1px solid black;
+  box-sizing: border-box;
+  display : flex;
+  flex-flow : column;
+  img {
+    width: 100%;
+  }
+  .MenuName {
+    text-align: center;
+    padding  : 5px 0 ;
+    font-size : 2vh;
+    font-weight: 600;
+  }
+  .WrapperImg {
+    display : flex;
+    flex : 4;
+  }
+  .InfoWrapper {
+    flex : 1;
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size : 3vh;
+    
+    .DetailInfo {
+      padding: 0 10px;
+    }
+    .ControlCount{
+      display : flex;
+      justify-content: space-around;
+      .CountBtn {
+        cursor: pointer;
+        padding : 0 10px;
+      }
+      .Count {
+      }
+    }
+  }
+}
