@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Item.module.scss';
+import Button from 'components/UI/Button/Button';
 
 const item = (props) => {
   return (
@@ -10,9 +11,9 @@ const item = (props) => {
       </div>
       <div className = {classes.InfoWrapper}>
         <div className = {classes.ControlCount}>
-          <span className = {classes.CountBtn}> + </span>
-          <span className = {classes.Count}>{props.count}</span>
-          <span className = {classes.CountBtn}> - </span>
+          <Button className = {classes.CountBtn} clicked = {() => props.addItem(props.id)}> + </Button>
+          <span className = {classes.Count}> {props.count} </span>
+          <Button className = {classes.CountBtn} clicked = {() => props.removeItem(props.id)}> - </Button>
         </div>
         <span className = {classes.DetailInfo}> {props.price}원</span>
       </div>

@@ -29,11 +29,13 @@
     .ControlCount{
       display : flex;
       justify-content: space-around;
+      align-content: center;
       .CountBtn {
         cursor: pointer;
         padding : 0 10px;
       }
       .Count {
+        padding-top : 10px;
       }
     }
   }
