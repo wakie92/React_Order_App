@@ -6,9 +6,11 @@ import Item from 'components/Items/Item/Item';
 const items = (props) => {
   const menuList = props.menuList
     .map(menu => {
-      return props.show ?  <Item name = {menu.name} price = {menu.price} key = {menu.name}
-                count = {menu.count} img = {menu.img} />
-                :null
+      return props.show ?  
+                <Item name = {menu.name} price = {menu.price} key = {menu.id}
+                count = {menu.count} img = {menu.img} id = {menu.id}
+                addItem = {props.addItem} removeItem = {props.removeItem}/>
+                : null
     })
   return (
     <div className = {classes.Items}>
