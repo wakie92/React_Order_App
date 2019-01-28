@@ -16,7 +16,8 @@ const item = (props) => {
           <Button className = {classes.CountBtn} clicked = {() => props.itemCount(props.id, '-')}> - </Button>
         </div>
         <span className = {classes.DetailInfo}> 
-          <Button className = {classes.OrderBtn} clicked = {() => props.orderedItem(props.id)} cl = {() => props.itemCount(props.id)}>장바구니</Button>
+          <Button className = {classes.OrderBtn} clicked = {() => props.orderedItem(props.id)} >장</Button>
+          <Button className = {classes.OrderBtn} clicked = {() => props.itemCount(props.id)}>제로</Button>
           {props.price}원
         </span>
       </div>

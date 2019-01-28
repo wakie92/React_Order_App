@@ -3,19 +3,28 @@ import classes from './Order.module.scss'
 import Button from 'components/UI/Button/Button';
 
 const order = (props) => {
+  const orderedItems = props.selectedMenu 
+    .map(item=> {
+      return (
+        <div className = {classes.OrderedItems}>
+          <span className = {classes.OrderedItemName}>{item.name}</span>
+          <span className = {classes.OrderedItemPrice}>{item.price}</span>
+          <span className = {classes.OrderedItemCount}>{item.count}</span>
+          <span className = {classes.OrderedItemTotalPrice}>{item.count * item.price}</span>
+        </div>
+        )
+    })
   return (
     <>
       <div className = {classes.Order}>
         <div className = {classes.OrderList}>
           <div className = {classes.OrderColumn}>
-            <span className = {classes.OrderedItemName}>상품명</span>
-            <span className = {classes.OrderedItemPrice}>판매금액</span>
-            <span className = {classes.OrderedItemCount}>수량</span>
-            <span className = {classes.OrderedItemTotalPrice}>최종금액</span>
+            <span className = {classes.ListItemName}>상품명</span>
+            <span className = {classes.ListItemPrice}>판매금액</span>
+            <span className = {classes.ListItemCount}>수량</span>
+            <span className = {classes.ListItemTotalPrice}>최종금액</span>
           </div>
-          <div className = {classes.OrderedItems}>
-          
-          </div>
+          <div className = {classes.OrederdItemList}>{orderedItems}</div>
         </div>
         <div className = {classes.PayMethod}>
           <span className = {classes.PaymentTitle}>상품판매 결제 선택하기</span>
