@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import CategoryBar from 'components/CategoryBar/CategoryBar'
-import Items from 'components/Items/Items';
+import ItemsContainer from 'containers/Items/ItemsContainer';
 import Order from 'components/Order/Order';
 import MENU from 'menu/Menu';
 
+import * as menuDataActions from 'store/modules/menuData';
 class OrderMenu extends Component {
   state = {
     controledMENU : null,
@@ -13,13 +16,10 @@ class OrderMenu extends Component {
     totalPrice : 0
   }
   setMenu = () => {
-    let {controledMENU, selectedMenu} = this.state;
-    let settt = MENU.map((item) => {
+    let setMenu = MENU.map((item) => {
       return item;
     })
-    console.log('setmenu');
-    this.setState({controledMENU : settt})
-    return controledMENU;
+    this.setState({controledMENU : setMenu})
   }
   confirmOrderHandler = () =>{
     alert('결제하시겠습니까?');
@@ -30,77 +30,72 @@ class OrderMenu extends Component {
     !this.state.show ? this.setState({show : true}) : this.setState({show : false})
   }
 
-  itemCountHandler = (id, sign) => {
+  setControledMenu = (updatedMenu,id) => {
     const { controledMENU } = this.state;
     const index = controledMENU.findIndex(item => item.id === id);
-    if(sign === '+') {
-      controledMENU.filter((ele) => {
-        if(ele === controledMENU[index]) {
-          ele.count++;
-          return ele;
-        } return null;
-      })
-      this.setState({
-        controledMENU : controledMENU
-      })
-    } else if(sign === '-' && MENU[index].count !== 0) {
-      MENU.filter((ele) => {
-        if(ele === MENU[index]) {
-          ele.count--;
-          return ele;
-        } return null;
-      })
-      this.setState({
-        controledMENU : controledMENU,
-      })
-    } else if(sign === undefined) {
-      MENU.filter((ele) => {
-        if(ele === MENU[index]) {
-          ele.count = 0;
-        }
-        return ele;
-      })
-      this.setState({
-        controledMENU : controledMENU,
-      })
-    } return null
-  
+    this.setState({
+      controledMENU : [
+        ...controledMENU.slice(0,index),
+        updatedMenu,
+          ...controledMENU.slice(index+1,controledMENU.length)
+      ]
+    })
   }
-
+  itemCountHandler = (id, sign) => {
+    const { controledMENU } = this.state;
+    const { setControledMenu } = this;
+    const index = controledMENU.findIndex(item => item.id === id);
+    let controledItem = Object.assign({},controledMENU[index]);
+    switch(sign) {
+      case '+' :
+        controledItem.count++;
+        setControledMenu(controledItem, id);
+        break;
+      case '-' :
+        if(controledMENU[index].count !==0) 
+        controledItem.count--  
+        setControledMenu(controledItem, id);
+        break;
+      case undefined :
+        // let controledItem = Object.assign({},controledMENU[index]);
+        controledItem.count = 0;
+        setControledMenu(controledItem, id);
+        break;
+      default : 
+        break;
+    }
+  }
   orderedItemHandler = (id) => {
     let { controledMENU, selectedMenu, totalPrice } = this.state;
+    let arr = [...selectedMenu];
     const index = controledMENU.findIndex(item => item.id === id);
       if(controledMENU[index].count !== 0) {
-       controledMENU.filter((ele) => {
-          if(ele === controledMENU[index]) {
-            totalPrice += ele.count*ele.price;
-            selectedMenu.push(ele);
-            return selectedMenu 
-          } return null;
-        })
+        let pickedItem = Object.assign({},controledMENU[index]);
+        let { count , price} = pickedItem;
+        totalPrice += count*price;
+        arr.push(pickedItem);
         this.setState({
-          selectedMenu : selectedMenu,
+          selectedMenu : arr,
           totalPrice : totalPrice
         })
-      } else {
-        console.log('remove')
       }
   }
   componentWillMount() {
     this.setMenu();
   }
   render() {
-    const { categoryBarHandler, confirmOrderHandler,
-            itemCountHandler, removeItemHandler, orderedItemHandler} = this;
+    console.log(this.state.controledMENU);
+    const { categoryBarHandler, confirmOrderHandler} = this;
     const { show, totalPrice ,controledMENU, selectedMenu} = this.state; 
     return(
       <>
         <CategoryBar  showAll = {categoryBarHandler}/>
-        <Items 
-          show = {show} menuList = {controledMENU} key ="mL"
-          itemCount = {itemCountHandler}
-          removeItem = {removeItemHandler}
-          orderedItem = {orderedItemHandler}
+        <ItemsContainer 
+          show = {show} 
+          controledMENU = {controledMENU} 
+          // key ="mL"
+          // selectedMenu = {selectedMenu}
+          // totalPrice = {totalPrice}
         />
         <Order ConfirmOrder = {confirmOrderHandler}
           totalPrice = {totalPrice}
@@ -110,5 +105,11 @@ class OrderMenu extends Component {
     );
   }
 }
+export default connect((state) => ({
+  menuList : state.menuData.get('menu'),
+}),
+(dispatch) => ({
+  MenuDataActions : bindActionCreators(menuDataActions,dispatch)
 
-export default OrderMenu;
+})
+)(OrderMenu);
