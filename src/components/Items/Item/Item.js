@@ -11,11 +11,14 @@ const item = (props) => {
       </div>
       <div className = {classes.InfoWrapper}>
         <div className = {classes.ControlCount}>
-          <Button className = {classes.CountBtn} clicked = {() => props.addItem(props.id)}> + </Button>
+          <Button className = {classes.CountBtn} clicked = {() => props.itemCount(props.id, '+')} > + </Button>
           <span className = {classes.Count}> {props.count} </span>
-          <Button className = {classes.CountBtn} clicked = {() => props.removeItem(props.id)}> - </Button>
+          <Button className = {classes.CountBtn} clicked = {() => props.itemCount(props.id, '-')}> - </Button>
         </div>
-        <span className = {classes.DetailInfo}> {props.price}원</span>
+        <span className = {classes.DetailInfo}> 
+          <Button className = {classes.OrderBtn} clicked = {() => props.orderedItem(props.id)} cl = {() => props.itemCount(props.id)}>장바구니</Button>
+          {props.price}원
+        </span>
       </div>
     </div>
   )
