@@ -9,6 +9,7 @@ const ADD_ITEM = 'menuData/ADD_ITEM';
 const SELECTED_MENU = 'menuData/SELECTED_MENU';
 const TOTAL_PRICE = 'menuData/TOTAL_PRICE';
 const CALC_PRICE = 'menuData/CALC_PRICE';
+const SHOW_TF = 'menuData/SHOW_TF';
 
 export const getMenuList = createAction(GET_MENU_LIST,api.getMenuList);
 export const controledCount = createAction(CONTROLED_COUNT);
@@ -16,11 +17,13 @@ export const addItem = createAction(ADD_ITEM);
 export const selectedMenu = createAction(SELECTED_MENU);
 export const totalPrice = createAction(TOTAL_PRICE);
 export const calcPrice = createAction(CALC_PRICE);
+export const showTF = createAction(SHOW_TF);
 
 const initialState = fromJS({
   menu : [],
   selectedMenu : [],
-  totalPrice : 0
+  totalPrice : 0,
+  show : false
 })
 
 export default handleActions({
@@ -41,6 +44,10 @@ export default handleActions({
   [TOTAL_PRICE] : (state, action) => {
     const totalPrice = action.payload;
     return state.set('totalPrice', totalPrice);
+  },
+  [SHOW_TF] : (state, action) => {
+    const showTF = action.payload;
+    return state.set('show', showTF);
   },
   [CONTROLED_COUNT] : (state, action) => {
     let {controledMENU, updatedMenu } = action.payload;
