@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './Item.module.scss';
 import Button from 'components/UI/Button/Button';
-
 const item = (props) => {
   return (
     <div className = {classes.Item}>
@@ -17,7 +16,6 @@ const item = (props) => {
         </div>
         <span className = {classes.DetailInfo}> 
           <Button className = {classes.OrderBtn} clicked = {() => props.orderedItem(props.id)} >장</Button>
-          <Button className = {classes.OrderBtn} clicked = {() => props.itemCount(props.id)}>제로</Button>
           {props.price}원
         </span>
       </div>

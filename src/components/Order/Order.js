@@ -9,8 +9,8 @@ const order = (props) => {
         <div className = {classes.OrderedItems}>
           <span className = {classes.OrderedItemName}>{item.name}</span>
           <span className = {classes.OrderedItemPrice}>{item.price}</span>
-          <span className = {classes.OrderedItemCount}>{item.count}</span>
-          <span className = {classes.OrderedItemTotalPrice}>{item.count * item.price}</span>
+          <span className = {classes.OrderedItemCount}>{item.counter}</span>
+          <span className = {classes.OrderedItemTotalPrice}>{item.counter * item.price}</span>
         </div>
         )
     })
