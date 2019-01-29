@@ -61,8 +61,6 @@ class ItemsContainer extends Component {
   render() {
     const { show ,controledMENU} = this.props;
     const { itemCountHandler, removeItemHandler, orderedItemHandler } = this;
-    console.log(this.state);
-    console.log(this.props);
   return(
     <Items 
       show = {show} menuList = {controledMENU} key ="mL"
