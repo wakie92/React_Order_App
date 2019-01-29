@@ -9,7 +9,7 @@ const items = (props) => {
       return props.show ?  
                 <Item name = {menu.name} price = {menu.price} key = {menu.id}
                 count = {menu.counter} img = {menu.img} id = {menu.id} orderedItem = {props.orderedItem}
-                itemCount = {props.itemCount} />
+                itemCount = {props.itemCount}/>
                 : null
     })
   return (

@@ -49,6 +49,10 @@ class ItemsContainer extends Component {
       }
     this.itemCountHandler(id);
   }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.props.selectedMenu !== nextProps.selectedMenu
+  // }
+  
   render() {
     const { show ,controledMENU} = this.props;
     const { itemCountHandler, orderedItemHandler } = this;

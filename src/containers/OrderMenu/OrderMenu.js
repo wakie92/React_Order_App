@@ -7,29 +7,30 @@ import ItemsContainer from 'containers/Items/ItemsContainer';
 import Order from 'components/Order/Order';
 import MENU from 'menu/Menu';
 import * as menuDataActions from 'store/modules/menuData';
+import OrderContainer from '../OrderSection/OrderContainer';
 
 class OrderMenu extends Component {
-  state = {
-    show : false,
-  }
   confirmOrderHandler = () =>{
     alert('결제하시겠습니까?');
   }
   
   categoryBarHandler = () => {
-    // this.setMenu();
-    !this.state.show ? this.setState({show : true}) : this.setState({show : false})
+    const { MenuDataActions, show } = this.props;
+    !show ? MenuDataActions.showTF(true) :MenuDataActions.showTF(false)
   }
 
   componentDidMount() {
     const { MenuDataActions } = this.props;
     MenuDataActions.getMenuList();
+    MenuDataActions.showTF(true);
+
   }
+  
   render() {
-    const { categoryBarHandler, confirmOrderHandler} = this;
-    const { show} = this.state; 
-    const { menuData, selectedMenu, totalPrice } = this.props;
+    const { categoryBarHandler, } = this;
+    const { menuData, show} = this.props;
     console.log('OrderMenu');
+    console.log(show);
     return(
       <>
         <CategoryBar  showAll = {categoryBarHandler}/>
@@ -37,10 +38,7 @@ class OrderMenu extends Component {
           show = {show} 
           controledMENU = {menuData} 
         />
-        <Order ConfirmOrder = {confirmOrderHandler}
-          totalPrice = {totalPrice}
-          selectedMenu = {selectedMenu}
-        />
+        <OrderContainer/>
       </>
     );
   }
@@ -48,8 +46,7 @@ class OrderMenu extends Component {
 
 export default connect((state) => ({
   menuData : state.menuData.get('menu'),
-  selectedMenu : state.menuData.get('selectedMenu'),
-  totalPrice : state.menuData.get('totalPrice')
+  show : state.menuData.get('show')
 }),
 (dispatch) => ({
   MenuDataActions : bindActionCreators(menuDataActions,dispatch)
