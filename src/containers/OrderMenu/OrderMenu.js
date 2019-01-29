@@ -6,8 +6,8 @@ import CategoryBar from 'components/CategoryBar/CategoryBar'
 import ItemsContainer from 'containers/Items/ItemsContainer';
 import Order from 'components/Order/Order';
 import MENU from 'menu/Menu';
-
 import * as menuDataActions from 'store/modules/menuData';
+
 class OrderMenu extends Component {
   state = {
     controledMENU : null,
@@ -83,8 +83,11 @@ class OrderMenu extends Component {
   componentWillMount() {
     this.setMenu();
   }
+  componentDidMount() {
+    const { menuData, counter} = this.props;
+    console.log(menuData.toJS(), counter);
+  }
   render() {
-    console.log(this.state.controledMENU);
     const { categoryBarHandler, confirmOrderHandler} = this;
     const { show, totalPrice ,controledMENU, selectedMenu} = this.state; 
     return(
@@ -105,11 +108,12 @@ class OrderMenu extends Component {
     );
   }
 }
+
 export default connect((state) => ({
-  menuList : state.menuData.get('menu'),
+  menuData : state.menuData.get('menu'),
+  // counter : state.menuData.get('counter')
 }),
 (dispatch) => ({
   MenuDataActions : bindActionCreators(menuDataActions,dispatch)
-
 })
 )(OrderMenu);

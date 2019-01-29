@@ -1,4 +1,4 @@
 import api from 'axios-order';
 
-export const getMenuList = () => api.get(`/menu`);
+export const getMenuList = () => api.get(`menu.json`);
 
