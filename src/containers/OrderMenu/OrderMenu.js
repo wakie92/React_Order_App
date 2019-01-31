@@ -21,16 +21,23 @@ class OrderMenu extends Component {
 
   componentDidMount() {
     const { MenuDataActions } = this.props;
+    console.log('[ORDER_MENU] : componentDidMount')
+    MenuDataActions.checkedTF({cash : false, card:false});
     MenuDataActions.getMenuList();
     MenuDataActions.showTF(true);
-
   }
-  
+  componentDidUpdate() {
+    console.log('[ORDER_MENU] : componentDidUpdate')
+  }
+  componentWillUnmount() {
+    console.log('[ORDER_MENU] : componentWillUnMount')
+    
+  }
   render() {
     const { categoryBarHandler, } = this;
     const { menuData, show} = this.props;
-    console.log('OrderMenu');
-    console.log(show);
+    console.log('[ORDER_MENU] : render')
+    console.log(this.props);
     return(
       <>
         <CategoryBar  showAll = {categoryBarHandler}/>
@@ -46,7 +53,7 @@ class OrderMenu extends Component {
 
 export default connect((state) => ({
   menuData : state.menuData.get('menu'),
-  show : state.menuData.get('show')
+  show : state.menuData.get('show'),
 }),
 (dispatch) => ({
   MenuDataActions : bindActionCreators(menuDataActions,dispatch)

@@ -10,6 +10,9 @@ const SELECTED_MENU = 'menuData/SELECTED_MENU';
 const TOTAL_PRICE = 'menuData/TOTAL_PRICE';
 const CALC_PRICE = 'menuData/CALC_PRICE';
 const SHOW_TF = 'menuData/SHOW_TF';
+const CHECKED_TF = 'menuData/CHECKED_TF';
+const REQUIREMENT = 'menuData/REQUIREMENT';
+const ORDERSUMMARY = 'menuData/ORDERSUMMARY';
 
 export const getMenuList = createAction(GET_MENU_LIST,api.getMenuList);
 export const controledCount = createAction(CONTROLED_COUNT);
@@ -18,12 +21,26 @@ export const selectedMenu = createAction(SELECTED_MENU);
 export const totalPrice = createAction(TOTAL_PRICE);
 export const calcPrice = createAction(CALC_PRICE);
 export const showTF = createAction(SHOW_TF);
+export const checkedTF = createAction(CHECKED_TF);
+export const requirement = createAction(REQUIREMENT);
+export const orderSummary = createAction(ORDERSUMMARY);
 
 const initialState = fromJS({
   menu : [],
   selectedMenu : [],
   totalPrice : 0,
-  show : false
+  show : false,
+  checkedTF : {
+    card : null,
+    cash : null
+  },
+  req : "",
+  orderSummary : {
+    os_req: '',
+    os_paymentMethod : '',
+    os_purchasingMenu : [],
+    os_totalPrice : 0,
+  }
 })
 
 export default handleActions({
@@ -48,6 +65,14 @@ export default handleActions({
   [SHOW_TF] : (state, action) => {
     const showTF = action.payload;
     return state.set('show', showTF);
+  },
+  [CHECKED_TF] : (state, action) => {
+    const checkedTF = action.payload;
+    return state.set('checkedTF', checkedTF)
+  },
+  [REQUIREMENT] : (state, action) =>{
+    const req = action.payload;
+    return state.set('req', req)
   },
   [CONTROLED_COUNT] : (state, action) => {
     let {controledMENU, updatedMenu } = action.payload;
