@@ -5,20 +5,43 @@ import { bindActionCreators } from 'redux';
 import * as menuDataActions from 'store/modules/menuData';
 
 class OrderContainer extends Component {
-
   confirmOrderHandler = () =>{
     alert('결제하시겠습니까?');
   }
-  
-  render() {
-    const { totalPrice , selectedMenu } = this.props;
-    const { confirmOrderHandler, } = this;
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.props.selectedMenu !== nextProps.selectedMenu;
+  // }
+  handlePayMethodChange = (e) => {
+    const { MenuDataActions} = this.props;
+    let checkedBtn = {}
+    checkedBtn[e.target.value] = e.target.checked;
+    MenuDataActions.checkedTF(checkedBtn)
+  }
+  handleRequirementChange = (e) => {
+    const {MenuDataActions} = this.props;
+    MenuDataActions.requirement(e.target.value);
+  }
+  componentDidMount() {
+    console.log('[ORDER_CONTAINER] : componentDidMount')
+  }
+  componentDidUpdate() {
+    console.log('[ORDER_CONTAINER] : componentDidUpdate')
+  }
+  shouldComponentUpdate
+  render() {
+    console.log('[ORDER_CONTAINER] : render')
+    const { totalPrice , selectedMenu  , checkedTF, req} = this.props;
+    const { confirmOrderHandler, handlePayMethodChange ,handleRequirementChange} = this;
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}
         totalPrice = {totalPrice}
         selectedMenu = {selectedMenu}
+        checkedButton = {handlePayMethodChange}
+        requirement = {handleRequirementChange}
+        checkedTF = {checkedTF}
+        req = {req}
       />
     );
   }
@@ -26,7 +49,9 @@ class OrderContainer extends Component {
 
 export default connect((state) => ({
   selectedMenu : state.menuData.get('selectedMenu'),
-  totalPrice : state.menuData.get('totalPrice')
+  totalPrice : state.menuData.get('totalPrice'),
+  checkedTF : state.menuData.get('checkedTF'),
+  req : state.menuData.get('req')
 }),
 (dispatch) =>({
   MenuDataActions : bindActionCreators(menuDataActions,dispatch)

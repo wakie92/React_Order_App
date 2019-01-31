@@ -5,9 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as menuDataActions from 'store/modules/menuData';
 
 class ItemsContainer extends Component {
-  state = {
-    selectedMenu : [],
-  }
+  
   setControledMenu = (updatedMenu) => {
     let { controledMENU, MenuDataActions } = this.props;
     MenuDataActions.controledCount({updatedMenu, controledMENU});
@@ -35,10 +33,12 @@ class ItemsContainer extends Component {
         break;
     }
   }
+
   orderedItemHandler = (id) => {
     let { controledMENU, MenuDataActions,selectedMenu,totalPrice } = this.props;
     let arr = [...selectedMenu];
     const index = controledMENU.findIndex(item => item.id === id);
+    this.itemCountHandler(id);
     if(controledMENU[index].counter !== 0) {
       let pickedItem = {...controledMENU[index]};
       const {counter, price} = pickedItem;
@@ -47,13 +47,20 @@ class ItemsContainer extends Component {
       arr.push(pickedItem);
       MenuDataActions.selectedMenu(arr);  
       }
-    this.itemCountHandler(id);
   }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.props.selectedMenu !== nextProps.selectedMenu
-  // }
-  
+  componentDidMount() {
+    console.log('[ITEMS_CONTAINER] : componentDidMount')
+  }
+  componentWillReceiveProps(newProps) {
+    console.log('[ITEMS_CONTAINER] : componentWillReceiveProps')
+    console.log(newProps)
+  }
+  componentDidUpdate() {
+    console.log('[ITEMS_CONTAINER] : componentDidUpdate')
+    
+  }
   render() {
+    console.log('[ITEMS_CONTAINER] : render')
     const { show ,controledMENU} = this.props;
     const { itemCountHandler, orderedItemHandler } = this;
     
