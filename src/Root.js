@@ -3,6 +3,7 @@ import Layout from 'components/Layout/Layout'
 import OrderMenu from 'containers/OrderMenu/OrderMenu'
 import { Provider } from 'react-redux';
 import configure from 'store/configure';
+
 const store = configure();
 
 const Root = () => {
