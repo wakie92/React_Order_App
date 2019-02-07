@@ -13,7 +13,7 @@ const SHOW_TF = 'menuData/SHOW_TF';
 const CHECKED_TF = 'menuData/CHECKED_TF';
 const REQUIREMENT = 'menuData/REQUIREMENT';
 const ORDERSUMMARY = 'menuData/ORDERSUMMARY';
-
+const MODAL_SHOW = 'menuData/MODAL_SHOW'
 export const getMenuList = createAction(GET_MENU_LIST,api.getMenuList);
 export const controledCount = createAction(CONTROLED_COUNT);
 export const addItem = createAction(ADD_ITEM);
@@ -24,12 +24,12 @@ export const showTF = createAction(SHOW_TF);
 export const checkedTF = createAction(CHECKED_TF);
 export const requirement = createAction(REQUIREMENT);
 export const orderSummary = createAction(ORDERSUMMARY);
-
+export const modalShow = createAction(MODAL_SHOW);
 const initialState = fromJS({
   menu : [],
   selectedMenu : [],
   totalPrice : 0,
-  show : false,
+  show : true,
   checkedTF : {
     card : null,
     cash : null
@@ -40,7 +40,8 @@ const initialState = fromJS({
     os_paymentMethod : '',
     os_purchasingMenu : [],
     os_totalPrice : 0,
-  }
+  },
+  modalShow : false
 })
 
 export default handleActions({
@@ -83,7 +84,9 @@ export default handleActions({
     ]
     return state.set('menu',controledMENU)
   },
-  [ADD_ITEM] : (state, action) => {
-
+  [MODAL_SHOW] : (state, action) => {
+    const modalShow = action.payload;
+    console.log(modalShow);
+    return state.set('modalShow', !modalShow)
   }
 },initialState)

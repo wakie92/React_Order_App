@@ -55,9 +55,7 @@ const order = (props) => {
               <option value = "10000">금액에 맞게</option>
             </select>
             <textarea 
-              style = {{margin : '7px 0'}}
               className = {classes.ReValue} 
-              rows = "7"
               value = "required" 
               placeholder = "요청사항" />
            </>    :
@@ -72,7 +70,6 @@ const order = (props) => {
               <textarea 
                 className = {classes.ReValue} 
                 onChange = {props.requirement}
-                rows = "6"
                 value = {props.req} 
                 placeholder = "요청사항" />
              </>   

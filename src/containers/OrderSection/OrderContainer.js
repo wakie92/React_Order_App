@@ -6,9 +6,9 @@ import * as menuDataActions from 'store/modules/menuData';
 
 class OrderContainer extends Component {
   confirmOrderHandler = () =>{
-    alert('결제하시겠습니까?');
+    const {MenuDataActions, modalShow} = this.props;
+    MenuDataActions.modalShow(modalShow);
   }
-
   // shouldComponentUpdate(nextProps, nextState) {
   //   return this.props.selectedMenu !== nextProps.selectedMenu;
   // }
@@ -28,7 +28,7 @@ class OrderContainer extends Component {
   componentDidUpdate() {
     console.log('[ORDER_CONTAINER] : componentDidUpdate')
   }
-  shouldComponentUpdate
+  // shouldComponentUpdate
   render() {
     console.log('[ORDER_CONTAINER] : render')
     const { totalPrice , selectedMenu  , checkedTF, req} = this.props;
@@ -51,7 +51,9 @@ export default connect((state) => ({
   selectedMenu : state.menuData.get('selectedMenu'),
   totalPrice : state.menuData.get('totalPrice'),
   checkedTF : state.menuData.get('checkedTF'),
-  req : state.menuData.get('req')
+  req : state.menuData.get('req'),
+  modalShow : state.menuData.get('modalShow')
+
 }),
 (dispatch) =>({
   MenuDataActions : bindActionCreators(menuDataActions,dispatch)

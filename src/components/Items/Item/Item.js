@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Item.module.scss';
 import Button from 'components/UI/Button/Button';
+import ShoppingCart from 'react-icons/lib/md/shopping-cart';
 const item = (props) => {
   return (
     <div className = {classes.Item}>
@@ -10,12 +11,12 @@ const item = (props) => {
       </div>
       <div className = {classes.InfoWrapper}>
         <div className = {classes.ControlCount}>
-          <Button className = {classes.CountBtn} clicked = {() => props.itemCount(props.id, '+')} > + </Button>
+          <Button btnType = "CountBtn" clicked = {() => props.itemCount(props.id, '+')} > + </Button>
           <span className = {classes.Count}> {props.count} </span>
-          <Button className = {classes.CountBtn} clicked = {() => props.itemCount(props.id, '-')}> - </Button>
+          <Button btnType = "CountBtn" clicked = {() => props.itemCount(props.id, '-')}> - </Button>
         </div>
         <span className = {classes.DetailInfo}> 
-          <Button className = {classes.OrderBtn} clicked = {() => props.orderedItem(props.id)} >장</Button>
+          <Button btnType = "ShoppingCart" clicked = {() => props.orderedItem(props.id)} ><ShoppingCart/></Button>
           {props.price}원
         </span>
       </div>

@@ -4,15 +4,12 @@ import { bindActionCreators } from 'redux';
 
 import CategoryBar from 'components/CategoryBar/CategoryBar'
 import ItemsContainer from 'containers/Items/ItemsContainer';
-import Order from 'components/Order/Order';
-import MENU from 'menu/Menu';
 import * as menuDataActions from 'store/modules/menuData';
 import OrderContainer from '../OrderSection/OrderContainer';
+import Backdrop from 'components/UI/Modal/Backdrop/Backdrop';
 
 class OrderMenu extends Component {
-  confirmOrderHandler = () =>{
-    alert('결제하시겠습니까?');
-  }
+  
   
   categoryBarHandler = () => {
     const { MenuDataActions, show } = this.props;
@@ -35,17 +32,19 @@ class OrderMenu extends Component {
   }
   render() {
     const { categoryBarHandler, } = this;
-    const { menuData, show} = this.props;
+    const { menuData, show, modalShow} = this.props;
     console.log('[ORDER_MENU] : render')
     console.log(this.props);
     return(
       <>
+        <Backdrop show = {modalShow}/>
         <CategoryBar  showAll = {categoryBarHandler}/>
         <ItemsContainer 
           show = {show} 
           controledMENU = {menuData} 
         />
         <OrderContainer/>
+        {/* <Backdraw/> */}
       </>
     );
   }
@@ -54,6 +53,7 @@ class OrderMenu extends Component {
 export default connect((state) => ({
   menuData : state.menuData.get('menu'),
   show : state.menuData.get('show'),
+  modalShow : state.menuData.get('modalShow')
 }),
 (dispatch) => ({
   MenuDataActions : bindActionCreators(menuDataActions,dispatch)

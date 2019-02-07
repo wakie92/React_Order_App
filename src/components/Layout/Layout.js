@@ -5,9 +5,9 @@ import Toolbar from 'components/Toolbar/Toolbar'
 const layout = (props) => {
   return(
     <>
+    <Toolbar/>
     <div className = {classes.Layout}>
-
-      <Toolbar/>
+      {/* <Backdraw/> */}
       <main className = {classes.Content}>
         {props.children}
       </main>

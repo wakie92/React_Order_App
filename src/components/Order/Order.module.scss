@@ -51,23 +51,30 @@
     height : 100%;
     flex : 1;
     background-color: brown;
+    display: flex;
+    flex-flow: column;
     .PaymentTitle{
       font-size : 2.5vh;
       background-color: aquamarine;
       display : block;
+      flex : 1;
     }
     .RadioBtn {
       padding : 10px 0;
       background-color: beige;
+      flex:2;
     }
     .Required{
+      flex:10;
+      display: flex;
+      flex-flow : column;
       select {
         width : 100%;
         font-size : 2vh;
-        margin-bottom: 3px;
         height: 3vh;
       }
       .ReValue{
+        flex : 3;
         width : 100%;
         font-size : 2vh;
         padding : 5px 0;
