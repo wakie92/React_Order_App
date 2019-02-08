@@ -41,7 +41,7 @@ const initialState = fromJS({
     os_purchasingMenu : [],
     os_totalPrice : 0,
   },
-  modalShow : false
+  modalShow : null
 })
 
 export default handleActions({
@@ -86,7 +86,6 @@ export default handleActions({
   },
   [MODAL_SHOW] : (state, action) => {
     const modalShow = action.payload;
-    console.log(modalShow);
-    return state.set('modalShow', !modalShow)
+    return state.set('modalShow', modalShow)
   }
 },initialState)

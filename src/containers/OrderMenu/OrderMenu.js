@@ -6,11 +6,10 @@ import CategoryBar from 'components/CategoryBar/CategoryBar'
 import ItemsContainer from 'containers/Items/ItemsContainer';
 import * as menuDataActions from 'store/modules/menuData';
 import OrderContainer from '../OrderSection/OrderContainer';
-import Backdrop from 'components/UI/Modal/Backdrop/Backdrop';
-
+import ModalContainer from 'containers/ModalContainer/ModalContainer'
 class OrderMenu extends Component {
   
-  
+ 
   categoryBarHandler = () => {
     const { MenuDataActions, show } = this.props;
     !show ? MenuDataActions.showTF(true) :MenuDataActions.showTF(false)
@@ -32,19 +31,17 @@ class OrderMenu extends Component {
   }
   render() {
     const { categoryBarHandler, } = this;
-    const { menuData, show, modalShow} = this.props;
+    const { menuData, show, } = this.props;
     console.log('[ORDER_MENU] : render')
-    console.log(this.props);
     return(
       <>
-        <Backdrop show = {modalShow}/>
+        <ModalContainer/>
         <CategoryBar  showAll = {categoryBarHandler}/>
         <ItemsContainer 
           show = {show} 
           controledMENU = {menuData} 
         />
         <OrderContainer/>
-        {/* <Backdraw/> */}
       </>
     );
   }
