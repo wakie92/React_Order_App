@@ -6,8 +6,14 @@ import * as menuDataActions from 'store/modules/menuData';
 
 class OrderContainer extends Component {
   confirmOrderHandler = () =>{
-    const {MenuDataActions, modalShow} = this.props;
-    MenuDataActions.modalShow(modalShow);
+    const {MenuDataActions,checkedTF,selectedMenu} = this.props;
+    // console.log(selectedMenu.toJS().length === 0)
+    // if(checkedTF['card'] === false && checkedTF['cash'] === false) {
+    //   alert('결제수단을 선택해주세요');
+    // }
+    return selectedMenu.length === 0 ? 
+    alert('장바구니가 비어있습니다.') : (checkedTF['card'] && checkedTF['cash'] )=== false ?
+    alert('결제수단을 선택해주세요') : MenuDataActions.modalShow(true);
   }
   // shouldComponentUpdate(nextProps, nextState) {
   //   return this.props.selectedMenu !== nextProps.selectedMenu;
