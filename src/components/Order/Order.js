@@ -60,12 +60,12 @@ const order = (props) => {
               placeholder = "요청사항" />
            </>    :
             <>
-              <select>
-                <option value = "">----------------</option>
+              <select onChange = {props.howMuchToPay} value = {props.amountToPay}>
+                <option value = "select">----------------</option>
                 <option value = "10000">10000원</option>
                 <option value = "15000">15000원</option>
                 <option value = "20000">20000원</option>
-                <option value = "10000">금액에 맞게</option>
+                <option value = {props.totalPrice}>금액에 맞게</option>
               </select>
               <textarea 
                 className = {classes.ReValue} 
