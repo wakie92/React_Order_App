@@ -6,18 +6,14 @@ import * as menuDataActions from 'store/modules/menuData';
 
 class OrderContainer extends Component {
   confirmOrderHandler = () =>{
-    const {MenuDataActions,checkedTF,selectedMenu} = this.props;
-    // console.log(selectedMenu.toJS().length === 0)
-    // if(checkedTF['card'] === false && checkedTF['cash'] === false) {
-    //   alert('결제수단을 선택해주세요');
-    // }
-    return selectedMenu.length === 0 ? 
+    const {MenuDataActions, checkedTF, selectedMenu, amountToPay} = this.props;
+    //immutable 속성인 selectedMenu
+    //객체를 set한 후에는 prototype이 Array로변하는 것을 이용
+    return selectedMenu.hasOwnProperty('_root') ? 
     alert('장바구니가 비어있습니다.') : (checkedTF['card'] && checkedTF['cash'] )=== false ?
-    alert('결제수단을 선택해주세요') : MenuDataActions.modalShow(true);
+    alert('결제수단을 선택해주세요') : checkedTF['cash'] && amountToPay === 'select' ? 
+    alert('지불할 금액을 선택해주세요') : MenuDataActions.modalShow(true)
   }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.props.selectedMenu !== nextProps.selectedMenu;
-  // }
   handlePayMethodChange = (e) => {
     const { MenuDataActions} = this.props;
     let checkedBtn = {}
@@ -28,6 +24,11 @@ class OrderContainer extends Component {
     const {MenuDataActions} = this.props;
     MenuDataActions.requirement(e.target.value);
   }
+  handleAmountToPay = (e) => {
+    const {MenuDataActions} = this.props;
+    console.log(e.target.value);
+    MenuDataActions.amountToPay(e.target.value)
+  }
   componentDidMount() {
     console.log('[ORDER_CONTAINER] : componentDidMount')
   }
@@ -37,8 +38,8 @@ class OrderContainer extends Component {
   // shouldComponentUpdate
   render() {
     console.log('[ORDER_CONTAINER] : render')
-    const { totalPrice , selectedMenu  , checkedTF, req} = this.props;
-    const { confirmOrderHandler, handlePayMethodChange ,handleRequirementChange} = this;
+    const { totalPrice , selectedMenu  , checkedTF, req, amountToPay} = this.props;
+    const { confirmOrderHandler, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}
@@ -48,6 +49,8 @@ class OrderContainer extends Component {
         requirement = {handleRequirementChange}
         checkedTF = {checkedTF}
         req = {req}
+        howMuchToPay = {handleAmountToPay}
+        amountToPay = {amountToPay}
       />
     );
   }
@@ -58,8 +61,8 @@ export default connect((state) => ({
   totalPrice : state.menuData.get('totalPrice'),
   checkedTF : state.menuData.get('checkedTF'),
   req : state.menuData.get('req'),
-  modalShow : state.menuData.get('modalShow')
-
+  modalShow : state.menuData.get('modalShow'),
+  amountToPay : state.menuData.get('amountToPay')
 }),
 (dispatch) =>({
   MenuDataActions : bindActionCreators(menuDataActions,dispatch)

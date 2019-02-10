@@ -14,7 +14,7 @@ class ModalContainer extends Component {
 
   render() {
     const {  getCloseModal} = this;
-    const {  modalShow} = this.props;
+    const {  modalShow, selectedMenu} = this.props;
     return (
       <>
         <Backdrop 
@@ -23,6 +23,7 @@ class ModalContainer extends Component {
         <Modal 
           show = {modalShow}
           closeModal = {getCloseModal}
+          selectedMenu = {selectedMenu}
         />
       </>
     );
@@ -30,7 +31,8 @@ class ModalContainer extends Component {
 }
 
 export default connect ((state) => ({
-  modalShow : state.menuData.get('modalShow')
+  modalShow : state.menuData.get('modalShow'),
+  selectedMenu : state.menuData.get('selectedMenu')
 }),
   (dispatch) => ({
     MenuDataActions : bindActionCreators(menuDataActions,dispatch)
