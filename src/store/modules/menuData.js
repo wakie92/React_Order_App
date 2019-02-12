@@ -95,5 +95,9 @@ export default handleActions({
   [AMOUNT_TO_PAY] : (state, action) => {
     const amountToPay = action.payload;
     return state.set('amountToPay', amountToPay); 
+  },
+  [ORDERSUMMARY] : (state, action) => {
+    const orderSummary = action.payload;
+    return state.set('orderSummary', orderSummary)
   }
 },initialState)
