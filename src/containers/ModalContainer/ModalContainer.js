@@ -13,7 +13,14 @@ class ModalContainer extends Component {
   }
 
   finalConfirm = () => {
-    const { MenuDataActions } = this.props;
+    const { MenuDataActions, req, checkedTF, selectedMenu, totalPrice } = this.props;
+    MenuDataActions.orderSummary(
+      { os_req : req,
+        os_paymentMethod : checkedTF,
+        os_purchasingMenu : selectedMenu, 
+        os_totalPrice : totalPrice
+      })
+    this.getCloseModal();
   }
 
   render() {
@@ -45,7 +52,8 @@ export default connect ((state) => ({
   req : state.menuData.get('req'),
   checkedTF : state.menuData.get('checkedTF'),
   amountToPay : state.menuData.get('amountToPay'),
-  totalPrice : state.menuData.get('totalPrice')
+  totalPrice : state.menuData.get('totalPrice'),
+  orderSummary : state.menuData.get('orderSummary')
 }),
   (dispatch) => ({
     MenuDataActions : bindActionCreators(menuDataActions,dispatch)
