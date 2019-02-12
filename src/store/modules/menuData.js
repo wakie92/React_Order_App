@@ -98,6 +98,9 @@ export default handleActions({
   },
   [ORDERSUMMARY] : (state, action) => {
     const orderSummary = action.payload;
+    orderSummary.os_purchasingMenu.map((item) => {
+      return item.count++;
+    })
     return state.set('orderSummary', orderSummary)
   }
 },initialState)
