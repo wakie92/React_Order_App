@@ -1,4 +1,7 @@
-
+hr {
+  width: 100%;
+  margin: 0;
+}
 .ModalGround{
   z-index: 15;
   width: 100%;
@@ -39,12 +42,13 @@
         padding : 1vh;
         margin: 2vh 0;
         width: 80%;
+        height: 40vh;
         max-height: 40vh;
         overflow: hidden auto;
         .ArrangedItem {
           padding : 1vh;
-          border-radius: 10px;
-          border: 1px solid rgb(104, 103, 103);
+          // border-radius: 10px;
+          // border: 1px solid rgb(104, 103, 103);
           width: 95%;
           min-height: 10vh;
           margin-bottom: 1vh;
@@ -61,8 +65,9 @@
             align-items:center;
             justify-content: space-evenly;
             span {
-              font-weight: 500;
-              font-size : 2vh;
+              color : #555;
+              font-weight: 600;
+              font-size : 2.5vh;
             }
           }
         }
@@ -84,16 +89,30 @@
         width: 12px;
         background-color: #F5F5F5;
       }
-      .PaymentWay {
-        align-self: flex-start;
+      .ColumnName {
+        flex : 1;
+        margin-right:1vh;
+      }
+      .Contents {
+        flex : 5;
+        display: flex;
+        justify-content: flex-end;
       }
       .ClientReq {
         width : 80%;
         margin : 2vh 0;
-        
-        .Message{
-          border: 1px solid rgb(104, 103, 103);
-          height: 13vh;
+        .Dist {
+          height: 7vh;
+          display: flex;
+          align-items: center;
+        }
+        .PaymentWay {
+          align-self: flex-start;
+        }
+        .MessageSection {
+          .Message{
+            flex : 5;
+          }
         }
       }    
     }

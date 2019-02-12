@@ -18,7 +18,7 @@ class ModalContainer extends Component {
 
   render() {
     const {  getCloseModal , finalConfirm} = this;
-    const {  modalShow, selectedMenu, req, checkedTF , amountToPay} = this.props;
+    const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
     return (
       <>
         <Backdrop 
@@ -32,6 +32,7 @@ class ModalContainer extends Component {
           checkedTF = {checkedTF}
           finalConfirm = {finalConfirm}
           amountToPay = {amountToPay}
+          totalPrice = {totalPrice}
         />
       </>
     );
@@ -43,7 +44,8 @@ export default connect ((state) => ({
   selectedMenu : state.menuData.get('selectedMenu'),
   req : state.menuData.get('req'),
   checkedTF : state.menuData.get('checkedTF'),
-  amountToPay : state.menuData.get('amountToPay')
+  amountToPay : state.menuData.get('amountToPay'),
+  totalPrice : state.menuData.get('totalPrice')
 }),
   (dispatch) => ({
     MenuDataActions : bindActionCreators(menuDataActions,dispatch)
