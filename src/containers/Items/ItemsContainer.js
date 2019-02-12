@@ -3,18 +3,23 @@ import Items from 'components/Items/Items';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
+import * as menuDataActions from 'store/modules/menuData';
 
 class ItemsContainer extends Component {
   
   setControledMenu = (updatedMenu) => {
     let { controledMENU, MenuDataUIActions } = this.props;
-    MenuDataUIActions.controledCount({updatedMenu, controledMENU});
+    console.log(controledMENU);
+    console.log(updatedMenu);
+     MenuDataUIActions.controledCount({ updatedMenu, controledMENU});
   }
+
   itemCountHandler = (id, sign) => {
     const { controledMENU } = this.props;
     const { setControledMenu } = this;
     const index = controledMENU.findIndex(item => item.id === id);
     let controledItem = {...controledMENU[index]};
+    console.log(controledItem);
     switch(sign) {
       case '+' :
         controledItem.counter++;
@@ -61,12 +66,13 @@ class ItemsContainer extends Component {
   }
   render() {
     console.log('[ITEMS_CONTAINER] : render')
-    const { show ,controledMENU} = this.props;
+    const { show ,controledMENU, updatedMenuList} = this.props;
     const { itemCountHandler, orderedItemHandler } = this;
-    
+    console.log(controledMENU);
   return(
     <Items 
-      show = {show} menuList = {controledMENU} key ="mL"
+      show = {show} 
+      menuList = {controledMENU} key ="mL"
       itemCount = {itemCountHandler}
       orderedItem = {orderedItemHandler}
     />
@@ -75,9 +81,10 @@ class ItemsContainer extends Component {
 }
 
 export default connect((state) => ({
-  selectedMenu : state.menuData.get('selectedMenu'),
-  totalPrice : state.menuData.get('totalPrice')
+  selectedMenu : state.menuDataUI.get('selectedMenu'),
+  totalPrice : state.menuDataUI.get('totalPrice'),
 }),
 (dispatch) => ({
-  MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
+  MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch),
+  MenuDataActions : bindActionCreators(menuDataActions,dispatch)
 }))(ItemsContainer)

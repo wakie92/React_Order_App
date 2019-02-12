@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import CategoryBar from 'components/CategoryBar/CategoryBar'
 import ItemsContainer from 'containers/Items/ItemsContainer';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
+import * as menuDataActions from 'store/modules/menuData';
 import OrderContainer from '../OrderSection/OrderContainer';
 import ModalContainer from 'containers/ModalContainer/ModalContainer'
 class OrderMenu extends Component {
@@ -16,7 +17,7 @@ class OrderMenu extends Component {
   }
 
   componentDidMount()  {
-    const { MenuDataUIActions } = this.props;
+    const { MenuDataUIActions, MenuDataActions } = this.props;
     console.log('[ORDER_MENU] : componentDidMount')
     MenuDataUIActions.checkedTF({cash : false, card:false});
     MenuDataUIActions.getMenuList();
@@ -48,11 +49,12 @@ class OrderMenu extends Component {
 }
 
 export default connect((state) => ({
-  menuData : state.menuData.get('menu'),
-  show : state.menuData.get('show'),
-  modalShow : state.menuData.get('modalShow')
+  menuData : state.menuDataUI.get('menu'),
+  show : state.menuDataUI.get('show'),
+  modalShow : state.menuDataUI.get('modalShow')
 }),
 (dispatch) => ({
-  MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
+  MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch),
+  MenuDataActions : bindActionCreators(menuDataActions, dispatch)
 })
 )(OrderMenu);
