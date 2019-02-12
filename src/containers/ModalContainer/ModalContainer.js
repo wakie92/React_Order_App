@@ -4,17 +4,17 @@ import {bindActionCreators} from 'redux';
 
 import Backdrop from 'components/UI/Modal/Backdrop/Backdrop';
 import Modal from 'components/UI/Modal/Modal';
-import * as menuDataActions from 'store/modules/menuData';
+import * as menuDataUIActions from 'store/modules/menuDataUI';
 class ModalContainer extends Component {
 
   getCloseModal = () => {
-    const {MenuDataActions} = this.props;
-    MenuDataActions.modalShow(false);
+    const {MenuDataUIActions} = this.props;
+    MenuDataUIActions.modalShow(false);
   }
 
   finalConfirm = () => {
-    const { MenuDataActions, req, checkedTF, selectedMenu, totalPrice } = this.props;
-    MenuDataActions.orderSummary(
+    const { MenuDataUIActions, req, checkedTF, selectedMenu, totalPrice } = this.props;
+    MenuDataUIActions.orderSummary(
       { os_req : req,
         os_paymentMethod : checkedTF,
         os_purchasingMenu : selectedMenu, 
@@ -23,6 +23,10 @@ class ModalContainer extends Component {
     this.getCloseModal();
   }
 
+  postData = async () => {
+    const { MenuDataUIActions } = this.props;
+
+  }
   render() {
     const {  getCloseModal , finalConfirm} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
@@ -56,6 +60,6 @@ export default connect ((state) => ({
   orderSummary : state.menuData.get('orderSummary')
 }),
   (dispatch) => ({
-    MenuDataActions : bindActionCreators(menuDataActions,dispatch)
+    MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
   })
 )(ModalContainer);

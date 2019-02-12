@@ -4,23 +4,23 @@ import { bindActionCreators } from 'redux';
 
 import CategoryBar from 'components/CategoryBar/CategoryBar'
 import ItemsContainer from 'containers/Items/ItemsContainer';
-import * as menuDataActions from 'store/modules/menuData';
+import * as menuDataUIActions from 'store/modules/menuDataUI';
 import OrderContainer from '../OrderSection/OrderContainer';
 import ModalContainer from 'containers/ModalContainer/ModalContainer'
 class OrderMenu extends Component {
   
  
   categoryBarHandler = () => {
-    const { MenuDataActions, show } = this.props;
-    !show ? MenuDataActions.showTF(true) :MenuDataActions.showTF(false)
+    const { MenuDataUIActions, show } = this.props;
+    !show ? MenuDataUIActions.showTF(true) :MenuDataUIActions.showTF(false)
   }
 
-  componentDidMount() {
-    const { MenuDataActions } = this.props;
+  componentDidMount()  {
+    const { MenuDataUIActions } = this.props;
     console.log('[ORDER_MENU] : componentDidMount')
-    MenuDataActions.checkedTF({cash : false, card:false});
-    MenuDataActions.getMenuList();
-    MenuDataActions.showTF(true);
+    MenuDataUIActions.checkedTF({cash : false, card:false});
+    MenuDataUIActions.getMenuList();
+    MenuDataUIActions.showTF(true);
   }
   componentDidUpdate() {
     console.log('[ORDER_MENU] : componentDidUpdate')
@@ -53,6 +53,6 @@ export default connect((state) => ({
   modalShow : state.menuData.get('modalShow')
 }),
 (dispatch) => ({
-  MenuDataActions : bindActionCreators(menuDataActions,dispatch)
+  MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
 })
 )(OrderMenu);

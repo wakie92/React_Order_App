@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import Items from 'components/Items/Items';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as menuDataActions from 'store/modules/menuData';
+import * as menuDataUIActions from 'store/modules/menuDataUI';
 
 class ItemsContainer extends Component {
   
   setControledMenu = (updatedMenu) => {
-    let { controledMENU, MenuDataActions } = this.props;
-    MenuDataActions.controledCount({updatedMenu, controledMENU});
+    let { controledMENU, MenuDataUIActions } = this.props;
+    MenuDataUIActions.controledCount({updatedMenu, controledMENU});
   }
   itemCountHandler = (id, sign) => {
     const { controledMENU } = this.props;
@@ -35,7 +35,7 @@ class ItemsContainer extends Component {
   }
 
   orderedItemHandler = (id) => {
-    let { controledMENU, MenuDataActions,selectedMenu,totalPrice } = this.props;
+    let { controledMENU, MenuDataUIActions,selectedMenu,totalPrice } = this.props;
     let arr = [...selectedMenu];
     const index = controledMENU.findIndex(item => item.id === id);
     this.itemCountHandler(id);
@@ -43,9 +43,9 @@ class ItemsContainer extends Component {
       let pickedItem = {...controledMENU[index]};
       const {counter, price} = pickedItem;
       totalPrice += counter*price;
-      MenuDataActions.totalPrice(totalPrice);
+      MenuDataUIActions.totalPrice(totalPrice);
       arr.push(pickedItem);
-      MenuDataActions.selectedMenu(arr);  
+      MenuDataUIActions.selectedMenu(arr);  
       }
   }
   componentDidMount() {
@@ -79,5 +79,5 @@ export default connect((state) => ({
   totalPrice : state.menuData.get('totalPrice')
 }),
 (dispatch) => ({
-  MenuDataActions : bindActionCreators(menuDataActions,dispatch)
+  MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
 }))(ItemsContainer)
