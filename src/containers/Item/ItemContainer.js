@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Item from 'components/Items/Item/Item';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as menuDataActions from 'store/modules/menuData';
+import * as menuDataUIActions from 'store/modules/menuDataUI';
 
 class ItemContainer extends Component {
 
@@ -22,5 +22,5 @@ export default connect((state) => ({
   selectedMenu : state.menuData.get('selectedMenu'),
 }),
 (dispatch) => ({
-  MenuDataActions : bindActionCreators(menuDataActions,dispatch)
+  MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
 }))(ItemContainer);
