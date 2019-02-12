@@ -19,7 +19,7 @@ class ItemContainer extends Component {
 }
 
 export default connect((state) => ({
-  selectedMenu : state.menuData.get('selectedMenu'),
+  selectedMenu : state.menuDataUI.get('selectedMenu'),
 }),
 (dispatch) => ({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

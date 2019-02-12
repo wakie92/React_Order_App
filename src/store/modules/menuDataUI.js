@@ -1,21 +1,22 @@
 import { createAction, handleActions } from 'redux-actions';
 import { fromJS } from 'immutable';
+import { pender } from 'redux-pender';
 import * as api from 'lib/api';
 
-const GET_MENU_LIST = 'menuData/GET_MENU_LIST';
-const CONTROLED_COUNT = 'menuData/CONTROLED_COUNT';
-const ADD_ITEM = 'menuData/ADD_ITEM';
-const SELECTED_MENU = 'menuData/SELECTED_MENU';
-const TOTAL_PRICE = 'menuData/TOTAL_PRICE';
-const CALC_PRICE = 'menuData/CALC_PRICE';
-const SHOW_TF = 'menuData/SHOW_TF';
-const CHECKED_TF = 'menuData/CHECKED_TF';
-const REQUIREMENT = 'menuData/REQUIREMENT';
-const ORDERSUMMARY = 'menuData/ORDERSUMMARY';
-const MODAL_SHOW = 'menuData/MODAL_SHOW';
-const AMOUNT_TO_PAY = 'menuData/AMOUNT_TO_PAY';
+const CONTROLED_COUNT = 'menuDataUI/CONTROLED_COUNT';
+const ADD_ITEM = 'menuDataUI/ADD_ITEM';
+const SELECTED_MENU = 'menuDataUI/SELECTED_MENU';
+const TOTAL_PRICE = 'menuDataUI/TOTAL_PRICE';
+const CALC_PRICE = 'menuDataUI/CALC_PRICE';
+const SHOW_TF = 'menuDataUI/SHOW_TF';
+const CHECKED_TF = 'menuDataUI/CHECKED_TF';
+const REQUIREMENT = 'menuDataUI/REQUIREMENT';
+const ORDERSUMMARY = 'menuDataUI/ORDERSUMMARY';
+const MODAL_SHOW = 'menuDataUI/MODAL_SHOW';
+const AMOUNT_TO_PAY = 'menuDataUI/AMOUNT_TO_PAY';
+const GET_MENU_LIST = 'menuDataUI/GET_MENU_LIST';
+const GET_INITIALSTATE = 'menuDataUI/GET_INITIALSTATE';
 
-export const getMenuList = createAction(GET_MENU_LIST,api.getMenuList);
 export const controledCount = createAction(CONTROLED_COUNT);
 export const addItem = createAction(ADD_ITEM);
 export const selectedMenu = createAction(SELECTED_MENU);
@@ -27,7 +28,12 @@ export const requirement = createAction(REQUIREMENT);
 export const orderSummary = createAction(ORDERSUMMARY);
 export const modalShow = createAction(MODAL_SHOW);
 export const amountToPay = createAction(AMOUNT_TO_PAY);
+export const getMenuList = createAction(GET_MENU_LIST,api.getMenuList);
+export const getInitialState = createAction(GET_INITIALSTATE);
+
 const initialState = fromJS({
+  menu : [],
+  updatedMenuList : [],
   selectedMenu : [],
   totalPrice : 0,
   show : true,
@@ -47,7 +53,16 @@ const initialState = fromJS({
 })
 
 export default handleActions({
-  
+  ...pender({
+    type : GET_MENU_LIST,
+    onSuccess : (state, action) => {
+      let menuData = action.payload.data;
+      menuData.map((item) => {
+        return {...item, ...item.counter = 0}
+      })
+      return state.set('menu', menuData);
+    }
+  }),
   [SELECTED_MENU] : (state, action) => {
     const selectedMenu = action.payload;
     return state.set('selectedMenu', selectedMenu);
@@ -75,6 +90,7 @@ export default handleActions({
       updatedMenu,
       ...controledMENU.slice(updatedMenu.id+1 , controledMENU.length)
     ]
+    console.log(controledMENU);
     return state.set('menu',controledMENU)
   },
   [MODAL_SHOW] : (state, action) => {

@@ -8,7 +8,6 @@ const GET_MENU_LIST = 'menuData/GET_MENU_LIST';
 export const getMenuList = createAction(GET_MENU_LIST,api.getMenuList);
 const initialState = fromJS({
   menu : [],
-  
 })
 
 export default handleActions({

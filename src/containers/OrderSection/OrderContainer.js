@@ -56,12 +56,12 @@ class OrderContainer extends Component {
 }
 
 export default connect((state) => ({
-  selectedMenu : state.menuData.get('selectedMenu'),
-  totalPrice : state.menuData.get('totalPrice'),
-  checkedTF : state.menuData.get('checkedTF'),
-  req : state.menuData.get('req'),
-  modalShow : state.menuData.get('modalShow'),
-  amountToPay : state.menuData.get('amountToPay')
+  selectedMenu : state.menuDataUI.get('selectedMenu'),
+  totalPrice : state.menuDataUI.get('totalPrice'),
+  checkedTF : state.menuDataUI.get('checkedTF'),
+  req : state.menuDataUI.get('req'),
+  modalShow : state.menuDataUI.get('modalShow'),
+  amountToPay : state.menuDataUI.get('amountToPay')
 }),
 (dispatch) =>({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

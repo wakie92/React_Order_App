@@ -21,8 +21,20 @@ class ModalContainer extends Component {
         os_totalPrice : totalPrice
       })
     this.getCloseModal();
+    this.getInitialize();
   }
+  getInitialize = () => {
+    const {MenuDataUIActions, selectedMenu} = this.props;
+    console.log(MenuDataUIActions.initialState)
+    let arr = [...selectedMenu];
+    arr.length = 0;
+    MenuDataUIActions.getMenuList();
+    MenuDataUIActions.selectedMenu(arr);
+    MenuDataUIActions.checkedTF({cash : false, card : false});
+    MenuDataUIActions.requirement('');
+    MenuDataUIActions.amountToPay('');
 
+  }
   postData = async () => {
     const { MenuDataUIActions } = this.props;
 
@@ -51,13 +63,13 @@ class ModalContainer extends Component {
 }
 
 export default connect ((state) => ({
-  modalShow : state.menuData.get('modalShow'),
-  selectedMenu : state.menuData.get('selectedMenu'),
-  req : state.menuData.get('req'),
-  checkedTF : state.menuData.get('checkedTF'),
-  amountToPay : state.menuData.get('amountToPay'),
-  totalPrice : state.menuData.get('totalPrice'),
-  orderSummary : state.menuData.get('orderSummary')
+  modalShow : state.menuDataUI.get('modalShow'),
+  selectedMenu : state.menuDataUI.get('selectedMenu'),
+  req : state.menuDataUI.get('req'),
+  checkedTF : state.menuDataUI.get('checkedTF'),
+  amountToPay : state.menuDataUI.get('amountToPay'),
+  totalPrice : state.menuDataUI.get('totalPrice'),
+  orderSummary : state.menuDataUI.get('orderSummary')
 }),
   (dispatch) => ({
     MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
