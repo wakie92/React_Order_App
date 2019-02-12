@@ -12,9 +12,13 @@ class ModalContainer extends Component {
     MenuDataActions.modalShow(false);
   }
 
+  finalConfirm = () => {
+    const { MenuDataActions } = this.props;
+  }
+
   render() {
-    const {  getCloseModal} = this;
-    const {  modalShow, selectedMenu} = this.props;
+    const {  getCloseModal , finalConfirm} = this;
+    const {  modalShow, selectedMenu, req, checkedTF , amountToPay} = this.props;
     return (
       <>
         <Backdrop 
@@ -24,6 +28,10 @@ class ModalContainer extends Component {
           show = {modalShow}
           closeModal = {getCloseModal}
           selectedMenu = {selectedMenu}
+          req = {req}
+          checkedTF = {checkedTF}
+          finalConfirm = {finalConfirm}
+          amountToPay = {amountToPay}
         />
       </>
     );
@@ -32,7 +40,10 @@ class ModalContainer extends Component {
 
 export default connect ((state) => ({
   modalShow : state.menuData.get('modalShow'),
-  selectedMenu : state.menuData.get('selectedMenu')
+  selectedMenu : state.menuData.get('selectedMenu'),
+  req : state.menuData.get('req'),
+  checkedTF : state.menuData.get('checkedTF'),
+  amountToPay : state.menuData.get('amountToPay')
 }),
   (dispatch) => ({
     MenuDataActions : bindActionCreators(menuDataActions,dispatch)
