@@ -12,19 +12,49 @@
     box-sizing: border-box;
     color : #DCAB8B;
     .OrderColumn{
+      display : grid;
+      grid-auto-columns: minmax(0,1fr);
+      grid-auto-rows: minmax(auto,4vh);
+      grid-template-areas: 
+        'oct 0 0 oam'
+        'lin lip lic litp';
+      .OrderAddMinus{
+        grid-area: oam;
+        justify-self: right;
+        padding-right: 2vh;
+      }
+      .OrderColumnTop{
+        grid-area : oct;
+        justify-self: left;
+        color : #B9B2A7;
+        font-weight: 600;
+      }
+      .ListItemName {
+        grid-area : lin;
+      }
+      .ListItemPrice{
+        grid-area: lip;
+      }
+      .ListItemCount {
+        grid-area : lic;
+      }
+      .ListItemTotalPrice {
+        grid-area: litp;
+      }
       background-color: #0C202D;
     }
     .OrderedItems {
       color : #B9B2A7;
     }
     .OrderColumn , .OrderedItems {
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
+      // display: flex;
+      // justify-content: space-around;
+      // align-items: flex-start;
+      text-align: center;
       font-size : 2.5vh;
     }
     .OrederdItemList{
-      height: calc(100% - 55px);
+      height: calc(100% - 70px);
       overflow:  hidden scroll;
       padding-bottom : 2px;
       .OrderedItems {

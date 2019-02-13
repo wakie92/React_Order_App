@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Order.module.scss'
 import Button from 'components/UI/Button/Button';
+import Plus from 'react-icons/lib/ti/plus';
+import Minus from 'react-icons/lib/ti/minus';
 
 const order = (props) => {
   const orderedItems = props.selectedMenu 
@@ -19,6 +21,12 @@ const order = (props) => {
       <div className = {classes.Order}>
         <div className = {classes.OrderList}>
           <div className = {classes.OrderColumn}>
+            <div className = {classes.OrderColumnTop}>
+              <span>상품 주문 목록</span>
+            </div>
+            <div className = {classes.OrderAddMinus}>
+              <span><Plus/> <Minus/></span>
+            </div>
             <span className = {classes.ListItemName}>상품명</span>
             <span className = {classes.ListItemPrice}>판매금액</span>
             <span className = {classes.ListItemCount}>수량</span>
