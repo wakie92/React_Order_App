@@ -63,6 +63,7 @@ export default handleActions({
       return state.set('menu', menuData);
     }
   }),
+  [GET_INITIALSTATE] : (state, action) => initialState,
   [SELECTED_MENU] : (state, action) => {
     const selectedMenu = action.payload;
     return state.set('selectedMenu', selectedMenu);

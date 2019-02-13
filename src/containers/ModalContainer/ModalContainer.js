@@ -22,6 +22,7 @@ class ModalContainer extends Component {
       })
     this.getCloseModal();
     this.getInitialize();
+
   }
   getInitialize = () => {
     const {MenuDataUIActions, selectedMenu} = this.props;
@@ -33,6 +34,7 @@ class ModalContainer extends Component {
     MenuDataUIActions.checkedTF({cash : false, card : false});
     MenuDataUIActions.requirement('');
     MenuDataUIActions.amountToPay('');
+    MenuDataUIActions.getInitialState();
 
   }
   postData = async () => {
