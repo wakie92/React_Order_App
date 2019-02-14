@@ -64,7 +64,7 @@ class OrderContainer extends Component {
       break;
       case '-' :
         if(selectedItem.counter === 1 ) {
-          // console.log(arr.splice(0,0));
+          arr.splice(index,1);
           MenuDataUIActions.selectedMenu(arr);
         }else {
           selectedItem.counter--;
