@@ -17,8 +17,7 @@ class ItemsContainer extends Component {
   itemCountHandler = (id, sign) => {
     const { controledMENU } = this.props;
     const { setControledMenu } = this;
-    const index = controledMENU.findIndex(item => item.id === id);
-    let controledItem = {...controledMENU[index]};
+    let controledItem = {...controledMENU[id]};
     console.log(controledItem);
     switch(sign) {
       case '+' :
@@ -42,14 +41,20 @@ class ItemsContainer extends Component {
   orderedItemHandler = (id) => {
     let { controledMENU, MenuDataUIActions,selectedMenu,totalPrice } = this.props;
     let arr = [...selectedMenu];
-    const index = controledMENU.findIndex(item => item.id === id);
     this.itemCountHandler(id);
-    if(controledMENU[index].counter !== 0) {
-      let pickedItem = {...controledMENU[index]};
+    if(controledMENU[id].counter !== 0) {
+      let pickedItem = {...controledMENU[id]};
       const {counter, price} = pickedItem;
+      let index = arr.findIndex(item => item.id === pickedItem.id);
+      //좀더 최적화 가능할듯 아직은 되는 정도()
+      console.log(index);
+      if(index !== -1){
+        arr[index].counter += pickedItem.counter;
+      }else {
+        arr.push(pickedItem);
+      }
       totalPrice += counter*price;
       MenuDataUIActions.totalPrice(totalPrice);
-      arr.push(pickedItem);
       MenuDataUIActions.selectedMenu(arr);  
       }
   }
@@ -58,7 +63,6 @@ class ItemsContainer extends Component {
   }
   componentWillReceiveProps(newProps) {
     console.log('[ITEMS_CONTAINER] : componentWillReceiveProps')
-    console.log(newProps)
   }
   componentDidUpdate() {
     console.log('[ITEMS_CONTAINER] : componentDidUpdate')
@@ -68,7 +72,6 @@ class ItemsContainer extends Component {
     console.log('[ITEMS_CONTAINER] : render')
     const { show ,controledMENU, updatedMenuList} = this.props;
     const { itemCountHandler, orderedItemHandler } = this;
-    console.log(controledMENU);
   return(
     <Items 
       show = {show} 
