@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Modal.module.scss';
 import Button from 'components/UI/Button/Button'
 const modal = (props) => {
-  console.log(props.selectedMenu);
   const os_menu = props.selectedMenu.map(
     (item) => {
       return(

@@ -57,6 +57,9 @@
       height: calc(100% - 70px);
       overflow:  hidden scroll;
       padding-bottom : 2px;
+      .SelectedOrderedItems {
+        background-color: aqua;
+      }
       .OrderedItems {
         display: grid;
         grid-auto-columns: minmax(0,1fr);
@@ -66,6 +69,7 @@
         border-bottom : none;
         margin : 5px 0;
         text-align: center;
+        
         .OrderedItemName {
           grid-area : on;
         }

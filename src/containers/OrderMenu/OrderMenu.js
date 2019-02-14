@@ -10,7 +10,6 @@ import OrderContainer from '../OrderSection/OrderContainer';
 import ModalContainer from 'containers/ModalContainer/ModalContainer'
 class OrderMenu extends Component {
   
- 
   categoryBarHandler = () => {
     const { MenuDataUIActions, show } = this.props;
     !show ? MenuDataUIActions.showTF(true) :MenuDataUIActions.showTF(false)

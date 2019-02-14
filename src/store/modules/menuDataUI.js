@@ -58,7 +58,7 @@ export default handleActions({
     onSuccess : (state, action) => {
       let menuData = action.payload.data;
       menuData.map((item) => {
-        return {...item, ...item.counter = 0}
+        return {...item, ...item.counter = 0, ...item.secleted = false}
       })
       return state.set('menu', menuData);
     }
@@ -91,7 +91,6 @@ export default handleActions({
       updatedMenu,
       ...controledMENU.slice(updatedMenu.id+1 , controledMENU.length)
     ]
-    console.log(controledMENU);
     return state.set('menu',controledMENU)
   },
   [MODAL_SHOW] : (state, action) => {
@@ -107,7 +106,6 @@ export default handleActions({
     orderSummary.os_purchasingMenu.map((item) => {
       return item.count++;
     })
-    console.log(orderSummary);
     return state.set('orderSummary', orderSummary)
   }
 },initialState)
