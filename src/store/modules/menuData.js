@@ -16,7 +16,7 @@ export default handleActions({
     onSuccess : (state, action) => {
       let menuData = action.payload.data;
       menuData.map((item) => {
-        return {...item, ...item.counter = 0}
+        return {...item, ...item.counter = 0, ...item.secleted = false}
       })
       return state.set('menu', menuData);
     }

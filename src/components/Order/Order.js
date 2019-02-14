@@ -6,9 +6,10 @@ import Minus from 'react-icons/lib/ti/minus';
 
 const order = (props) => {
   const orderedItems = props.selectedMenu 
-    .map(item=> {
-      return (
-        <div className = {[classes.OrderedItems, classes[props.Selected]].join(' ')}>
+  .map(item=> {
+    const selectedItem = item.selected ? 'SelectedOrderedItems' : ''
+    return (
+        <div className = {`${classes.OrderedItems} ${classes[selectedItem]}`} onClick = {(e) => {e.stopPropagation(); props.toggleSelect(item.id)}}>
           <span className = {classes.OrderedItemName}>{item.name}</span>
           <span className = {classes.OrderedItemPrice}>{item.price}</span>
           <span className = {classes.OrderedItemCount}>{item.counter}</span>
@@ -25,7 +26,8 @@ const order = (props) => {
               <span>상품 주문 목록</span>
             </div>
             <div className = {classes.OrderAddMinus}>
-              <span><Plus/> <Minus/></span>
+              <span><Plus onClick = {(e) => {e.stopPropagation(); props.countControl('+')}}/> 
+                    <Minus onClick = {(e) => {e.stopPropagation(); props.countControl('-')}}/></span>
             </div>
             <span className = {classes.ListItemName}>상품명</span>
             <span className = {classes.ListItemPrice}>판매금액</span>

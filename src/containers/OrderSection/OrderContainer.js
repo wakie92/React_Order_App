@@ -3,10 +3,11 @@ import Order from 'components/Order/Order';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
+import withClass from 'hoc/withClass';
 
 class OrderContainer extends Component {
   state = {
-    selected : false
+    selectedItem : null
   }
   confirmOrderHandler = () =>{
     const {MenuDataUIActions, checkedTF, selectedMenu, amountToPay} = this.props;
@@ -32,6 +33,55 @@ class OrderContainer extends Component {
     console.log(e.target.value);
     MenuDataUIActions.amountToPay(e.target.value);
   }
+  handleSelect = (id) => {
+    const { MenuDataUIActions, selectedMenu } = this.props;
+    let { selectedItem } = this.state;
+    let arr = [...selectedMenu];
+    const index = arr.findIndex(item => item.id === id);
+    arr.map(item => {
+      return item.id === id ? item.selected = true : item.selected = false
+    })
+    selectedItem = arr[index];
+    this.setState({selectedItem : selectedItem});
+    MenuDataUIActions.selectedMenu(arr);
+  }
+
+  handleCount = (sign) => {
+    const { MenuDataUIActions, selectedMenu } = this.props;
+    const { selectedItem } = this.state;
+    let arr = [...selectedMenu];
+    const index = arr.findIndex(item => item.id === selectedItem.id);
+    console.log(index);
+    switch(sign) {
+      case  '+' :  
+        selectedItem.counter++;
+        arr = [
+          ...arr.slice(0,index),
+          selectedItem,
+          ...arr.slice(index+1,arr.length)
+              ]
+        MenuDataUIActions.selectedMenu(arr);
+      break;
+      case '-' :
+        if(selectedItem.counter === 1 ) {
+          // console.log(arr.splice(0,0));
+          MenuDataUIActions.selectedMenu(arr);
+        }else {
+          selectedItem.counter--;
+          arr = [
+            ...arr.slice(0,index),
+            selectedItem,
+            ...arr.slice(index+1,arr.length)
+                ]
+          MenuDataUIActions.selectedMenu(arr);
+        }
+      break;
+      default : 
+      break;
+    }
+    
+  }
+
   componentDidMount() {
     console.log('[ORDER_CONTAINER] : componentDidMount')
   }
@@ -41,7 +91,7 @@ class OrderContainer extends Component {
   render() {
     console.log('[ORDER_CONTAINER] : render')
     const { totalPrice , selectedMenu  , checkedTF, req, amountToPay} = this.props;
-    const { confirmOrderHandler, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
+    const { confirmOrderHandler, handleSelect, handleCount, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}
@@ -53,6 +103,8 @@ class OrderContainer extends Component {
         req = {req}
         howMuchToPay = {handleAmountToPay}
         amountToPay = {amountToPay}
+        toggleSelect = {handleSelect}
+        countControl = {handleCount}
       />
     );
   }
@@ -64,7 +116,8 @@ export default connect((state) => ({
   checkedTF : state.menuDataUI.get('checkedTF'),
   req : state.menuDataUI.get('req'),
   modalShow : state.menuDataUI.get('modalShow'),
-  amountToPay : state.menuDataUI.get('amountToPay')
+  amountToPay : state.menuDataUI.get('amountToPay'),
+  menuList : state.menuDataUI.get('menu')
 }),
 (dispatch) =>({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
