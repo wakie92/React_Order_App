@@ -8,7 +8,7 @@ const order = (props) => {
   const orderedItems = props.selectedMenu 
     .map(item=> {
       return (
-        <div className = {classes.OrderedItems}>
+        <div className = {[classes.OrderedItems, classes[props.Selected]].join(' ')}>
           <span className = {classes.OrderedItemName}>{item.name}</span>
           <span className = {classes.OrderedItemPrice}>{item.price}</span>
           <span className = {classes.OrderedItemCount}>{item.counter}</span>

@@ -5,6 +5,9 @@ import { bindActionCreators } from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
 
 class OrderContainer extends Component {
+  state = {
+    selected : false
+  }
   confirmOrderHandler = () =>{
     const {MenuDataUIActions, checkedTF, selectedMenu, amountToPay} = this.props;
     //immutable 속성인 selectedMenu
