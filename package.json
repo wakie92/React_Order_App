@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "eject": "0.0.4",
     "immutable": "^4.0.0-rc.12",
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
@@ -14,7 +15,8 @@
     "redux": "^4.0.1",
     "redux-action": "^1.2.2",
     "redux-actions": "^2.6.4",
-    "redux-pender": "^2.0.12"
+    "redux-pender": "^2.0.12",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
