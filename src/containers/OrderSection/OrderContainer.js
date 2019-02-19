@@ -30,7 +30,6 @@ class OrderContainer extends Component {
   }
   handleAmountToPay = (e) => {
     const {MenuDataUIActions} = this.props;
-    console.log(e.target.value);
     MenuDataUIActions.amountToPay(e.target.value);
   }
   handleSelect = (id) => {
@@ -47,11 +46,11 @@ class OrderContainer extends Component {
   }
 
   handleCount = (sign) => {
-    const { MenuDataUIActions, selectedMenu } = this.props;
+    const { MenuDataUIActions, selectedMenu,  } = this.props;
+    let { totalPrice }  = this.props;
     const { selectedItem } = this.state;
     let arr = [...selectedMenu];
     const index = arr.findIndex(item => item.id === selectedItem.id);
-    console.log(index);
     switch(sign) {
       case  '+' :  
         selectedItem.counter++;
@@ -63,6 +62,8 @@ class OrderContainer extends Component {
         MenuDataUIActions.selectedMenu(arr);
       break;
       case '-' :
+        totalPrice -= selectedItem.price;
+        MenuDataUIActions.totalPrice(totalPrice);
         if(selectedItem.counter === 1 ) {
           arr.splice(index,1);
           MenuDataUIActions.selectedMenu(arr);
@@ -92,6 +93,7 @@ class OrderContainer extends Component {
     console.log('[ORDER_CONTAINER] : render')
     const { totalPrice , selectedMenu  , checkedTF, req, amountToPay} = this.props;
     const { confirmOrderHandler, handleSelect, handleCount, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
+    console.log('totalPrice : ' , totalPrice);
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}

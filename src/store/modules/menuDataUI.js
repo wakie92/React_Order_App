@@ -16,6 +16,7 @@ const MODAL_SHOW = 'menuDataUI/MODAL_SHOW';
 const AMOUNT_TO_PAY = 'menuDataUI/AMOUNT_TO_PAY';
 const GET_MENU_LIST = 'menuDataUI/GET_MENU_LIST';
 const GET_INITIALSTATE = 'menuDataUI/GET_INITIALSTATE';
+const POST_MENU = 'menuDataUI/POST_MENU';
 
 export const controledCount = createAction(CONTROLED_COUNT);
 export const addItem = createAction(ADD_ITEM);
@@ -30,7 +31,11 @@ export const modalShow = createAction(MODAL_SHOW);
 export const amountToPay = createAction(AMOUNT_TO_PAY);
 export const getMenuList = createAction(GET_MENU_LIST,api.getMenuList);
 export const getInitialState = createAction(GET_INITIALSTATE);
-
+export const postMenu = createAction(POST_MENU, api.postOrderedMenu);
+export const postMenuAsync = (order) => dispatch => {
+  dispatch(orderSummary(order));
+  return dispatch(postMenu(order))
+}
 const initialState = fromJS({
   menu : [],
   updatedMenuList : [],
@@ -61,6 +66,15 @@ export default handleActions({
         return {...item, ...item.counter = 0, ...item.secleted = false}
       })
       return state.set('menu', menuData);
+    }
+  }),
+  ...pender({
+    type : POST_MENU,
+    onSuccess : (state, action) => {
+      const orderSummary = action.payload;
+      console.log(orderSummary);
+      orderSummary.data['name'] = 'sdfsdf'
+      return state.set('orderSummary', orderSummary)
     }
   }),
   [GET_INITIALSTATE] : (state, action) => initialState,
@@ -103,9 +117,7 @@ export default handleActions({
   },
   [ORDERSUMMARY] : (state, action) => {
     const orderSummary = action.payload;
-    orderSummary.os_purchasingMenu.map((item) => {
-      return item.count++;
-    })
+    console.log(orderSummary);
     return state.set('orderSummary', orderSummary)
   }
 },initialState)
