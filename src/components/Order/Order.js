@@ -3,7 +3,7 @@ import classes from './Order.module.scss'
 import Button from 'components/UI/Button/Button';
 import Plus from 'react-icons/lib/ti/plus';
 import Minus from 'react-icons/lib/ti/minus';
-
+import OrderListContainer from 'containers/OrderSection/OrderList/OrderListContainer'
 const order = (props) => {
   const orderedItems = props.selectedMenu 
   .map(item=> {
@@ -34,7 +34,8 @@ const order = (props) => {
             <span className = {classes.ListItemCount}>수량</span>
             <span className = {classes.ListItemTotalPrice}>최종금액</span>
           </div>
-          <div className = {classes.OrederdItemList}>{orderedItems}</div>
+          <OrderListContainer/>
+          {/* <div className = {classes.OrederdItemList}>{orderedItems}</div> */}
         </div>
         <div className = {classes.PayMethod}>
           <span className = {classes.PaymentTitle}>상품판매 결제 선택하기</span>

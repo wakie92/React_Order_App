@@ -1,0 +1,33 @@
+.OrederdItemList{
+  height: calc(100% - 70px);
+  overflow:  hidden scroll;
+  padding-bottom : 2px;
+  text-align: center;
+  font-size : 2.5vh;
+  .SelectedOrderedItems {
+    background-color: aqua;
+  }
+  .OrderedItems {
+    display: grid;
+    grid-auto-columns: minmax(0,1fr);
+    grid-auto-rows: minmax(auto,4vh);
+    grid-template-areas: 
+    'on op oc otp';
+    border-bottom : none;
+    margin : 5px 0;
+    text-align: center;
+    
+    .OrderedItemName {
+      grid-area : on;
+    }
+    .OrderedItemPrice{
+      grid-area: op;
+    }
+    .OrderedItemCount {
+      grid-area : oc;
+    }
+    .OrderedItemTotalPrice {
+      grid-area: otp;
+    }
+  }
+}

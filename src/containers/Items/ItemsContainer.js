@@ -6,11 +6,8 @@ import * as menuDataUIActions from 'store/modules/menuDataUI';
 import * as menuDataActions from 'store/modules/menuData';
 
 class ItemsContainer extends Component {
-  
   setControledMenu = (updatedMenu) => {
     let { controledMENU, MenuDataUIActions } = this.props;
-    console.log(controledMENU);
-    console.log(updatedMenu);
      MenuDataUIActions.controledCount({ updatedMenu, controledMENU});
   }
 
@@ -18,7 +15,6 @@ class ItemsContainer extends Component {
     const { controledMENU } = this.props;
     const { setControledMenu } = this;
     let controledItem = {...controledMENU[id]};
-    console.log(controledItem);
     switch(sign) {
       case '+' :
         controledItem.counter++;
@@ -47,7 +43,6 @@ class ItemsContainer extends Component {
       const {counter, price} = pickedItem;
       let index = arr.findIndex(item => item.id === pickedItem.id);
       //좀더 최적화 가능할듯 아직은 되는 정도()
-      console.log(index);
       if(index !== -1){
         arr[index].counter += pickedItem.counter;
       }else {
@@ -70,12 +65,12 @@ class ItemsContainer extends Component {
   }
   render() {
     console.log('[ITEMS_CONTAINER] : render')
-    const { show ,controledMENU, updatedMenuList} = this.props;
+    const { show ,controledMENU, menuData, updatedMenuList} = this.props;
     const { itemCountHandler, orderedItemHandler } = this;
   return(
     <Items 
       show = {show} 
-      menuList = {controledMENU} key ="mL"
+      menuList = {controledMENU} 
       itemCount = {itemCountHandler}
       orderedItem = {orderedItemHandler}
     />
@@ -86,6 +81,8 @@ class ItemsContainer extends Component {
 export default connect((state) => ({
   selectedMenu : state.menuDataUI.get('selectedMenu'),
   totalPrice : state.menuDataUI.get('totalPrice'),
+  menuData : state.menuDataUI.get('menu'),
+  requirement :  state.menuDataUI.get('requirement')
 }),
 (dispatch) => ({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch),

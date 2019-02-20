@@ -29,9 +29,14 @@ class OrderMenu extends Component {
     console.log('[ORDER_MENU] : componentWillUnMount')
     
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps !== this.props
+  }
   render() {
     const { categoryBarHandler, } = this;
     const { menuData, show, } = this.props;
+    let menuList = [...menuData ]
+    console.log(menuList);
     console.log('[ORDER_MENU] : render')
     return(
       <>
@@ -39,7 +44,7 @@ class OrderMenu extends Component {
         <CategoryBar  showAll = {categoryBarHandler}/>
         <ItemsContainer 
           show = {show} 
-          controledMENU = {menuData} 
+          controledMENU = {menuList} 
         />
         <OrderContainer/>
       </>
