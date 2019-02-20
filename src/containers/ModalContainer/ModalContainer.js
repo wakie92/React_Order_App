@@ -13,11 +13,8 @@ class ModalContainer extends Component {
   }
 
   finalConfirm = () => {
-    const { MenuDataUIActions, req, orderSummary, checkedTF, selectedMenu, totalPrice } = this.props;
-    // orderSummary.os_purchasingMenu.map(item => item.count++)
+    const { MenuDataUIActions, req,  checkedTF, selectedMenu, totalPrice } = this.props;
     selectedMenu.map((item) => item.count++)
-    // MenuDataUIActions.orderSummary(
-    // )
     MenuDataUIActions.postMenuAsync({ 
       os_req : req,
       os_paymentMethod : checkedTF,
@@ -37,13 +34,10 @@ class ModalContainer extends Component {
     MenuDataUIActions.checkedTF({cash : false, card : false});
     MenuDataUIActions.requirement('');
     MenuDataUIActions.amountToPay('');
-    // MenuDataUIActions.getInitialState();
-
   }
-  postData = async () => {
-    const { MenuDataUIActions } = this.props;
-    
-  }
+  // loadModal = () => {
+  //   import ('components/UI/Modal/Modal',);
+  // }
   render() {
     const {  getCloseModal , finalConfirm} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
