@@ -35,10 +35,14 @@ class ModalContainer extends Component {
     MenuDataUIActions.requirement('');
     MenuDataUIActions.amountToPay('');
   }
+  shouldComponentUpdate (nextProps, nextState) {
+    return nextProps.modalShow !== this.props.modalShow;
+  }
   // loadModal = () => {
   //   import ('components/UI/Modal/Modal',);
   // }
   render() {
+    console.log('[Modal_Containder] : render()')
     const {  getCloseModal , finalConfirm} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
     return (

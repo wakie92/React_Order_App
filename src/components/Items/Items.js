@@ -7,7 +7,7 @@ const items = (props) => {
   const menuList = props.menuList
     .map(menu => {
       return props.show ?  
-                <ItemContainer menu = {menu} orderedItem = {props.orderedItem}
+                <ItemContainer menu = {menu} orderedItem = {props.orderedItem} key = {menu.id}
                 itemCount = {props.itemCount}/>
                 // <ItemContainer name = {menu.name} price = {menu.price} key = {menu.id}
                 // count = {menu.counter} img = {menu.img} id = {menu.id} orderedItem = {props.orderedItem}
