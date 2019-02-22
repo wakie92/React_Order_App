@@ -4,19 +4,9 @@ import Button from 'components/UI/Button/Button';
 import Plus from 'react-icons/lib/ti/plus';
 import Minus from 'react-icons/lib/ti/minus';
 import OrderListContainer from 'containers/OrderSection/OrderList/OrderListContainer'
+import OrderRequirement from 'components/Order/OrderRequirement';
 const order = (props) => {
-  const orderedItems = props.selectedMenu 
-  .map(item=> {
-    const selectedItem = item.selected ? 'SelectedOrderedItems' : ''
-    return (
-        <div className = {`${classes.OrderedItems} ${classes[selectedItem]}`} onClick = {(e) => {e.stopPropagation(); props.toggleSelect(item.id)}}>
-          <span className = {classes.OrderedItemName}>{item.name}</span>
-          <span className = {classes.OrderedItemPrice}>{item.price}</span>
-          <span className = {classes.OrderedItemCount}>{item.counter}</span>
-          <span className = {classes.OrderedItemTotalPrice}>{item.counter * item.price}</span>
-        </div>
-        )
-    })
+  
   return (
     <>
       <div className = {classes.Order}>
@@ -65,10 +55,7 @@ const order = (props) => {
               <option value = "20000">20000원</option>
               <option value = "10000">금액에 맞게</option>
             </select>
-            {/* <textarea 
-              className = {classes.ReValue} 
-              value = "required" 
-              placeholder = "요청사항" /> */}
+           
            </>    :
             <>
               <select onChange = {props.howMuchToPay} value = {props.amountToPay}>
@@ -81,12 +68,8 @@ const order = (props) => {
               
              </>   
           }
-              <textarea 
-                    className = {classes.ReValue} 
-                    onChange = {props.requirement}
-                    value = {props.req} 
-                    placeholder = "요청사항" />
-              </div>
+          <OrderRequirement/>
+          </div>
         </div>
         <div className = {classes.Payment}>
           <div className = {classes.TotalPrice}><span>{props.totalPrice}원</span></div>

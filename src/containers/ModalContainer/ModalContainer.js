@@ -10,6 +10,8 @@ class ModalContainer extends Component {
   getCloseModal = () => {
     const {MenuDataUIActions} = this.props;
     MenuDataUIActions.modalShow(false);
+    MenuDataUIActions.confirm(false)
+
   }
 
   finalConfirm = () => {
@@ -45,6 +47,7 @@ class ModalContainer extends Component {
     console.log('[Modal_Containder] : render()')
     const {  getCloseModal , finalConfirm} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
+    console.log('req : ' + req)
     return (
       <>
         <Backdrop 
