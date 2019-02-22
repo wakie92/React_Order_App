@@ -4,21 +4,18 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
 class OrderListContainer extends Component {
-  state = {
-    selectedItem : null,
-  }
+  
   handleSelect = (id) => {
     const { MenuDataUIActions, selectedMenu } = this.props;
-    let { selectedItem } = this.state;
     let arr = [...selectedMenu];
     const index = arr.findIndex(item => item.id === id);
     arr.map(item => {
       return item.id === id ? item.selected = true : item.selected = false
     })
-    selectedItem = arr[index];
-    this.setState({selectedItem : selectedItem});
+    MenuDataUIActions.selectedItem(arr[index])
     MenuDataUIActions.selectedMenu(arr);
   }
+  
   // componentWillMount() {
   //   this.props.MenuDataUIActions.selectedItem()
   // }
