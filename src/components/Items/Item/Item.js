@@ -11,9 +11,9 @@ const item = (props) => {
       </div>
       <div className = {classes.InfoWrapper}>
         <div className = {classes.ControlCount}>
-          <Button btnType = "CountBtn" clicked = {() => props.itemCount(props.id, '+')} > + </Button>
+          <Button btnType = "CountBtn" clicked = {() => props.itemCount('+')} > + </Button>
           <span className = {classes.Count}> {props.count} </span>
-          <Button btnType = "CountBtn" clicked = {() => props.itemCount(props.id, '-')}> - </Button>
+          <Button btnType = "CountBtn" clicked = {() => props.itemCount('-')}> - </Button>
         </div>
         <span className = {classes.DetailInfo}> 
           <Button btnType = "ShoppingCart" clicked = {() => props.orderedItem(props.id)} ><ShoppingCart/></Button>

@@ -9,74 +9,71 @@ class ItemContainer extends Component {
   state = {
     counter : 0
   }
-  setControledMenu = (updatedMenu) => {
-    let { controledMENU, MenuDataUIActions } = this.props;
-     MenuDataUIActions.controledCount({ updatedMenu, controledMENU});
-  }
 
   //count 코드 최적화 해야함//
   //itemsContainer에서 id찾고 카운트 올릴 필요 없음.
   //해결한다면 렌더링 횟수 줄어들것으로 예상
-  itemCountHandler = (id, sign) => {
-    let { name, price, key, counter, img  } = this.props.menu;
-    const { setControledMenu } = this;
-    let controledItem = {...this.props.menu};
+  itemCountHandler = (sign) => {
+    let controledCount = this.state.counter;
     switch(sign) {
       case '+' :
-        // controledItem.counter++;
-        this.setState({counter : counter++})
-        // setControledMenu(controledItem);
+        controledCount++;
+        this.setState({counter : controledCount})
         break;
       case '-' :
-        if(controledItem.counter !==0) 
-        controledItem.counter--  
-        setControledMenu(controledItem);
+        if(controledCount !==0) 
+        controledCount--  
+        this.setState({counter : controledCount})
         break;
       case undefined :
-        controledItem.counter = 0;
-        setControledMenu(controledItem);
+        controledCount = 0;
+        this.setState({counter : controledCount})
         break;
       default : 
         break;
     }
   }
   orderedItemHandler = (id) => {
-    let { controledMENU, MenuDataUIActions,selectedMenu,totalPrice } = this.props;
+    let {  MenuDataUIActions,selectedMenu,totalPrice } = this.props;
+    let controledItem = {...this.props.menu};
+    let controledCount = this.state.counter;
+    const {price} = controledItem;
     let arr = [...selectedMenu];
     this.itemCountHandler(id);
-    if(controledMENU[id].counter !== 0) {
-      let pickedItem = {...controledMENU[id]};
-      const {counter, price} = pickedItem;
-      let index = arr.findIndex(item => item.id === pickedItem.id);
-      //좀더 최적화 가능할듯 아직은 되는 정도()
-      if(index !== -1){
-        arr[index].counter += pickedItem.counter;
-      }else {
-        arr.push(pickedItem);
-      }
-      totalPrice += counter*price;
+    if(controledCount !== 0) {
+      controledItem.counter = controledCount;
+      //차후에 concat으로 변경 시도해보기
+      arr.push({...controledItem, key : id});
+      totalPrice += controledCount*price;
       MenuDataUIActions.totalPrice(totalPrice);
       MenuDataUIActions.selectedMenu(arr);  
       }
+    this.setState({counter : 0})
   }
   shouldComponentUpdate (nextProps, nextState) {
-    return nextProps.menu.counter !== this.props.menu.counter;
+    //성공
+    console.log('##############################33')
+    console.log(nextProps);
+    console.log(nextState);
+    console.log(this.props);
+    return this.state.counter !== nextState.counter;
   }
   render() {
-    const {menu,orderedItem, itemCount } = this.props;
-    const { name, price, key, counter, img , id }  = menu;
+    const {menu} = this.props;
+    const { name, price, img , id }  = menu;
+    const { itemCountHandler, orderedItemHandler }  = this; 
     console.log('[ITEMCONTAINER]',id)
-    console.log(this.props);
     return (
-        <Item name = {name} price = {price} key = {key }
-                count = {this.state.counter} img = {img} id = {id} orderedItem = {orderedItem}
-                itemCount = {itemCount}/>
+        <Item name = {name} price = {price} key = {name}
+                count = {this.state.counter} img = {img} id = {id} orderedItem = {orderedItemHandler}
+                itemCount = {itemCountHandler}/>
     );
   }
 }
 
 export default connect((state) => ({
   selectedMenu : state.menuDataUI.get('selectedMenu'),
+  totalPrice : state.menuDataUI.get('totalPrice')
 }),
 (dispatch) => ({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

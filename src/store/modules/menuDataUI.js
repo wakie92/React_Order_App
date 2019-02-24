@@ -102,15 +102,15 @@ export default handleActions({
     const req = action.payload;
     return state.set('req', req)
   },
-  [CONTROLED_COUNT] : (state, action) => {
-    let {controledMENU, updatedMenu } = action.payload;
-    controledMENU = [
-      ...controledMENU.slice(0,updatedMenu.id),
-      updatedMenu,
-      ...controledMENU.slice(updatedMenu.id+1 , controledMENU.length)
-    ]
-    return state.set('menu',controledMENU)
-  },
+  // [CONTROLED_COUNT] : (state, action) => {
+  //   let {selectedMenu, updatedMenu } = action.payload;
+  //   selectedMenu = [
+  //     ...selectedMenu.slice(0,updatedMenu.id),
+  //     updatedMenu,
+  //     ...selectedMenu.slice(updatedMenu.id+1 , selectedMenu.length)
+  //   ]
+  // //   return state.set('menu',selectedMenu)
+  // },
   [MODAL_SHOW] : (state, action) => {
     const modalShow = action.payload;
     return state.set('modalShow', modalShow)

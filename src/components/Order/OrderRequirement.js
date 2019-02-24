@@ -9,11 +9,7 @@ class OrderRequirement extends Component {
     const { MenuDataUIActions} = this.props;
     MenuDataUIActions.requirement(e.target.value)
   }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(nextProps);
-  //   console.log(this.props)
-  //   return nextProps.confirm !== this.props.confirm;
-  // }
+  
   render() {
     return(
       <textarea 
