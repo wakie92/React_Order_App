@@ -13,7 +13,6 @@ class ItemsContainer extends Component {
   render() {
     console.log('[ITEMS_CONTAINER] : render')
     const { show ,controledMENU} = this.props;
-    console.log(controledMENU)
   return(
     <Items 
       show = {show} 

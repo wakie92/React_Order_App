@@ -16,18 +16,10 @@ class OrderMenu extends Component {
   }
 
   componentDidMount()  {
-    const { MenuDataUIActions, MenuDataActions } = this.props;
-    console.log('[ORDER_MENU] : componentDidMount')
+    const { MenuDataUIActions } = this.props;
     MenuDataUIActions.checkedTF({cash : false, card:false});
     MenuDataUIActions.getMenuList();
     MenuDataUIActions.showTF(true);
-  }
-  componentDidUpdate() {
-    console.log('[ORDER_MENU] : componentDidUpdate')
-  }
-  componentWillUnmount() {
-    console.log('[ORDER_MENU] : componentWillUnMount')
-    
   }
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps !== this.props
@@ -36,7 +28,6 @@ class OrderMenu extends Component {
     const { categoryBarHandler, } = this;
     const { menuData, show, } = this.props;
     let menuList = [...menuData ]
-    console.log(menuList);
     console.log('[ORDER_MENU] : render')
     return(
       <>

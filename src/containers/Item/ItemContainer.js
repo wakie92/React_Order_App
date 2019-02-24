@@ -52,10 +52,7 @@ class ItemContainer extends Component {
   }
   shouldComponentUpdate (nextProps, nextState) {
     //성공
-    console.log('##############################33')
-    console.log(nextProps);
-    console.log(nextState);
-    console.log(this.props);
+    //다시한번 봐보기 
     return this.state.counter !== nextState.counter;
   }
   render() {

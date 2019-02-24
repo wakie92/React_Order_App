@@ -16,10 +16,8 @@ class OrderListContainer extends Component {
     MenuDataUIActions.selectedMenu(arr);
   }
   
-  // componentWillMount() {
-  //   this.props.MenuDataUIActions.selectedItem()
-  // }
   shouldComponentUpdate(nextProps, nextState) {
+    //성공
     return nextProps.selectedMenu !== this.props.selectedMenu;
   }
   render() {

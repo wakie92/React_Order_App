@@ -19,7 +19,6 @@ class OrderContainer extends Component {
     alert('결제수단을 선택해주세요') : checkedTF['cash'] && amountToPay === 'select' ? 
     alert('지불할 금액을 선택해주세요') : 
     import('components/UI/Modal/Modal').then(({default :  modalShow}) => {
-      // MenuDataUIActions.requirement(this.state.input)
       MenuDataUIActions.confirm(true)
     }).then(() => {
       MenuDataUIActions.modalShow(true)
@@ -76,19 +75,12 @@ class OrderContainer extends Component {
     
   }
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextProps);
-    console.log(this.props)
-    return nextProps.confirm !== this.props.confirm || nextProps.totalPrice !== this.props.totalPrice;
-  }
-  componentDidMount() {
-    console.log('[ORDER_CONTAINER] : componentDidMount')
-  }
-  componentDidUpdate() {
-    console.log('[ORDER_CONTAINER] : componentDidUpdate')
-    console.log('--------------------------')
+    //성공
+    return nextProps.confirm !== this.props.confirm 
+        || nextProps.totalPrice !== this.props.totalPrice
+        || nextProps.checkedTF !== this.props.checkedTF;
   }
   render() {
-    console.log('--------------------------')
     console.log('[ORDER_CONTAINER] : render')
     const { totalPrice , selectedMenu  , checkedTF, amountToPay} = this.props;
     const { confirmOrderHandler, handleSelect, handleCount, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
