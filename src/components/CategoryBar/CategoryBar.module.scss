@@ -15,3 +15,8 @@
     padding : 10px 0 ;
   }
 }
+@media (max-width : 750px) {
+  .CategoryBar {
+    display : none;
+  }
+}

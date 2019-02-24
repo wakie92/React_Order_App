@@ -17,12 +17,13 @@
     display : flex;
     flex : 4;
   }
+  
   .InfoWrapper {
     flex : 1;
     display : flex;
     align-items: center;
     justify-content: space-between;
-    font-size : 3vh;
+    font-size : 1.5vw;
     background-color: #adb5bd;
     
     .DetailInfo {
@@ -32,14 +33,29 @@
     .ControlCount{
       display : flex;
       justify-content: space-around;
-      align-content: center;
+      align-items: center;
       .CountBtn {
         cursor: pointer;
         padding : 0 10px;
       }
       .Count {
-        padding-top : 10px;
+        margin : 0 10px;
       }
+      @media (max-width : 900px) {
+        .Count {
+        margin : 0 5px;
+        }
+      }
+    }
+  }
+  @media (max-width : 900px) {
+    .InfoWrapper {
+      font-size : 2.5vw;
+    }
+  }
+  @media (max-width : 550px) {
+    .InfoWrapper {
+      font-size : 5vw;
     }
   }
 }

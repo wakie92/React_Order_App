@@ -9,6 +9,11 @@
   font-weight: bold;
   font-size : 3vh;
 }
+@media (max-width : 1450px) {
+  .Button {
+    margin: 10px 5px;
+  }
+}
 .ConfirmOrder {
   color: rgb(223, 73, 98);
   font-size : 10vh;
@@ -27,4 +32,14 @@
   padding : 1vh;
   background-color: #F39278;
   color : white;
+}
+@media (max-width : 900px) {
+  .ShoppingCart {
+    font-size : 4vw;
+  }
+}
+@media (max-width : 550px) {
+  .ShoppingCart {
+    font-size : 6vw;
+  }
 }

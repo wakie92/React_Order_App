@@ -17,4 +17,18 @@
     "o o o o o o"
     "o o o o o o"
   }
+  @media (max-width : 750px) {
+    .Content{
+      grid-template-areas: 
+      "i i i i"
+      "i i i i"
+      "i i i i"
+      "i i i i"
+      "i i i i"
+      "i i i i"
+      "o o o o"
+      "o o o o"
+      "o o o o"
+    }
+  }
 }
