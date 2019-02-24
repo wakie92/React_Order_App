@@ -9,3 +9,19 @@
   grid-auto-rows: minmax(auto,300px);
   grid-gap : 10px;
 }
+
+@media  (max-width : 1300px) {
+  .Items {
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+  }
+}
+@media  (max-width : 900px) {
+  .Items {
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
+}
+@media (max-width :550px ) {
+  .Items {
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+}
