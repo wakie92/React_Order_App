@@ -11,7 +11,6 @@ class ModalContainer extends Component {
     const {MenuDataUIActions} = this.props;
     MenuDataUIActions.modalShow(false);
     MenuDataUIActions.confirm(false)
-
   }
 
   finalConfirm = () => {
@@ -25,8 +24,8 @@ class ModalContainer extends Component {
     });
     this.getCloseModal();
     this.getInitialize();
-
   }
+
   getInitialize = () => {
     const {MenuDataUIActions, selectedMenu} = this.props;
     let arr = [...selectedMenu];
@@ -37,17 +36,14 @@ class ModalContainer extends Component {
     MenuDataUIActions.requirement('');
     MenuDataUIActions.amountToPay('');
   }
+
   shouldComponentUpdate (nextProps, nextState) {
     return nextProps.modalShow !== this.props.modalShow;
   }
-  // loadModal = () => {
-  //   import ('components/UI/Modal/Modal',);
-  // }
   render() {
     console.log('[Modal_Containder] : render()')
     const {  getCloseModal , finalConfirm} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
-    console.log('req : ' + req)
     return (
       <>
         <Backdrop 
