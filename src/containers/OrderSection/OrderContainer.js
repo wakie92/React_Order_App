@@ -31,9 +31,7 @@ class OrderContainer extends Component {
     checkedBtn[e.target.value] = e.target.checked;
     MenuDataUIActions.checkedTF(checkedBtn)
   }
-  // handleRequirementChange = (e) => {
-  //   this.setState({input : e.target.value})
-  // }
+ 
   handleAmountToPay = (e) => {
     const {MenuDataUIActions} = this.props;
     MenuDataUIActions.amountToPay(e.target.value);
@@ -92,9 +90,8 @@ class OrderContainer extends Component {
   render() {
     console.log('--------------------------')
     console.log('[ORDER_CONTAINER] : render')
-    const { totalPrice , selectedMenu  , checkedTF, req, amountToPay} = this.props;
+    const { totalPrice , selectedMenu  , checkedTF, amountToPay} = this.props;
     const { confirmOrderHandler, handleSelect, handleCount, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
-    console.log('totalPrice : ' , totalPrice);
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}
