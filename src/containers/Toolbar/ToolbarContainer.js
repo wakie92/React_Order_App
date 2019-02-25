@@ -4,15 +4,22 @@ import {bindActionCreators}  from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
 import Toolbar from 'components/Toolbar/Toolbar'
 import Backdrop from 'components/UI/Modal/Backdrop/Backdrop';
+import withClass from 'hoc/withClass';
 
 class ToolbarContainer extends Component {
 
   
-  handleModal = () =>{
-    const {MenuDataUIActions} = this.props;
-    MenuDataUIActions.toolbar(true);
+  openCategory = () =>{
+    const {MenuDataUIActions, toolbar} = this.props;
+    if(toolbar === false){ MenuDataUIActions.toolbar(true) }
+    else if( toolbar === true ) { MenuDataUIActions.toolbar(false) }
+
   }
 
+  closeCategory = () => {
+    const {MenuDataUIActions} = this.props;
+    MenuDataUIActions.toolbar(false);
+  }
   render() {
     return (
       <>
@@ -20,7 +27,7 @@ class ToolbarContainer extends Component {
           show = {this.props.toolbar}
         />
         <Toolbar
-          clicked = {this.handleModal}
+          clicked = {this.openCategory}
         />
       </>
     );
@@ -33,4 +40,4 @@ export default connect((state) => ({
   (dispatch) => ({
     MenuDataUIActions : bindActionCreators(menuDataUIActions, dispatch)
 })
-)(ToolbarContainer);
+)(withClass(ToolbarContainer));

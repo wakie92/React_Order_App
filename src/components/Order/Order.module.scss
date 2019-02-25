@@ -16,16 +16,18 @@
       grid-auto-columns: minmax(0,1fr);
       grid-auto-rows: minmax(auto,4vh);
       grid-template-areas: 
-        'oct 0 0 oam'
+        'oct oct oam oam'
         'lin lip lic litp';
       .OrderAddMinus{
         grid-area: oam;
         justify-self: right;
         padding-right: 2vh;
+        align-self: center;
       }
       .OrderColumnTop{
         grid-area : oct;
         justify-self: left;
+        align-self: center;
         color : #B9B2A7;
         font-weight: 600;
       }
@@ -51,7 +53,7 @@
       // justify-content: space-around;
       // align-items: flex-start;
       text-align: center;
-      font-size : 2.5vh;
+      font-size : 2vh;
     }
     
   }
@@ -63,10 +65,12 @@
     display: flex;
     flex-flow: column;
     .PaymentTitle{
-      font-size : 2.5vh;
+      font-size : 2.3vh;
+      padding : 1vh 0;
       color : #DCAB8B;
       display : block;
       flex : 1;
+      word-break: keep-all;
     }
     .RadioBtn {
       padding : 10px 0;
@@ -114,5 +118,18 @@
       width :95%;
       background-color: #F39278;
     }
-  } 
+  }
+  
+}
+footer {
+  display : none;
+}
+@media (max-width : 900px) {
+  .Order{
+    display: none;
+  }
+  footer {
+    display: block;
+    grid-area : f;
+  }
 }

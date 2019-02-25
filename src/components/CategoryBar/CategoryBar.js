@@ -1,10 +1,15 @@
 import React from 'react';
 import classes from './CategoryBar.module.scss'
 const categoryBar = (props) => {
-  // console.log(props.show);
+  let attachedClasses = [classes.CategoryBar]
+  if(props.toolbar === true) {
+    attachedClasses = [classes.CategoryBar, classes.Open]
+  } else if (props.toolbar === false) {
+    attachedClasses = [classes.CategoryBar, classes.Close]
+  }
   return (
-    <div className = {classes.CategoryBar}>
-      <div className = {classes.All} onClick = {props.showAll}> 모든 음식 </div>
+    <div className = {attachedClasses.join(' ')}>
+      <div className = {classes.All}> 모든 음식 </div>
     </div>
   )
 }
