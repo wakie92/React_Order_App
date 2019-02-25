@@ -11,23 +11,38 @@ class ToolbarContainer extends Component {
   
   openCategory = () =>{
     const {MenuDataUIActions, toolbar} = this.props;
-    if(toolbar === false){ MenuDataUIActions.toolbar(true) }
-    else if( toolbar === true ) { MenuDataUIActions.toolbar(false) }
-
+    if(toolbar === false) { 
+      MenuDataUIActions.backDraw(true) 
+      MenuDataUIActions.toolbar(true)
+    }
+    else if( toolbar === true ) { 
+      MenuDataUIActions.backDraw(false) 
+      MenuDataUIActions.toolbar(false)
+    }
   }
 
-  closeCategory = () => {
-    const {MenuDataUIActions} = this.props;
-    MenuDataUIActions.toolbar(false);
+  openOrderListMobile = () => {
+    const {MenuDataUIActions, ol_mobile, } = this.props;
+    if(ol_mobile === false) { 
+      MenuDataUIActions.backDraw(true) 
+      MenuDataUIActions.ol_mobile(true)
+    }
+    else if( ol_mobile === true ) { 
+      MenuDataUIActions.backDraw(false) 
+      MenuDataUIActions.ol_mobile(false)
+    }
   }
   render() {
+    const { openOrderListMobile, openCategory} = this;
+    const { backDraw } = this.props
     return (
       <>
         <Backdrop 
-          show = {this.props.toolbar}
+          show = {backDraw}
         />
         <Toolbar
-          clicked = {this.openCategory}
+          openCategory = {openCategory}
+          openOrderListMobile = {openOrderListMobile}
         />
       </>
     );
@@ -35,9 +50,11 @@ class ToolbarContainer extends Component {
 }
 
 export default connect((state) => ({
-  toolbar :  state.menuDataUI.get('toolbar')
+  toolbar :  state.menuDataUI.get('toolbar'),
+  ol_mobile : state.menuDataUI.get('ol_mobile'),
+  backDraw : state.menuDataUI.get('backDraw')
 }),
   (dispatch) => ({
     MenuDataUIActions : bindActionCreators(menuDataUIActions, dispatch)
 })
-)(withClass(ToolbarContainer));
+)(ToolbarContainer);

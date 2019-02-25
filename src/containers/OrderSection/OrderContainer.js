@@ -78,12 +78,14 @@ class OrderContainer extends Component {
     //성공
     return nextProps.confirm !== this.props.confirm 
         || nextProps.totalPrice !== this.props.totalPrice
-        || nextProps.checkedTF !== this.props.checkedTF;
+        || nextProps.checkedTF !== this.props.checkedTF
+        || nextProps.ol_mobile !== this.props.ol_mobile;
   }
   render() {
     console.log('[ORDER_CONTAINER] : render')
-    const { totalPrice , selectedMenu  , checkedTF, amountToPay} = this.props;
+    const { totalPrice , selectedMenu ,ol_mobile , checkedTF, amountToPay} = this.props;
     const { confirmOrderHandler, handleSelect, handleCount, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
+    console.log(ol_mobile)
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}
@@ -97,6 +99,7 @@ class OrderContainer extends Component {
         amountToPay = {amountToPay}
         toggleSelect = {handleSelect}
         countControl = {handleCount}
+        orderMobileV = {ol_mobile}
       >
         <OrderRequirement/>
         <OrderListContainer/>
@@ -113,7 +116,8 @@ export default connect((state) => ({
   modalShow : state.menuDataUI.get('modalShow'),
   amountToPay : state.menuDataUI.get('amountToPay'),
   selectedItem : state.menuDataUI.get('selectedItem'),
-  confirm : state.menuDataUI.get('confirm')
+  confirm : state.menuDataUI.get('confirm'),
+  ol_mobile : state.menuDataUI.get('ol_mobile')
 }),
 (dispatch) =>({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

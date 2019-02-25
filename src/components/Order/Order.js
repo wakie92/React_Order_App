@@ -7,10 +7,14 @@ import OrderListContainer from 'containers/OrderSection/OrderList/OrderListConta
 import OrderRequirement from 'components/Order/OrderRequirement';
 import Footer from 'components/UI/Footer/Footer'
 const order = (props) => {
-  
+  let attachedClasses = [classes.Order]
+  console.log(props.orderMobileV)
+  if(props.orderMobileV) {
+    attachedClasses = [classes.Order, classes.Mobile]
+  }
   return (
     <>
-      <div className = {classes.Order}>
+      <div className = {attachedClasses.join(' ')}>
         <div className = {classes.OrderList}>
           <div className = {classes.OrderColumn}>
             <div className = {classes.OrderColumnTop}>
