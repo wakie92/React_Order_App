@@ -3,7 +3,7 @@ import classes from './Toolbar.module.scss'
 const toolbar = (props) => {
   return(
     <header className = {classes.Toolbar}>
-      <nav className  = {classes.Hamburger}>
+      <nav className  = {classes.Hamburger} onClick = {props.clicked}>
         <div></div>
         <div></div>
         <div></div>
@@ -12,7 +12,7 @@ const toolbar = (props) => {
         Order machine
       </div>
       <div>
-        
+
       </div>
     </header>
   )
