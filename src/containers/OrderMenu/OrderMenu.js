@@ -26,7 +26,7 @@ class OrderMenu extends Component {
   }
   render() {
     const { categoryBarHandler, } = this;
-    const { menuData, show, toolbar} = this.props;
+    const { menuData, show, toolbar, } = this.props;
     let menuList = [...menuData ]
     console.log('[ORDER_MENU] : render')
     return(
@@ -40,7 +40,8 @@ class OrderMenu extends Component {
           show = {show} 
           controledMENU = {menuList} 
         />
-        <OrderContainer/>
+        <OrderContainer
+        />
       </>
     );
   }
@@ -50,7 +51,7 @@ export default connect((state) => ({
   menuData : state.menuDataUI.get('menu'),
   show : state.menuDataUI.get('show'),
   modalShow : state.menuDataUI.get('modalShow'),
-  toolbar : state.menuDataUI.get('toolbar')
+  toolbar : state.menuDataUI.get('toolbar'),
 }),
 (dispatch) => ({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch),

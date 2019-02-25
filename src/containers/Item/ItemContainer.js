@@ -15,7 +15,6 @@ class ItemContainer extends Component {
   render() {
     const {menu, orderedItemHandler, itemCountHandler ,counter} = this.props;
     const { name, price, img , id }  = menu;
-    console.log('[ITEMCONTAINER]',id)
     return (
         <Item 
           name = {name} 

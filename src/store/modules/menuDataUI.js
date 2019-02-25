@@ -19,8 +19,9 @@ const GET_INITIALSTATE = 'menuDataUI/GET_INITIALSTATE';
 const POST_MENU = 'menuDataUI/POST_MENU';
 const SELECTED_ITEM = 'menuDataUI/SELECTED_ITEM';
 const CONFIRM = 'menuDataUI/CONFIRM';
-const TOOLBAR = 'menduDataUI/TOOLBAR';
-
+const TOOLBAR = 'menuDataUI/TOOLBAR';
+const OL_MOBILE = 'menuDataUI/OL_MOBILE';
+const BACKDRAW = 'menuDataUI/BACKDRAW'
 export const controledCount = createAction(CONTROLED_COUNT);
 export const addItem = createAction(ADD_ITEM);
 export const selectedMenu = createAction(SELECTED_MENU);
@@ -38,6 +39,8 @@ export const postMenu = createAction(POST_MENU, api.postOrderedMenu);
 export const selectedItem = createAction(SELECTED_ITEM);
 export const confirm = createAction(CONFIRM);
 export const toolbar = createAction(TOOLBAR);
+export const ol_mobile = createAction(OL_MOBILE);
+export const backDraw = createAction(BACKDRAW);
 export const postMenuAsync = (order) => dispatch => {
   dispatch(orderSummary(order));
   return dispatch(postMenu(order))
@@ -63,7 +66,9 @@ const initialState = fromJS({
   modalShow : false,
   selectedItem : null,
   confirm : false,
-  toolbar : false
+  toolbar : false,
+  ol_mobile : false,
+  backDraw : false
 })
 
 export default handleActions({
@@ -128,5 +133,13 @@ export default handleActions({
   [CONFIRM] : (state, action) => {
     const confirm = action.payload;
     return state.set('confirm',confirm)
+  },
+  [OL_MOBILE] : (state, action) => {
+    const ol_mobile = action.payload;
+    return state.set('ol_mobile',ol_mobile)
+  },
+  [BACKDRAW] : (state, action) => {
+    const backDraw = action.payload;
+    return state.set('backDraw',backDraw)
   }
 },initialState)

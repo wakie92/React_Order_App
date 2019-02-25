@@ -4,7 +4,7 @@ import Payment from 'react-icons/lib/md/payment'
 const toolbar = (props) => {
   return(
     <header className = {classes.Toolbar}>
-      <nav className  = {classes.Hamburger} onClick = {props.clicked}>
+      <nav className  = {classes.Hamburger} onClick = {(e) => {e.stopPropagation(); props.openCategory()}}>
         <div></div>
         <div></div>
         <div></div>
@@ -12,7 +12,7 @@ const toolbar = (props) => {
       <div className = {classes.Logo}>
         Order machine
       </div>
-      <Payment className = {classes.Payment}/>
+      <Payment className = {classes.Payment} onClick = {(e) => {e.stopPropagation(); props.openOrderListMobile()}}/>
     </header>
   )
 }
