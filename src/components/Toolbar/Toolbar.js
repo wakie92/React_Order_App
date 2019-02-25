@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Toolbar.module.scss'
+import Payment from 'react-icons/lib/md/payment'
 const toolbar = (props) => {
   return(
     <header className = {classes.Toolbar}>
@@ -11,9 +12,7 @@ const toolbar = (props) => {
       <div className = {classes.Logo}>
         Order machine
       </div>
-      <div>
-
-      </div>
+      <Payment className = {classes.Payment}/>
     </header>
   )
 }

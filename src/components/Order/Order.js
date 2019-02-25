@@ -5,6 +5,7 @@ import Plus from 'react-icons/lib/ti/plus';
 import Minus from 'react-icons/lib/ti/minus';
 import OrderListContainer from 'containers/OrderSection/OrderList/OrderListContainer'
 import OrderRequirement from 'components/Order/OrderRequirement';
+import Footer from 'components/UI/Footer/Footer'
 const order = (props) => {
   
   return (
@@ -76,6 +77,7 @@ const order = (props) => {
           <Button btnType = "ConfirmOrder" clicked = {props.ConfirmOrder}>결제</Button>
         </div>
       </div>
+      <Footer className = {classes.Footer}/>
     </>
   )
 }

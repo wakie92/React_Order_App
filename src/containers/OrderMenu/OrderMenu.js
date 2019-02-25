@@ -26,13 +26,16 @@ class OrderMenu extends Component {
   }
   render() {
     const { categoryBarHandler, } = this;
-    const { menuData, show, } = this.props;
+    const { menuData, show, toolbar} = this.props;
     let menuList = [...menuData ]
     console.log('[ORDER_MENU] : render')
     return(
       <>
         <ModalContainer/>
-        <CategoryBar  showAll = {categoryBarHandler}/>
+        <CategoryBar  
+          showAll = {categoryBarHandler}
+          toolbar = {toolbar}  
+        />
         <ItemsContainer 
           show = {show} 
           controledMENU = {menuList} 
@@ -46,7 +49,8 @@ class OrderMenu extends Component {
 export default connect((state) => ({
   menuData : state.menuDataUI.get('menu'),
   show : state.menuDataUI.get('show'),
-  modalShow : state.menuDataUI.get('modalShow')
+  modalShow : state.menuDataUI.get('modalShow'),
+  toolbar : state.menuDataUI.get('toolbar')
 }),
 (dispatch) => ({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch),

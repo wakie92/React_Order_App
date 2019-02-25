@@ -1,11 +1,10 @@
-.CategoryBar{
+.CategoryBar {
   width : 100%;
   background-color: #283947;
   display : flex;
   justify-content: center;
   align-items: flex-start;
   grid-area : c;
-
   .All {
     width: 100%;
     background-color: #DCAB8B;
@@ -15,8 +14,21 @@
     padding : 10px 0 ;
   }
 }
+
 @media (max-width : 900px) {
   .CategoryBar {
     display : none;
+    width : 80%;
+    z-index: 15;
+    transition : transform 0.3s ease-in-out;
+  }
+  .Open{
+    transform: translateX(0);
+    display : block;
+    position : fixed;
+    height: 100%;
+  }
+  .Close {
+    transform: translateX(-80%);
   }
 }
