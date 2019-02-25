@@ -6,6 +6,22 @@
   display : flex;
   align-items: center;
   justify-content: center;
+  .Hamburger {
+    width: 12vw;
+    height: 7vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    div {
+      width: 90%;
+      height: 3px;
+      background-color: white;
+    }
+  }
   .Logo {
     cursor: pointer;
     font-size: 3vh;
@@ -13,5 +29,16 @@
     font-weight: 700;
     // border: 2px solid green;
     padding : 20px;
+  }
+}
+
+@media (max-width : 900px) {
+  .Toolbar {
+    height: 8vh;
+  justify-content: space-around;
+
+    .Logo {
+      font-size : 2.5vh
+    }
   }
 }

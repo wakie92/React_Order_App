@@ -17,8 +17,9 @@
     "o o o o o o"
     "o o o o o o"
   }
-  @media (max-width : 750px) {
+  @media (max-width : 900px) {
     .Content{
+      padding-top : 8vh;
       grid-template-areas: 
       "i i i i"
       "i i i i"
