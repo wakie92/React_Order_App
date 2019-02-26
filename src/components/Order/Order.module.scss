@@ -119,12 +119,10 @@
       background-color: #F39278;
     }
   }
-  
 }
 footer {
   display : none;
 }
-
 
 @media (max-width : 900px) {
   .Order{
@@ -157,6 +155,9 @@ footer {
     .OrderList {
       width : 100%;
       height : 50%;
+      .OrderColumn , .OrderedItems {
+        font-size : 3.5vw;
+      }
     }
     .PayMethod {
         width: 100%;
