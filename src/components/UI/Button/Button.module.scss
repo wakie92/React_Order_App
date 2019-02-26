@@ -37,9 +37,14 @@
   .ShoppingCart {
     font-size : 4vw;
   }
+  .ConfirmOrder {
+    font-size : 6vh;
+    margin : 0 5px;
+    padding : 0 10px;
+  }
 }
 @media (max-width : 550px) {
   .ShoppingCart {
-    font-size : 6vw;
+    font-size : 5vw;
   }
 }
