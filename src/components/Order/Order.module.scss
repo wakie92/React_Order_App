@@ -18,6 +18,7 @@
       grid-template-areas: 
         'oct oct oam oam'
         'lin lip lic litp';
+      align-items: center;
       .OrderAddMinus{
         grid-area: oam;
         justify-self: right;
@@ -65,7 +66,6 @@
     display: flex;
     flex-flow: column;
     .PaymentTitle{
-      font-size : 2.3vh;
       padding : 1vh 0;
       color : #DCAB8B;
       display : block;
@@ -86,12 +86,11 @@
         font-size : 2vh;
         height: 3vh;
       }
-      .ReValue{
-        flex : 3;
-        width : 99.7%;
-        font-size : 2vh;
-        padding : 5px 0;
-      }
+      // .ReValue{
+      //   flex : 3;
+      //   width : 99.7%;
+      //   padding : 5px 0;
+      // }
     }
   }
   .Payment {
@@ -124,7 +123,32 @@ footer {
   display : none;
 }
 
-@media (max-width : 700px) {
+@media (max-width : 1024px ) {
+  .Order {
+    .OrderList  {
+      font-size :2.5vw;
+    }
+    .PayMethod {
+      font-size :2vh;
+      .PaymentTitle{
+        padding : 0.5vh 0;
+        flex : 1;
+      }
+      .RadioBtn {
+        padding : 0.5vh 0;
+        flex : 1;
+        font-size: 1.5vh;
+      }
+      .Required {
+        flex : 10;
+        select {
+          font-size: 1vh;
+        }
+      }
+    }
+  }
+}
+@media (max-width : 768px) {
   .Order{
     display: none;
   }
@@ -132,13 +156,28 @@ footer {
     display: flex;
     position: fixed;
     z-index: 15;
-    height: 35%;
+    height: 25%;
     width: 100%;
     .OrderList {
-      
       .OrderColumn , .OrderedItems {
         text-align: center;
         font-size : 2.5vw;
+      }
+    }
+    .PayMethod {
+      .PaymentTitle {
+        font-size: 2.5vw;
+      }
+      .RadioBtn{
+        font-size: 2.5vw;
+      }
+      .Required{
+        flex :7;
+      }
+    }
+    .Payment {
+      .TotalPrice {
+        font-size : 3vh;
       }
     }
   }
@@ -148,13 +187,15 @@ footer {
   }
 }
 
-@media (max-width : 350px) {
+@media (max-width : 480px) {
   .Mobile {
-    height: 60%;
+    height: 50%;
+    flex : 3;
     flex-direction: column;
     .OrderList {
       width : 100%;
       height : 50%;
+      flex :5;
       .OrderColumn , .OrderedItems {
         font-size : 3.5vw;
       }
@@ -162,11 +203,15 @@ footer {
     .PayMethod {
         width: 100%;
         flex-direction: row;
+        flex:2;
         .PaymentTitle{
           flex : 2;
+          font-size : 3.5vw;
         }
         .RadioBtn{
           flex : 2;
+          font-size : 3vw;
+
         }
         .Required {
           flex : 5;
@@ -174,11 +219,13 @@ footer {
       }
       .Payment {
         width : 100%;
+        flex :1;
+        padding : 10px 0;
         flex-direction: row;
         .TotalPrice {
           flex: 2;
           height: 90%;
-          font-size : 5vh;
+          font-size : 3vh;
         }
         Button{
           flex : 2;
@@ -187,7 +234,7 @@ footer {
       }
   }
 }
-@media (max-width : 415px) {
+@media (max-width : 450px) {
 
   .Order > .PayMethod {
     font-size : 1.5vh;
