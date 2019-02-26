@@ -1,7 +1,6 @@
 .OrederdItemList{
   height: calc(100% - 8vh);
   overflow:  hidden scroll;
-  padding-bottom : 2px;
   text-align: center;
   font-size : 2.5vh;
   .SelectedOrderedItems {
@@ -16,7 +15,7 @@
     border-bottom : none;
     margin : 5px 0;
     text-align: center;
-    
+    align-items: center;
     .OrderedItemName {
       grid-area : on;
     }
@@ -31,8 +30,9 @@
     }
   }
 }
-@media (max-width : 800px) {
+
+@media (max-width : 1024px) {
   .OrederdItemList{
-    font-size : 2vh;
+    font-size : 2.5vw;
   }
 }

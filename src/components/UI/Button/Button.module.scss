@@ -5,18 +5,12 @@
   outline: none;
   cursor: pointer;
   font: inherit;
-  margin: 10px;
   font-weight: bold;
-  font-size : 3vh;
-}
-@media (max-width : 1250px) {
-  .Button {
-    margin: 10px 5px;
-  }
+  font-size : 2.5vh;
 }
 .ConfirmOrder {
   color: rgb(223, 73, 98);
-  font-size : 10vh;
+  font-size : 9vw;
   padding : 0 20px;
 }
 .CountBtn {
@@ -24,7 +18,7 @@
 }
 
 .ShoppingCart {
-  font-size : 4vh;
+  font-size : 3vh;
   line-height: -0vh;
 }
 .Confirm {
@@ -33,17 +27,22 @@
   background-color: #F39278;
   color : white;
 }
-@media (max-width : 700px) {
+@media (max-width : 1024px) {
+  .ConfirmOrder {
+    font-size : 8vw;
+  }
+}
+@media (max-width : 768px) {
   .ShoppingCart {
     font-size : 4vw;
   }
   .ConfirmOrder {
-    font-size : 6vh;
+    font-size : 4vh;
     margin : 0 5px;
     padding : 0 10px;
   }
 }
-@media (max-width : 350px) {
+@media (max-width : 450px) {
   .ShoppingCart {
     font-size : 5vw;
   }
