@@ -10,7 +10,9 @@ class ModalContainer extends Component {
   getCloseModal = () => {
     const {MenuDataUIActions} = this.props;
     MenuDataUIActions.modalShow(false);
-    MenuDataUIActions.confirm(false)
+    MenuDataUIActions.confirm(false);
+    MenuDataUIActions.ol_mobile(false);
+    MenuDataUIActions.backDraw(false);
   }
 
   finalConfirm = () => {
