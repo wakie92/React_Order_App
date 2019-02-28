@@ -20,7 +20,11 @@ class ToolbarContainer extends Component {
       MenuDataUIActions.toolbar(false)
     }
   }
-
+  closeOrderListMobile = () => {
+    const {MenuDataUIActions, } = this.props;
+    MenuDataUIActions.backDraw(false) 
+    MenuDataUIActions.ol_mobile(false)
+  }
   openOrderListMobile = () => {
     const {MenuDataUIActions, ol_mobile, } = this.props;
     if(ol_mobile === false) { 
@@ -28,17 +32,17 @@ class ToolbarContainer extends Component {
       MenuDataUIActions.ol_mobile(true)
     }
     else if( ol_mobile === true ) { 
-      MenuDataUIActions.backDraw(false) 
-      MenuDataUIActions.ol_mobile(false)
+      this.closeOrderListMobile();
     }
   }
   render() {
-    const { openOrderListMobile, openCategory} = this;
+    const { openOrderListMobile, openCategory, closeOrderListMobile} = this;
     const { backDraw } = this.props
     return (
       <>
         <Backdrop 
           show = {backDraw}
+          close = {closeOrderListMobile}
         />
         <Toolbar
           openCategory = {openCategory}

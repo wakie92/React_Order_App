@@ -14,8 +14,8 @@ const order = (props) => {
   }
   return (
     <>
-      <div className = {attachedClasses.join(' ')}>
-        <div className = {classes.OrderList}>
+      <div className = {attachedClasses.join(' ')} onClick = {() =>props.closeOrderMobile()}>
+        <div className = {classes.OrderList} onClick = {(e) =>  e.stopPropagation()}>
           <div className = {classes.OrderColumn}>
             <div className = {classes.OrderColumnTop}>
               <span>상품 주문 목록</span>
@@ -76,12 +76,12 @@ const order = (props) => {
           <OrderRequirement/>
           </div>
         </div>
-        <div className = {classes.Payment}>
+        <div className = {classes.Payment} onClick = {(e) =>  e.stopPropagation()}>
           <div className = {classes.TotalPrice}><span>{props.totalPrice}원</span></div>
           <Button btnType = "ConfirmOrder" clicked = {props.ConfirmOrder}>결제</Button>
         </div>
       </div>
-      <Footer className = {classes.Footer}/>
+      <Footer className = {classes.Footer} onClick = {(e) =>  e.stopPropagation()}/>
     </>
   )
 }

@@ -1,6 +1,5 @@
 .Order {
   grid-area: o;
-  background-color: #0C202D;
   display : flex;
   align-items: center;
   justify-content: space-around;
@@ -59,6 +58,7 @@
     
   }
   .PayMethod {
+    background-color: #0C202D;
     align-self: flex-start;
     font-size : 2vh;
     height : 100%;
@@ -94,6 +94,7 @@
     }
   }
   .Payment {
+    background-color: #0C202D;
     flex : 1;
     display : flex;
     height: 100%;
@@ -123,13 +124,14 @@ footer {
   display : none;
 }
 
-@media (max-width : 1024px ) {
+@media screen and (max-width : 1024px ) {
   .Order {
+    padding-bottom: 10px;
     .OrderList  {
       font-size :2.5vw;
     }
     .PayMethod {
-      font-size :2vh;
+      // font-size :2vh;
       .PaymentTitle{
         padding : 0.5vh 0;
         flex : 1;
@@ -137,18 +139,18 @@ footer {
       .RadioBtn {
         padding : 0.5vh 0;
         flex : 1;
-        font-size: 1.5vh;
+        // font-size: 1.5vh;
       }
       .Required {
         flex : 10;
         select {
-          font-size: 1vh;
+          // font-size: 1vh;
         }
       }
     }
   }
 }
-@media (max-width : 768px) {
+@media screen and (max-width : 768px) {
   .Order{
     display: none;
   }
@@ -156,15 +158,18 @@ footer {
     display: flex;
     position: fixed;
     z-index: 15;
-    height: 25%;
+    height: 100%;
     width: 100%;
+    align-items: flex-start;
     .OrderList {
+      height: 40%;
       .OrderColumn , .OrderedItems {
         text-align: center;
         font-size : 2.5vw;
       }
     }
     .PayMethod {
+      height :40%;
       .PaymentTitle {
         font-size: 2.5vw;
       }
@@ -176,6 +181,7 @@ footer {
       }
     }
     .Payment {
+      height :40%;
       .TotalPrice {
         font-size : 3vh;
       }
@@ -187,23 +193,22 @@ footer {
   }
 }
 
-@media (max-width : 480px) {
+@media screen and (max-width : 480px) {
   .Mobile {
-    height: 50%;
+    height: 100%;
     flex : 3;
     flex-direction: column;
     .OrderList {
       width : 100%;
-      height : 50%;
-      flex :5;
+      height : 20%;
       .OrderColumn , .OrderedItems {
         font-size : 3.5vw;
       }
     }
     .PayMethod {
         width: 100%;
+        height : 20%;
         flex-direction: row;
-        flex:2;
         .PaymentTitle{
           flex : 2;
           font-size : 3.5vw;
@@ -219,7 +224,6 @@ footer {
       }
       .Payment {
         width : 100%;
-        flex :1;
         padding : 10px 0;
         flex-direction: row;
         .TotalPrice {
@@ -234,7 +238,7 @@ footer {
       }
   }
 }
-@media (max-width : 450px) {
+@media screen and (max-width : 450px) {
 
   .Order > .PayMethod {
     font-size : 1.5vh;
