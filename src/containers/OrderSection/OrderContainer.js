@@ -74,6 +74,11 @@ class OrderContainer extends Component {
     }
     
   }
+  closeOrderListMobile = () => {
+    const {MenuDataUIActions, } = this.props;
+    MenuDataUIActions.backDraw(false) 
+    MenuDataUIActions.ol_mobile(false)
+  }
   shouldComponentUpdate(nextProps, nextState) {
     //성공
     return nextProps.confirm !== this.props.confirm 
@@ -84,7 +89,7 @@ class OrderContainer extends Component {
   render() {
     console.log('[ORDER_CONTAINER] : render')
     const { totalPrice , selectedMenu ,ol_mobile , checkedTF, amountToPay} = this.props;
-    const { confirmOrderHandler, handleSelect, handleCount, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
+    const { confirmOrderHandler, closeOrderListMobile,handleSelect, handleCount, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
     console.log(ol_mobile)
     return (
       <Order
@@ -100,6 +105,7 @@ class OrderContainer extends Component {
         toggleSelect = {handleSelect}
         countControl = {handleCount}
         orderMobileV = {ol_mobile}
+        closeOrderMobile = {closeOrderListMobile}
       >
         <OrderRequirement/>
         <OrderListContainer/>

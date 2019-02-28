@@ -27,12 +27,12 @@
   background-color: #F39278;
   color : white;
 }
-@media (max-width : 1024px) {
+@media screen and (max-width : 1024px) {
   .ConfirmOrder {
     font-size : 8vw;
   }
 }
-@media (max-width : 768px) {
+@media screen and (max-width : 768px) {
   .ShoppingCart {
     font-size : 4vw;
   }
@@ -42,7 +42,7 @@
     padding : 0 10px;
   }
 }
-@media (max-width : 450px) {
+@media screen and (max-width : 450px) {
   .ShoppingCart {
     font-size : 5vw;
   }

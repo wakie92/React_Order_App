@@ -41,7 +41,7 @@
       .Count {
         margin : 0 10px;
       }
-      @media (max-width : 768px) {
+      @media screen and (max-width : 768px) {
         .Count {
         margin : 0 5px;
         }
