@@ -32,7 +32,7 @@ const order = (props) => {
           <OrderListContainer/>
           {/* <div className = {classes.OrederdItemList}>{orderedItems}</div> */}
         </div>
-        <div className = {classes.PayMethod}>
+        <div className = {classes.PayMethod}  onClick = {(e) =>  e.stopPropagation()}>
           <span className = {classes.PaymentTitle}>상품판매 결제 선택하기</span>
           <div className = {classes.RadioBtn}>
             <input 
