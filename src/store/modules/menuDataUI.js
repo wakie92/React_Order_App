@@ -22,6 +22,8 @@ const CONFIRM = 'menuDataUI/CONFIRM';
 const TOOLBAR = 'menuDataUI/TOOLBAR';
 const OL_MOBILE = 'menuDataUI/OL_MOBILE';
 const BACKDRAW = 'menuDataUI/BACKDRAW'
+const ORDER_HISTORY = 'menuDataUI/ORDERHISTORY';
+const COUNTER_UP = 'menuDataUI/COUNTER_UP'
 export const controledCount = createAction(CONTROLED_COUNT);
 export const addItem = createAction(ADD_ITEM);
 export const selectedMenu = createAction(SELECTED_MENU);
@@ -41,11 +43,14 @@ export const confirm = createAction(CONFIRM);
 export const toolbar = createAction(TOOLBAR);
 export const ol_mobile = createAction(OL_MOBILE);
 export const backDraw = createAction(BACKDRAW);
+export const counterUp = createAction(COUNTER_UP,api.putCounterUp);
+// export const orderHistory = createAction(ORDER_HISTORY,api.getOrderHistory);
 export const postMenuAsync = (order) => dispatch => {
   dispatch(orderSummary(order));
   return dispatch(postMenu(order))
 }
 const initialState = fromJS({
+  orderHistory : null,
   menu : [],
   updatedMenuList : [],
   selectedMenu : [],
@@ -86,9 +91,12 @@ export default handleActions({
     type : POST_MENU,
     onSuccess : (state, action) => {
       const orderSummary = action.payload;
-      orderSummary.data['name'] = 'sdfsdf'
+      console.log(orderSummary);
       return state.set('orderSummary', orderSummary)
     }
+  }),
+  ...pender({
+    tyep : COUNTER_UP,
   }),
   [SELECTED_MENU] : (state, action) => {
     const selectedMenu = action.payload;

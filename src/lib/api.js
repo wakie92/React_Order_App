@@ -1,4 +1,5 @@
 import api from 'axios-order';
 
 export const getMenuList = () => api.get(`menu.json`);
-export const postOrderedMenu = (orderSummary) => api.post(`orderSummary.json`,{orderSummary});
+export const postOrderedMenu = (orderSummary) => api.post(`orderSummary.json`,orderSummary);
+export const putCounterUp = (id,count) => api.post(`menu.json/${id}`,count)

@@ -2,10 +2,10 @@
   width : 100%;
   background-color: #283947;
   display : flex;
-  justify-content: center;
   align-items: flex-start;
   grid-area : c;
-  .All {
+  flex-direction: column;
+  .All, .Login , .CheckOrderHistory{
     width: 100%;
     background-color: #DCAB8B;
     text-align: center;
