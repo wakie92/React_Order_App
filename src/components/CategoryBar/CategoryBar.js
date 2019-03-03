@@ -10,6 +10,8 @@ const categoryBar = (props) => {
   return (
     <div className = {attachedClasses.join(' ')}>
       <div className = {classes.All}> 모든 음식 </div>
+      <div className = {classes.Login}> 로그인 </div>
+      <div className = {classes.CheckOrderHistory}> 주문내역확인 </div>
     </div>
   )
 }

@@ -8,7 +8,6 @@ import OrderRequirement from 'components/Order/OrderRequirement';
 import Footer from 'components/UI/Footer/Footer'
 const order = (props) => {
   let attachedClasses = [classes.Order]
-  console.log(props.orderMobileV)
   if(props.orderMobileV) {
     attachedClasses = [classes.Order, classes.Mobile]
   }
