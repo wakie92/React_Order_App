@@ -1,17 +1,16 @@
 import React from 'react';
-import Layout from 'components/Layout/Layout'
-import OrderMenu from 'containers/OrderMenu/OrderMenu'
+import App from 'components/App'
 import { Provider } from 'react-redux';
 import configure from 'store/configure';
-
+import { BrowserRouter } from 'react-router-dom';
 const store = configure();
 
 const Root = () => {
     return (
       <Provider store = {store}>
-        <Layout>
-          <OrderMenu/>
-        </Layout>
+        <BrowserRouter>
+          <App/>
+        </BrowserRouter>
       </Provider>
     );
   }
