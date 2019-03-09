@@ -1,0 +1,33 @@
+
+
+.LoginWrapper{
+  grid-area : i;
+  display : flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #212529;
+  .LoginBox{
+    background-color: #283947;
+    width: 350px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .LoginAccount {
+      width : 75%;
+      height : 60px;
+      span{
+        color : #F3E3D1;
+        font-weight: 600;
+      }
+      margin-bottom: 5px;
+      .LoginId, .LoginPassword{
+        padding-top : 5px;
+        display : flex;
+        justify-content: space-between;
+      }
+    }
+    
+  }
+}

@@ -6,16 +6,25 @@ import * as menuDataUIActions from 'store/modules/menuDataUI';
 import * as menuDataActions from 'store/modules/menuData';
 
 class ItemsContainer extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    //성공
-    return nextProps.controledMENU !== this.props.controledMENU;
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   //성공
+  //   return nextProps.controledMENU !== this.props.controledMENU;
+  // }
+
+  componentDidMount()  {
+    const { MenuDataUIActions } = this.props;
+    console.log('didmount')
+    MenuDataUIActions.checkedTF({cash : false, card:false});
+    MenuDataUIActions.getMenuList();
   }
   render() {
     console.log('[ITEMS_CONTAINER] : render')
-    const { show ,controledMENU} = this.props;
+    console.log(this.props)
+    // const {controledMENU} = this.props;
+    const { menuData } = this.props;
+    let controledMENU = [...menuData];
   return(
     <Items 
-      show = {show} 
       menuList = {controledMENU} 
     />
   );

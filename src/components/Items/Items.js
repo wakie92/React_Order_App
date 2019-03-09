@@ -1,25 +1,29 @@
 import React from 'react';
 import classes from './Items.module.scss'
 import ItemContainer from 'containers/Item/ItemContainer';
-
-
+import { Route } from 'react-router-dom';
+// import { 
+//   Menu,
+//   Home
+// } from 'pages';
 const items = (props) => {
   const menuList = props.menuList
     .map(menu => {
-      return props.show ?  
-                <ItemContainer 
-                  menu = {menu}  
-                  key = {menu.id}
-                />
-                // <ItemContainer name = {menu.name} price = {menu.price} key = {menu.id}
-                // count = {menu.counter} img = {menu.img} id = {menu.id} orderedItem = {props.orderedItem}
-                // itemCount = {props.itemCount}/>
-                : null
+      return(
+      <ItemContainer 
+        menu = {menu}  
+        key = {menu.id}
+      />
+      )
     })
   return (
-    <div className = {classes.Items}>
-      {menuList}
-    </div>
+    <>
+      {/* <Route exact path = '/' component = {Home}/>
+      <Route exact path = '/menu' component = {Menu}/>  */}
+      <div className = {classes.Items}>
+        {menuList}
+      </div>
+    </>
   )
 }
 
