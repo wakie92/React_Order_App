@@ -1,10 +1,10 @@
 import React from 'react';
 import Layout from 'components/Layout/Layout'
-import Login from 'components/Login/Login'
+import LoginContainer from 'containers/Login/LoginContainer'
 const login = ({location}) => {
   return (
   <Layout>
-    <Login/>
+    <LoginContainer/>
   </Layout>
   )
 }

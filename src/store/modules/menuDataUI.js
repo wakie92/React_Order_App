@@ -91,7 +91,6 @@ export default handleActions({
     type : POST_MENU,
     onSuccess : (state, action) => {
       const orderSummary = action.payload;
-      console.log(orderSummary);
       return state.set('orderSummary', orderSummary)
     }
   }),
