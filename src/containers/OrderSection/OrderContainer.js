@@ -26,7 +26,7 @@ class OrderContainer extends Component {
   }
   handlePayMethodChange = (e) => {
     const { MenuDataUIActions} = this.props;
-    let checkedBtn = {}
+    let checkedBtn = {};
     checkedBtn[e.target.value] = e.target.checked;
     MenuDataUIActions.checkedTF(checkedBtn)
   }
@@ -84,8 +84,9 @@ class OrderContainer extends Component {
     return nextProps.confirm !== this.props.confirm 
         || nextProps.totalPrice !== this.props.totalPrice
         || nextProps.checkedTF !== this.props.checkedTF
-        || nextProps.ol_mobile !== this.props.ol_mobile;
-  }
+        || nextProps.ol_mobile !== this.props.ol_mobile
+        || nextProps.amoutToPay !== this.props.amountToPay;
+  } 
   render() {
     console.log('[ORDER_CONTAINER] : render')
     const { totalPrice , selectedMenu ,ol_mobile , checkedTF, amountToPay} = this.props;

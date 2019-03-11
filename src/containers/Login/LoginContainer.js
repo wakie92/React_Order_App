@@ -47,8 +47,8 @@ class LoginContainer extends Component {
     }
   }
   render() {
-    const { handleLogin , inputData} = this;
-    const { loginID , isLogined, handleLogout }  = this.props;
+    const { handleLogin , inputData,  handleLogout , handleEnterKey} = this;
+    const { loginID , isLogined,}  = this.props;
     return (
       <Login
         onLogin = { handleLogin }
@@ -56,6 +56,7 @@ class LoginContainer extends Component {
         isLogined = { isLogined }
         loginID = {loginID}
         onLogout = {handleLogout}
+        onKeyPress = {handleEnterKey}
       />  
     );
   }

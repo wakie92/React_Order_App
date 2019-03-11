@@ -50,8 +50,9 @@ class ToolbarContainer extends Component {
     } else return;
   }
   render() {
-    const { openOrderListMobile, openCategory, closeOrderListMobile} = this;
-    const { backDraw } = this.props
+    const { openOrderListMobile,openCategory, closeOrderListMobile} = this;
+    const { backDraw, unLoginUser, isLogined ,loginUser  } = this.props
+    console.log(isLogined, loginUser, unLoginUser);
     return (
       <>
         <Backdrop 
@@ -61,6 +62,9 @@ class ToolbarContainer extends Component {
         <Toolbar
           openCategory = {openCategory}
           openOrderListMobile = {openOrderListMobile}
+          unLoginUser = {unLoginUser}
+          loginUser = {loginUser}
+          isLogined = {isLogined}
         />
       </>
     );
@@ -71,7 +75,9 @@ export default connect((state) => ({
   toolbar :  state.menuDataUI.get('toolbar'),
   ol_mobile : state.menuDataUI.get('ol_mobile'),
   backDraw : state.menuDataUI.get('backDraw'),
-  unLoginUser : state.loginData.getIn(['unLoginUser','id'])
+  unLoginUser : state.loginData.getIn(['unLoginUser','id']),
+  loginUser : state.loginData.getIn(['loginUser','id']),
+  isLogined : state.loginData.get('isLogined')
 }),
   (dispatch) => ({
     MenuDataUIActions : bindActionCreators(menuDataUIActions, dispatch),
