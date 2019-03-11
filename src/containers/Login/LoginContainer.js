@@ -4,43 +4,57 @@ import { bindActionCreators } from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI'
 import * as loginDataActions from 'store/modules/loginData'
 import Login from 'components/Login/Login';
-import * as api from 'lib/api';
-import axios from 'axios';
 class LoginContainer extends Component {
-
-
+  state = {
+    id : '',
+    password : ''
+  }
   inputData = (e) => {
-    const { LoginDataActions } = this.props;
     const { name, value} = e.target;
-    LoginDataActions.changeLoginInfo({name,value});
+    console.log(this.state);
+    name === 'id' ? this.setState({id : value}) : this.setState({password : value})
   }
   
   handleEnterKey = (e) => {
-    if(e.key === 'enter') {
+    if(e.key === 'Enter') {
       this.handleLogin();
     }
   }
-
+  handleLogout = () => {
+    const { LoginDataActions }  = this.props;
+    LoginDataActions.initialState();
+  }
   handleLogin = async () => {
-    const { LoginDataActions, loginID, loginPassword } = this.props;
-    // LoginDataActions.getUserId(loginID)
-    const user  = await LoginDataActions.getUserId('admin')
-                  .then((result) =>{
-                    return result.data;
-                  })
-    if(user.id === 'admin' && user.password === 'admin') {
-      console.log('ok')
-      LoginDataActions.isLogined('true');
+    const { LoginDataActions } = this.props;
+    const { id, password }  = this.state
+    if( !id || !password ) {
+      //비밀번호나 아이디가 입력되지 않았을때
+      alert('로그인 정보를 정확히 입력해주세요')
+    } else if( id && password) {
+      //비밀번호와 아이디가 모두 입력이 되었을때
+      const user  = await LoginDataActions.getUserId(id)
+                    .then((result) =>{
+                      return result.data;
+                    })
+      if(user && user.id === id && user.password === password) {
+        LoginDataActions.isLogined(true);
+        LoginDataActions.userId(user.id);
+        localStorage.userId = id;
+      }else {
+        alert('아이디와 비밀번호가 일치하지 않습니다. 다시한번 확인해주세요');
+      }
     }
   }
   render() {
     const { handleLogin , inputData} = this;
-    const { loginID, loginPassword , isLogined }  = this.props;
-    console.log(isLogined);
+    const { loginID , isLogined, handleLogout }  = this.props;
     return (
       <Login
         onLogin = { handleLogin }
         onInput = { inputData }
+        isLogined = { isLogined }
+        loginID = {loginID}
+        onLogout = {handleLogout}
       />  
     );
   }
@@ -48,8 +62,7 @@ class LoginContainer extends Component {
 
 export default connect((state) => ({
   isLogined : state.loginData.get('isLogined'),
-  loginID : state.loginData.getIn(['loginPage','id']),
-  loginPassword : state.loginData.getIn(['loginPage','password'])
+  loginID : state.loginData.getIn(['loginUser','id']),
 }),
   (dispatch) => ({
     LoginDataActions : bindActionCreators(loginDataActions,dispatch),

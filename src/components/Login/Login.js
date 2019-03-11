@@ -2,9 +2,11 @@ import React from 'react';
 import classes from './Login.module.scss'
 import Button from 'components/UI/Button/Button'
 
-const login = ({onLogin , onInput , onKeyPress}) => {
+const login = ({onLogin , onInput , onKeyPress, isLogined, loginID, onLogout }) => {
   return (
     <div className = {classes.LoginWrapper}>
+       {
+         !isLogined ?
       <div className = {classes.LoginBox}>
         <div className = {classes.LoginAccount}>
           <div className  = {classes.LoginId}>
@@ -31,6 +33,14 @@ const login = ({onLogin , onInput , onKeyPress}) => {
         </div>
         <Button className = {classes.LoginAccess} clicked = {onLogin} btnType = 'Login'>로그인</Button>
       </div>
+        :
+        <div  className = {classes.LoginBox}>
+          <span className  = {classes.WelcomeMessage}>
+            [{loginID}]님 로그인 되셨습니다.
+          </span>
+          <Button className = {classes.Logout} clicked = {onLogout} btnType = 'Logout'>로그아웃</Button>
+        </div>
+      }
     </div>
   )
 }
