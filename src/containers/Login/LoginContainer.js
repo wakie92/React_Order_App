@@ -39,6 +39,7 @@ class LoginContainer extends Component {
       if(user && user.id === id && user.password === password) {
         LoginDataActions.isLogined(true);
         LoginDataActions.userId(user.id);
+        LoginDataActions.getUnLoginUser('');
         localStorage.userId = id;
       }else {
         alert('아이디와 비밀번호가 일치하지 않습니다. 다시한번 확인해주세요');
