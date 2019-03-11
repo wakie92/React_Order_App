@@ -16,17 +16,18 @@ class ModalContainer extends Component {
   }
 
   finalConfirm = async () => {
-    const { MenuDataUIActions, req,  checkedTF, selectedMenu, totalPrice } = this.props;
+    const { MenuDataUIActions, req,  loginId,unLoginId ,checkedTF,isLogined, selectedMenu, totalPrice } = this.props;
     await selectedMenu.map((item) =>  {
         item.count++
-        console.log(item.count);
         return MenuDataUIActions.counterUp(item.id, {count :item.count})
       })
+    const userId = isLogined ? loginId : unLoginId;
     await MenuDataUIActions.postMenuAsync({ 
       os_req : req,
       os_paymentMethod : checkedTF,
       os_purchasingMenu : selectedMenu, 
-      os_totalPrice : totalPrice
+      os_totalPrice : totalPrice,
+      os_userId : userId
     });
     this.getCloseModal();
     this.getInitialize();
@@ -77,7 +78,10 @@ export default connect ((state) => ({
   checkedTF : state.menuDataUI.get('checkedTF'),
   amountToPay : state.menuDataUI.get('amountToPay'),
   totalPrice : state.menuDataUI.get('totalPrice'),
-  orderSummary : state.menuDataUI.get('orderSummary')
+  orderSummary : state.menuDataUI.get('orderSummary'),
+  loginId : state.loginData.getIn(['loginUser','id']),
+  unLoginId : state.loginData.getIn(['unLoginUser', 'id']),
+  isLogined : state.loginData.get('isLogined')
 }),
   (dispatch) => ({
     MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

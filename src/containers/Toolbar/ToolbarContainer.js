@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators}  from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
+import * as loginDataActions from 'store/modules/loginData'
 import Toolbar from 'components/Toolbar/Toolbar'
 import Backdrop from 'components/UI/Modal/Backdrop/Backdrop';
-import withClass from 'hoc/withClass';
 
 class ToolbarContainer extends Component {
 
-  
+  randomKey = () => {
+    let key = '';
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < 5; i++ )
+        key += possible.charAt(Math.floor(Math.random() * possible.length));
+    console.log(key);
+    return key;
+  }
   openCategory = () =>{
     const {MenuDataUIActions, toolbar} = this.props;
     if(toolbar === false) { 
@@ -34,6 +41,13 @@ class ToolbarContainer extends Component {
     else if( ol_mobile === true ) { 
       this.closeOrderListMobile();
     }
+  } 
+  componentDidMount() {
+    const { LoginDataActions, unLoginUser }  = this.props
+    if(unLoginUser === '') {
+      const unLoginUserKey = this.randomKey();
+      LoginDataActions.getUnLoginUser(unLoginUserKey)
+    } else return;
   }
   render() {
     const { openOrderListMobile, openCategory, closeOrderListMobile} = this;
@@ -56,9 +70,11 @@ class ToolbarContainer extends Component {
 export default connect((state) => ({
   toolbar :  state.menuDataUI.get('toolbar'),
   ol_mobile : state.menuDataUI.get('ol_mobile'),
-  backDraw : state.menuDataUI.get('backDraw')
+  backDraw : state.menuDataUI.get('backDraw'),
+  unLoginUser : state.loginData.getIn(['unLoginUser','id'])
 }),
   (dispatch) => ({
-    MenuDataUIActions : bindActionCreators(menuDataUIActions, dispatch)
+    MenuDataUIActions : bindActionCreators(menuDataUIActions, dispatch),
+    LoginDataActions : bindActionCreators(loginDataActions, dispatch)
 })
 )(ToolbarContainer);

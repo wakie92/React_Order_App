@@ -7,15 +7,20 @@ const ISLOGINED  = 'loginData/ISLOGINED';
 const CHANGE_LOGIN_INFO = 'loginData/CHANGE_LOGIN_INFO';
 const GET_USER_ID = 'loginData/GET_USER_ID';
 const USER_ID = 'loginData/USER_ID';
+const UNLOGIN_USER = 'loginData/UNLOGIN_USER';
 export const isLogined = createAction(ISLOGINED);
 export const changeLoginInfo = createAction(CHANGE_LOGIN_INFO);
 export const getUserId = createAction(GET_USER_ID, api.getUserId);
 export const userId = createAction(USER_ID);
+export const getUnLoginUser = createAction(UNLOGIN_USER);
 const initialState = fromJS({
   isLogined : false,
   loginUser : {
     id : '',
     password : ''
+  },
+  unLoginUser : {
+    id : ''
   }
 })
 
@@ -34,5 +39,9 @@ export default handleActions({
   [USER_ID] : (state, action) => {
     const id = action.payload;
     return state.setIn(['loginUser', 'id'], id)
+  },
+  [UNLOGIN_USER] : (state, action) => {
+    const id = action.payload;
+    return state.setIn(['unLoginUser', 'id'],id);
   }
 }, initialState)
