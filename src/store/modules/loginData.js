@@ -6,12 +6,14 @@ import * as api from 'lib/api';
 const ISLOGINED  = 'loginData/ISLOGINED';
 const CHANGE_LOGIN_INFO = 'loginData/CHANGE_LOGIN_INFO';
 const GET_USER_ID = 'loginData/GET_USER_ID';
+const USER_ID = 'loginData/USER_ID';
 export const isLogined = createAction(ISLOGINED);
 export const changeLoginInfo = createAction(CHANGE_LOGIN_INFO);
 export const getUserId = createAction(GET_USER_ID, api.getUserId);
+export const userId = createAction(USER_ID);
 const initialState = fromJS({
   isLogined : false,
-  loginPage : {
+  loginUser : {
     id : '',
     password : ''
   }
@@ -23,16 +25,14 @@ export default handleActions({
     onSuccess : (state, action) => {
       const loginId  = action.payload.data;
       const user = {...loginId}
-      console.log(action.payload)
-      console.log(user)
     }
   }),
   [ISLOGINED] : (state, action) => {
     const isLogined = action.payload;
     return state.set('isLogined', isLogined);
   },
-  [CHANGE_LOGIN_INFO] : (state, action) => {
-    const {name, value} = action.payload;
-    return state.setIn(['loginPage', name], value)
+  [USER_ID] : (state, action) => {
+    const id = action.payload;
+    return state.setIn(['loginUser', 'id'], id)
   }
 }, initialState)

@@ -3,7 +3,6 @@ import classes from './CategoryBar.module.scss'
 import { NavLink } from 'react-router-dom';
 const categoryBar = (props) => {
   let attachedClasses = [classes.CategoryBar]
-  console.log(props);
   if(props.toolbar === true) {
     attachedClasses = [classes.CategoryBar, classes.Open]
   } else if (props.toolbar === false) {
