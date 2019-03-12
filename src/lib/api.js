@@ -5,3 +5,4 @@ export const postOrderedMenu = (orderSummary) => api.post(`orderSummary.json`,or
 export const putCounterUp = (id,count) => api.post(`menu/${id}.json`,count)
 // export const getUserId = (loginId) =>  api.get(`users/${loginId}`)
 export const getUserId = (user) =>  api.get(`users/${user}.json`)
+export const getOrderHistory = (user) => api.get(`orderSummary/`)
