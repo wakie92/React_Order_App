@@ -29,17 +29,18 @@ const withClass =(WrappedComponent) => {
           break;
       }
     }
-    orderedItemHandler = (id) => {
+    orderedItemHandler = (id, userId) => {
       let {  MenuDataUIActions,selectedMenu,totalPrice } = this.props;
       let controledItem = {...this.props.menu};
       let controledCount = this.state.counter;
       const {price} = controledItem;
       let arr = [...selectedMenu];
+      console.log(userId)
       this.itemCountHandler(id);
       if(controledCount !== 0) {
         controledItem.counter = controledCount;
         //차후에 concat으로 변경 시도해보기
-        arr.push({...controledItem, key : id});
+        arr.push({...controledItem, key : id, userId});
         totalPrice += controledCount*price;
         MenuDataUIActions.totalPrice(totalPrice);
         MenuDataUIActions.selectedMenu(arr);  

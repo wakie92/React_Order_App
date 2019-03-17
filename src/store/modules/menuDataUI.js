@@ -95,7 +95,7 @@ export default handleActions({
     }
   }),
   ...pender({
-    tyep : COUNTER_UP,
+    type: COUNTER_UP,
   }),
   [SELECTED_MENU] : (state, action) => {
     const selectedMenu = action.payload;

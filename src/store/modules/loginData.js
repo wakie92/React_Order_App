@@ -16,7 +16,7 @@ export const getUnLoginUser = createAction(UNLOGIN_USER);
 const initialState = fromJS({
   isLogined : false,
   loginUser : {
-    id : '',
+    id : null,
     password : ''
   },
   unLoginUser : {
@@ -42,6 +42,6 @@ export default handleActions({
   },
   [UNLOGIN_USER] : (state, action) => {
     const id = action.payload;
-    return state.setIn(['unLoginUser', 'id'],id);
+    return state.setIn(['loginUser', 'id'],id);
   }
 }, initialState)

@@ -13,7 +13,7 @@ class ItemContainer extends Component {
     return this.props.counter !== nextProps.counter;
   }
   render() {
-    const {menu, orderedItemHandler, itemCountHandler ,counter} = this.props;
+    const {menu, orderedItemHandler, itemCountHandler , userId,counter} = this.props;
     const { name, price, img , id }  = menu;
     return (
         <Item 
@@ -23,6 +23,7 @@ class ItemContainer extends Component {
           count = {counter} 
           img = {img} 
           id = {id} 
+          userId = {userId}
           itemCount = {itemCountHandler} 
           orderedItem = {orderedItemHandler}
         />
@@ -32,7 +33,8 @@ class ItemContainer extends Component {
 
 export default connect((state) => ({
   selectedMenu : state.menuDataUI.get('selectedMenu'),
-  totalPrice : state.menuDataUI.get('totalPrice')
+  totalPrice : state.menuDataUI.get('totalPrice'),
+  userId : state.loginData.getIn(['loginUser','id'])
 }),
 (dispatch) => ({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

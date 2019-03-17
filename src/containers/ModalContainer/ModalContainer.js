@@ -16,16 +16,16 @@ class ModalContainer extends Component {
   }
 
   finalConfirm = async () => {
-    const { MenuDataUIActions, req,  loginId,unLoginId ,checkedTF,isLogined, selectedMenu, totalPrice } = this.props;
+    const { MenuDataUIActions, req,  loginId ,checkedTF, selectedMenu, totalPrice } = this.props;
     await selectedMenu.map((item) =>  {
         item.count++
-        return MenuDataUIActions.counterUp(item.id, {count :item.count})
+        return MenuDataUIActions.counterUp(item.id, item.count)
       })
-    const userId = isLogined ? loginId : unLoginId;
+    const userId =  loginId ;
     await MenuDataUIActions.postMenuAsync({ 
       os_req : req,
       os_paymentMethod : checkedTF,
-      os_purchasingMenu : selectedMenu, 
+      selectedMenu,
       os_totalPrice : totalPrice,
       os_userId : userId
     });
