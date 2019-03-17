@@ -16,7 +16,7 @@ const item = (props) => {
           <Button btnType = "CountBtn" clicked = {() => props.itemCount('-')}> - </Button>
         </div>
         <span className = {classes.DetailInfo}> 
-          <Button btnType = "ShoppingCart" clicked = {() => props.orderedItem(props.id)} ><ShoppingCart/></Button>
+          <Button btnType = "ShoppingCart" clicked = {() => props.orderedItem(props.id,props.userId)} ><ShoppingCart/></Button>
           {props.price}원
         </span>
       </div>

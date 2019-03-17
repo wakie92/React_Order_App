@@ -13,7 +13,6 @@ class ToolbarContainer extends Component {
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for( var i=0; i < 5; i++ )
         key += possible.charAt(Math.floor(Math.random() * possible.length));
-    console.log(key);
     return key;
   }
   openCategory = () =>{
@@ -43,8 +42,8 @@ class ToolbarContainer extends Component {
     }
   } 
   componentDidMount() {
-    const { LoginDataActions, unLoginUser }  = this.props
-    if(unLoginUser === '') {
+    const { LoginDataActions, isLogined }  = this.props
+    if(!isLogined) {
       const unLoginUserKey = this.randomKey();
       LoginDataActions.getUnLoginUser(unLoginUserKey)
     } else return;

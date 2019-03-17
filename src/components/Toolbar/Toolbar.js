@@ -17,10 +17,11 @@ const toolbar = (props) => {
         <NavLink exact to = '/' style = {sty}>Order machine</NavLink>
       </div>
       <div className = { classes.User}>
-        {props.isLogined ?  
+            <span> [{props.loginUser}] </span>
+        {/* {props.isLogined ?  
             <span> [{props.loginUser}] </span>
           : <span> [{props.unLoginUser}]</span>
-        }
+        } */}
         <Payment className = {classes.Payment} onClick = {(e) => {e.stopPropagation(); props.openOrderListMobile()}}/>
       </div>
     </header>
