@@ -8,10 +8,6 @@ import * as orderHistoryDataActions from 'store/modules/orderHistoryData';
 import * as loginDataActions from 'store/modules/loginData'
 import fire from 'firebase';
 class OrderHistoryContainer extends Component {
-  state = {
-    orderLog : null,
-    menuList : null
-  }
 
   componentWillMount() {
     // fire.off()
@@ -32,12 +28,10 @@ class OrderHistoryContainer extends Component {
   }
   render() {
     const { menu }  = this.props;
-    console.log(menu);
    
     return (
       <OrderHistory
         Oh_List = {menu} 
-        listName = {this.state.orderLog}
       />
     );
   }

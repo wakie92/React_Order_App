@@ -15,7 +15,6 @@ export default handleActions({
     type : ORDER_HISTORY,
     onSuccess : (state, action) => {
       const oh_test = action.payload
-      console.log(oh_test);
       return state.set('menu', oh_test)
     }
   })
