@@ -22,12 +22,15 @@ class ModalContainer extends Component {
         return MenuDataUIActions.counterUp(item.id, item.count)
       })
     const userId =  loginId ;
+    const orderTime = new Date();
+    const os_time = [orderTime.getFullYear(), orderTime.getMonth()+1, orderTime.getDate()].join('-')
     await MenuDataUIActions.postMenuAsync({ 
       os_req : req,
       os_paymentMethod : checkedTF,
       selectedMenu,
       os_totalPrice : totalPrice,
-      os_userId : userId
+      os_userId : userId,
+      os_time : os_time
     });
     this.getCloseModal();
     this.getInitialize();

@@ -1,0 +1,61 @@
+.Wrapper {
+  grid-area: i;
+  display : flex;
+  justify-content: center;
+  background-color: #212529;
+
+  .ContentsWrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top : 30px;
+    background-color: white;
+    width : 80%;
+    height: 60%;
+    border: 1px  solid black;
+    border-radius: 20px;
+    .PayBill {
+      margin : 20px;
+      font-size :20px;
+    }
+    .HeaderSec {
+      display : flex;
+      width :85%;
+      text-align: center;
+      .Menu {
+        flex : 3;
+      }
+      .Count, .Price,  {
+        flex: 1;
+      }
+      .OrderTime {
+        flex : 2;
+      }
+    }
+    .DivLine {
+      width : 85%;
+      margin : 10px 0;
+    }
+    .OrderHistoryList {
+      width : 85%;
+      .ItemInfo {
+        display : flex;
+        text-align: center;
+        margin: 5px 0;
+        .OHItem{
+          flex: 3;
+          text-align : left;
+          font-weight: 800;
+        }
+        .Count, .Price,  {
+          flex: 1;
+        }
+        .OrderTime {
+          flex : 2;
+        }
+      }
+    }
+  }
+  
+  
+}
