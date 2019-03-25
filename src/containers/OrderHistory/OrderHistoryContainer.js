@@ -6,12 +6,7 @@ import {withFirebase}  from 'hoc/Firebase';
 import * as menuDataUIActions from 'store/modules/menuDataUI'
 import * as orderHistoryDataActions from 'store/modules/orderHistoryData';
 import * as loginDataActions from 'store/modules/loginData'
-import fire from 'firebase';
 class OrderHistoryContainer extends Component {
-
-  componentWillMount() {
-    // fire.off()
-  }
 
   getDataTest = async () => {
     const { OrderHistoryDataActions , loginUser}  = this.props;
@@ -19,16 +14,12 @@ class OrderHistoryContainer extends Component {
     await OrderHistoryDataActions.getOrderHistory(user);
   }
 
-  // getOhMenuList = () => {
-  //   const { menu }  = this.props;
-  //   menu.
-  // }
   componentDidMount () {
     this.getDataTest();
   }
   render() {
     const { menu }  = this.props;
-   
+    console.log('render [ OrderHistoryContainer ]')
     return (
       <OrderHistory
         Oh_List = {menu} 

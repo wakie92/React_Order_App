@@ -2,13 +2,13 @@ import React from 'react';
 import classes from './Toolbar.module.scss'
 import Payment from 'react-icons/lib/md/payment'
 import { NavLink } from 'react-router-dom';
-const toolbar = (props) => {
+const toolbar = ({loginUser, openCategory, openOrderListMobile}) => {
   const sty = {
     textDecoration : 'none'
   }
   return(
     <header className = {classes.Toolbar}>
-      <nav className  = {classes.Hamburger} onClick = {(e) => {e.stopPropagation(); props.openCategory()}}>
+      <nav className  = {classes.Hamburger} onClick = {(e) => {e.stopPropagation(); openCategory()}}>
         <div></div>
         <div></div>
         <div></div>
@@ -17,12 +17,8 @@ const toolbar = (props) => {
         <NavLink exact to = '/' style = {sty}>Order machine</NavLink>
       </div>
       <div className = { classes.User}>
-            <span> [{props.loginUser}] </span>
-        {/* {props.isLogined ?  
-            <span> [{props.loginUser}] </span>
-          : <span> [{props.unLoginUser}]</span>
-        } */}
-        <Payment className = {classes.Payment} onClick = {(e) => {e.stopPropagation(); props.openOrderListMobile()}}/>
+            <span> [{loginUser}] </span>
+        <Payment className = {classes.Payment} onClick = {(e) => {e.stopPropagation(); openOrderListMobile()}}/>
       </div>
     </header>
   )

@@ -21,9 +21,9 @@ const SELECTED_ITEM = 'menuDataUI/SELECTED_ITEM';
 const CONFIRM = 'menuDataUI/CONFIRM';
 const TOOLBAR = 'menuDataUI/TOOLBAR';
 const OL_MOBILE = 'menuDataUI/OL_MOBILE';
-const BACKDRAW = 'menuDataUI/BACKDRAW'
-const ORDER_HISTORY = 'menuDataUI/ORDERHISTORY';
-const COUNTER_UP = 'menuDataUI/COUNTER_UP'
+const BACKDRAW = 'menuDataUI/BACKDRAW';
+const COUNTER_UP = 'menuDataUI/COUNTER_UP';
+const REQUIREMENT_BEFORE = 'menuDataUI/REQUIREMENT_BEFORE';
 export const controledCount = createAction(CONTROLED_COUNT);
 export const addItem = createAction(ADD_ITEM);
 export const selectedMenu = createAction(SELECTED_MENU);
@@ -43,6 +43,7 @@ export const confirm = createAction(CONFIRM);
 export const toolbar = createAction(TOOLBAR);
 export const ol_mobile = createAction(OL_MOBILE);
 export const backDraw = createAction(BACKDRAW);
+export const requirement_before = createAction(REQUIREMENT_BEFORE);
 export const counterUp = createAction(COUNTER_UP,api.putCounterUp);
 // export const orderHistory = createAction(ORDER_HISTORY,api.getOrderHistory);
 export const postMenuAsync = (order) => dispatch => {
@@ -73,7 +74,7 @@ const initialState = fromJS({
   confirm : false,
   toolbar : false,
   ol_mobile : false,
-  backDraw : false
+  backDraw : false,
 })
 
 export default handleActions({
@@ -148,5 +149,5 @@ export default handleActions({
   [BACKDRAW] : (state, action) => {
     const backDraw = action.payload;
     return state.set('backDraw',backDraw)
-  }
+  },
 },initialState)

@@ -28,8 +28,6 @@ export default handleActions({
   ...pender({
     type : GET_USER_ID,
     onSuccess : (state, action) => {
-      const loginId  = action.payload.data;
-      const user = {...loginId}
     }
   }),
   [ISLOGINED] : (state, action) => {

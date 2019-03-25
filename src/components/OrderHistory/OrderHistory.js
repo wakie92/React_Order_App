@@ -3,7 +3,7 @@ import classes from './OrderHistory.module.scss';
 
 const HistoryLog = ({oh_req, oh_time, oh_totalPrice,  oh_userid, oh_menu,}) => {
   const oh_menu_list = oh_menu.map((data,idx) => {
-    const { counter, id, name, price }  = data;
+    const { counter,  name, price }  = data;
     return(
       <div key = {idx} className = {classes.ItemInfo}>
         <div className = { classes.OHItem}>
@@ -13,7 +13,7 @@ const HistoryLog = ({oh_req, oh_time, oh_totalPrice,  oh_userid, oh_menu,}) => {
           <span> {counter} </span>
         </div>
         <div className = { classes.Price }>
-          <span> { price}원  </span>
+          <span> { price * counter} 원  </span>
         </div>
         <div className = { classes.OrderTime }>
           <span> {oh_time} </span>
@@ -28,6 +28,7 @@ const HistoryLog = ({oh_req, oh_time, oh_totalPrice,  oh_userid, oh_menu,}) => {
       <div className = {classes.OrderHistoryList}>
           {oh_menu_list}
       </div>
+      <hr className =  {classes.OrderHistorDivLine}></hr>
     </>
   )
 }
@@ -62,7 +63,7 @@ const orderHistory = ({Oh_List}) => {
           <span className= {classes.OrderTime}> 주문시간 </span>
         </div>
         <hr className = { classes.DivLine }></hr>
-        {oh_data}
+        <div className = {classes.HistoryWrapper}> {oh_data} </div>
       </div>
     </div>
   )

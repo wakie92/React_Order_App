@@ -6,7 +6,8 @@
   justify-content: center;
   align-items: center;
   background-color: #212529;
-  .LoginBox{
+  
+  .LoginBox {
     background-color: #283947;
     width: 350px;
     height: 220px;
@@ -29,5 +30,26 @@
       }
     }
     
+  }
+  
+}
+@media screen and (max-width: 768px) {
+  .LoginWrapper {
+    display : flex;
+    align-items: unset;
+    .LoginBox {
+      transform : translateY(50%)
+    }
+    @media screen and (max-width : 350px) {
+      .LoginBox {
+        width : 300px;
+        height: 200px;
+        .LoginAccount{
+          span {
+            font-size: 12px;
+          }
+        }
+      }
+    }
   }
 }
