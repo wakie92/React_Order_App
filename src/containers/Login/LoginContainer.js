@@ -48,6 +48,7 @@ class LoginContainer extends Component {
   render() {
     const { handleLogin , inputData,  handleLogout , handleEnterKey} = this;
     const { loginID , isLogined,}  = this.props;
+    console.log('render [ LoginContainer ]')
     return (
       <Login
         onLogin = { handleLogin }

@@ -7,11 +7,9 @@ import OrderListContainer from './OrderList/OrderListContainer';
 import OrderRequirement from 'components/Order/OrderRequirement';
 
 class OrderContainer extends Component {
-  state = {
-    input : ''
-  }
+
   confirmOrderHandler = () =>{
-    const {MenuDataUIActions, checkedTF, selectedMenu, amountToPay} = this.props;
+    const {MenuDataUIActions, checkedTF, selectedMenu, amountToPay, req} = this.props;
     //immutable 속성인 selectedMenu
     //객체를 set한 후에는 prototype이 Array로변하는 것을 이용
     return selectedMenu.hasOwnProperty('_root') ? 
@@ -85,7 +83,7 @@ class OrderContainer extends Component {
         || nextProps.totalPrice !== this.props.totalPrice
         || nextProps.checkedTF !== this.props.checkedTF
         || nextProps.ol_mobile !== this.props.ol_mobile
-        || nextProps.amoutToPay !== this.props.amountToPay;
+        || nextProps.amoutToPay !== this.props.amountToPay
   } 
   render() {
     console.log('[ORDER_CONTAINER] : render')
@@ -99,7 +97,6 @@ class OrderContainer extends Component {
         checkedButton = {handlePayMethodChange}
         requirement = {handleRequirementChange}
         checkedTF = {checkedTF}
-        req = {this.state.input}
         howMuchToPay = {handleAmountToPay}
         amountToPay = {amountToPay}
         toggleSelect = {handleSelect}
@@ -123,7 +120,7 @@ export default connect((state) => ({
   amountToPay : state.menuDataUI.get('amountToPay'),
   selectedItem : state.menuDataUI.get('selectedItem'),
   confirm : state.menuDataUI.get('confirm'),
-  ol_mobile : state.menuDataUI.get('ol_mobile')
+  ol_mobile : state.menuDataUI.get('ol_mobile'),
 }),
 (dispatch) =>({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
