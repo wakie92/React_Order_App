@@ -9,7 +9,7 @@ import OrderRequirement from 'components/Order/OrderRequirement';
 class OrderContainer extends Component {
 
   confirmOrderHandler = () =>{
-    const {MenuDataUIActions, checkedTF, selectedMenu, amountToPay, req} = this.props;
+    const {MenuDataUIActions, checkedTF, selectedMenu, amountToPay} = this.props;
     //immutable 속성인 selectedMenu
     //객체를 set한 후에는 prototype이 Array로변하는 것을 이용
     return selectedMenu.hasOwnProperty('_root') ? 
