@@ -18,18 +18,18 @@ class OrderHistoryContainer extends Component {
     this.getDataTest();
   }
   render() {
-    const { menu }  = this.props;
+    const { orderHistoryItems }  = this.props;
     console.log('render [ OrderHistoryContainer ]')
     return (
       <OrderHistory
-        Oh_List = {menu} 
+        Oh_List = {orderHistoryItems} 
       />
     );
   }
 }
 
 export default connect((state) => ({
-  menu : state.orderHistoryData.get('menu'),
+  orderHistoryItems : state.orderHistoryData.get('orderHistoryItems'),
   loginUser : state.loginData.getIn(['loginUser', 'id']),
 }),
 (dispatch) => ({
