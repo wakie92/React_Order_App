@@ -8,6 +8,7 @@ const CHANGE_LOGIN_INFO = 'loginData/CHANGE_LOGIN_INFO';
 const GET_USER_ID = 'loginData/GET_USER_ID';
 const USER_ID = 'loginData/USER_ID';
 const UNLOGIN_USER = 'loginData/UNLOGIN_USER';
+
 export const isLogined = createAction(ISLOGINED);
 export const changeLoginInfo = createAction(CHANGE_LOGIN_INFO);
 export const getUserId = createAction(GET_USER_ID, api.getUserId);
@@ -19,15 +20,14 @@ const initialState = fromJS({
     id : null,
     password : ''
   },
-  unLoginUser : {
-    id : ''
-  }
+  
 })
 
 export default handleActions({
   ...pender({
     type : GET_USER_ID,
     onSuccess : (state, action) => {
+
     }
   }),
   [ISLOGINED] : (state, action) => {

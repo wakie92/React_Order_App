@@ -7,12 +7,6 @@ export const putCounterUp = (id,count) => firebase.database().ref().child('menu/
   count : count
 })
 export const getUserId = (user) =>  api.get(`users/${user}.json`)
-// export const getOrderHistory = (user) => firebase.database().ref().child('users').child(user).on('child_added', snap => {
-//   let userRef = firebase.database().ref().child('orderSummary').orderByChild('os_userId').equalTo(snap.val());
-//   userRef.once('value').then(userSnap => {
-    
-//   })
-// })
 export const getOrderHistory = (user) => firebase.database().ref().child('orderSummary')
 .orderByChild('os_userId').equalTo(user)
 .once('value').then((data) => { 
