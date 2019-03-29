@@ -26,9 +26,12 @@ const initialState = fromJS({
 export default handleActions({
   ...pender({
     type : GET_USER_ID,
-    onSuccess : (state, action) => {
-
-    }
+    onPending : (state, action) => {
+      return console.log('[Pending] : GET_USER_ID');
+    },
+    onFailure : (state, action) => {
+      return console.log('[Error] : GET_USER_ID');
+    },
   }),
   [ISLOGINED] : (state, action) => {
     const isLogined = action.payload;
