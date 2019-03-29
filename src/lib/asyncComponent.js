@@ -3,7 +3,11 @@ import React from 'react';
 export default function asyncComponent(getComponent) {
   class AsyncComponent extends React.Component{
     static Component = null;
-
+    static preload() {
+      getComponent().then(({default : Component}) => {
+        AsyncComponent.Component = Component;
+      }) 
+    }
     state = {Component : AsyncComponent.Component}
 
     constructor(props) {

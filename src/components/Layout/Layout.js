@@ -11,6 +11,7 @@ import ModalContainer from 'containers/ModalContainer/ModalContainer'
 //   Home
 // } from 'pages';
 const layout = (props) => {
+  console.log(props);
   return(
     <>
     <ToolbarContainer/>

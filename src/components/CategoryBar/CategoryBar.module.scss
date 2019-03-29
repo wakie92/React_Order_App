@@ -1,6 +1,8 @@
+@import '../../styles/utils.scss';
+
 .CategoryBar {
   width : 100%;
-  background-color: #283947;
+  background-color: $darknavy;
   display : flex;
   align-items: flex-start;
   grid-area : c;

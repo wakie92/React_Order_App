@@ -1,5 +1,6 @@
+@import '../../styles/utils.scss';
 .Wrapper{
-  background-color: #212529;
+  background-color: $darknavy;
   grid-area : i;
   color : white;
   font-size : 13px;
