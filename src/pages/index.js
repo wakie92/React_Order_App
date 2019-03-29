@@ -1,9 +1,8 @@
-import asyncComponent from 'lib/asyncComponent';
 import React from 'react';
 import Loadable from 'react-loadable';
 
 const Loading = () => {
-  return <div>로딩중...</div>
+  return <div></div>
 }
 export const Menu = Loadable({
   loader : () => import ('./menu'),
