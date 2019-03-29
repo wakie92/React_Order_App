@@ -17,10 +17,22 @@ const categoryBar = (props) => {
   return (
     <nav className = {attachedClasses.join(' ')}>
       <div className = {classes.All}> 
-        <NavLink exact to = '/menu' style = {sty} activeStyle = {activStyle} onMouseOver = {props.onPreload('Menu')}> 모든 음식 </NavLink>
+        <NavLink  exact to = '/menu' 
+                  style = {sty} 
+                  activeStyle = {activStyle} 
+                  onMouseOver = {(e) => {e.stopPropagation(); props.onPreload('Menu')}}> 모든 음식 </NavLink>
       </div>
-      <div className = {classes.Login}> <NavLink exact to ='/login' style = {sty} activeStyle = {activStyle}>로그인 </NavLink></div>
-      <div className = {classes.CheckOrderHistory}> <NavLink exact to = '/log' style = {sty} activeStyle = {activStyle}>주문내역확인 </NavLink></div>
+      <div className = {classes.Login}> 
+        <NavLink  exact to ='/login' 
+                  style = {sty} 
+                  activeStyle = {activStyle} 
+                  onMouseOver = {(e) => {e.stopPropagation(); props.onPreload('Login')}}>로그인 </NavLink>
+                  </div>
+      <div className = {classes.CheckOrderHistory}> 
+        <NavLink  exact to = '/log' 
+                  style = {sty} 
+                  activeStyle = {activStyle} 
+                  onMouseOver = {(e) => {e.stopPropagation(); props.onPreload('Log')}}>주문내역확인 </NavLink></div>
     </nav>
   )
 }

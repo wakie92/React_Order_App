@@ -8,9 +8,6 @@ import {
 } from 'pages';
 class App extends Component {
 
-  handleMouseOver = (tg) => {
-    Menu.preload();
-  };
  render() {
 
    return (
