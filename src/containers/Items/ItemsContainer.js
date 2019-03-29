@@ -3,7 +3,6 @@ import Items from 'components/Items/Items';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
-import * as menuDataActions from 'store/modules/menuData';
 
 class ItemsContainer extends Component {
   // shouldComponentUpdate(nextProps, nextState) {
@@ -35,5 +34,4 @@ export default connect((state) => ({
 }),
 (dispatch) => ({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch),
-  MenuDataActions : bindActionCreators(menuDataActions,dispatch)
 }))(ItemsContainer)

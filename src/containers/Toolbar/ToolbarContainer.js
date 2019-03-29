@@ -16,42 +16,41 @@ class ToolbarContainer extends Component {
     return key;
   }
   openCategory = () =>{
-    const {MenuDataUIActions, toolbar} = this.props;
+    const { MenuDataUIActions, toolbar } = this.props;
     if(toolbar === false) { 
-      MenuDataUIActions.backDraw(true) 
-      MenuDataUIActions.toolbar(true)
+      MenuDataUIActions.backDraw(true); 
+      MenuDataUIActions.toolbar(true);
     }
     else if( toolbar === true ) { 
-      MenuDataUIActions.backDraw(false) 
-      MenuDataUIActions.toolbar(false)
+      MenuDataUIActions.backDraw(false); 
+      MenuDataUIActions.toolbar(false);
     }
   }
   closeOrderListMobile = () => {
-    const {MenuDataUIActions, } = this.props;
-    MenuDataUIActions.backDraw(false) 
-    MenuDataUIActions.ol_mobile(false)
+    const { MenuDataUIActions } = this.props;
+    MenuDataUIActions.backDraw(false); 
+    MenuDataUIActions.ol_mobile(false);
   }
   openOrderListMobile = () => {
-    const {MenuDataUIActions, ol_mobile, } = this.props;
+    const { MenuDataUIActions, ol_mobile } = this.props;
     if(ol_mobile === false) { 
-      MenuDataUIActions.backDraw(true) 
-      MenuDataUIActions.ol_mobile(true)
+      MenuDataUIActions.backDraw(true); 
+      MenuDataUIActions.ol_mobile(true);
     }
-    else if( ol_mobile === true ) { 
+    else if(ol_mobile === true) { 
       this.closeOrderListMobile();
     }
   } 
   componentDidMount() {
-    const { LoginDataActions, isLogined , loginUser }  = this.props
+    const { LoginDataActions, isLogined , loginUser } = this.props
     if(!isLogined && loginUser === null) {
       const unLoginUserKey = this.randomKey();
       LoginDataActions.getUnLoginUser(unLoginUserKey)
     } else return;
   }
   render() {
-    const { openOrderListMobile,openCategory, closeOrderListMobile} = this;
-    const { backDraw, unLoginUser, isLogined ,loginUser  } = this.props
-    console.log(isLogined, loginUser, unLoginUser);
+    const { openOrderListMobile,openCategory, closeOrderListMobile } = this;
+    const { backDraw, unLoginUser, isLogined ,loginUser } = this.props
     return (
       <>
         <Backdrop 
