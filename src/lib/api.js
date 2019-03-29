@@ -8,11 +8,12 @@ export const putCounterUp = (id,count) => firebase.database().ref().child('menu/
 })
 export const getUserId = (user) =>  api.get(`users/${user}.json`)
 export const getOrderHistory = (user) => firebase.database().ref().child('orderSummary')
-.orderByChild('os_userId').equalTo(user)
-.once('value').then((data) => { 
-                                 let userMenu = [];
-                                 for (var a in data.val()){
-                                   userMenu.push(data.val()[a]);
-                                 }
-                                 return userMenu;       
-                              })
+                                                  .orderByChild('os_userId').equalTo(user)
+                                                  .once('value').then((data) => 
+                                                  { 
+                                                    let userMenu = [];
+                                                    for (var a in data.val()) {
+                                                      userMenu.push(data.val()[a]);
+                                                    }
+                                                     return userMenu;       
+                                                  })
