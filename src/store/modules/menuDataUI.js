@@ -24,6 +24,7 @@ const OL_MOBILE = 'menuDataUI/OL_MOBILE';
 const BACKDRAW = 'menuDataUI/BACKDRAW';
 const COUNTER_UP = 'menuDataUI/COUNTER_UP';
 const REQUIREMENT_BEFORE = 'menuDataUI/REQUIREMENT_BEFORE';
+
 export const controledCount = createAction(CONTROLED_COUNT);
 export const addItem = createAction(ADD_ITEM);
 export const selectedMenu = createAction(SELECTED_MENU);
@@ -45,7 +46,6 @@ export const ol_mobile = createAction(OL_MOBILE);
 export const backDraw = createAction(BACKDRAW);
 export const requirement_before = createAction(REQUIREMENT_BEFORE);
 export const counterUp = createAction(COUNTER_UP,api.putCounterUp);
-// export const orderHistory = createAction(ORDER_HISTORY,api.getOrderHistory);
 export const postMenuAsync = (order) => dispatch => {
   dispatch(orderSummary(order));
   return dispatch(postMenu(order))
@@ -80,6 +80,12 @@ const initialState = fromJS({
 export default handleActions({
   ...pender({
     type : GET_MENU_LIST,
+    onPending : (state, action) => {
+      return console.log('[Pending] : GET_MENU_LIST');
+    },
+    onFailure : (state, action) => {
+      return console.log('[Error] : GET_MENU_LIST');
+    },
     onSuccess : (state, action) => {
       let menuData = action.payload.data;
       menuData.map((item) => {
@@ -90,6 +96,12 @@ export default handleActions({
   }),
   ...pender({
     type : POST_MENU,
+    onPending : (state, action) => {
+      return console.log('[Pending] : POST_MENU');
+    },
+    onFailure : (state, action) => {
+      return console.log('[Error] : POST_MENU');
+    },
     onSuccess : (state, action) => {
       const orderSummary = action.payload;
       return state.set('orderSummary', orderSummary)
