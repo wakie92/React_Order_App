@@ -47,4 +47,5 @@ const input = ({invalid, shouldValidate, elementType, label,
       {inputElement}
     </div>
   )
-}
+};
+export default input;
