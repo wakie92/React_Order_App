@@ -5,6 +5,7 @@ import * as menuDataUIActions from 'store/modules/menuDataUI'
 import * as loginDataActions from 'store/modules/loginData'
 import Login from 'components/Login/Login';
 import Input  from 'components/UI/Input/Input'
+import axios from 'axios';
 class LoginContainer extends Component {
   state = {
     userAuthData: {
@@ -73,7 +74,6 @@ checkValidity ( value, rules ) {
   return isValid;
 }
   inputData = (e, controlUser) => {
-    console.log(this.state);
     const updatedAuthUser = {
       ...this.state.userAuthData,
       [controlUser] : {
@@ -105,20 +105,27 @@ checkValidity ( value, rules ) {
   handleLogin = async (e) => {
     const { LoginDataActions } = this.props;
     const { userAuthData, isSignUp } = this.state;
-    e.preventDefault();
-    const authData = {
-      email :userAuthData.email.value,
-      password : userAuthData.password.value,
-      returnSecureToken : true,
+    try {
+      e.preventDefault();
+      const authData = {
+        email :userAuthData.email.value,
+        password : userAuthData.password.value,
+        returnSecureToken : true,
+      }
+      let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAVbIamQ34eNUx7XuoQvKq8CSfXJku30qU'
+      if(!isSignUp) {
+        url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAVbIamQ34eNUx7XuoQvKq8CSfXJku30qU'
+      }
+      axios.post(url,authData).then(res => {
+        LoginDataActions.getUserId(res.data);
+      }).catch(err => {
+        console.log(err);
+      })
+    } catch(err) {
+      console.log(err);
     }
-    let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAVbIamQ34eNUx7XuoQvKq8CSfXJku30qU'
-    if(!isSignUp) {
-      url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAVbIamQ34eNUx7XuoQvKq8CSfXJku30qU'
-    }
-
-    LoginDataActions.getUserId(url, authData);
     
-    }
+  }
   
   // handleLogin = async () => {
   //   const { LoginDataActions } = this.props;
@@ -188,7 +195,7 @@ checkValidity ( value, rules ) {
 
 export default connect((state) => ({
   isLogined : state.loginData.get('isLogined'),
-  loginID : state.loginData.getIn(['loginUser','id']),
+  loginID : state.loginData.getIn(['loginUser','userId']),
 }),
   (dispatch) => ({
     LoginDataActions : bindActionCreators(loginDataActions,dispatch),
