@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function asyncComponent(getComponent) {
+  //route-loader를 코드로 작성
   class AsyncComponent extends React.Component{
     static Component = null;
     static preload() {

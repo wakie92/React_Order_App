@@ -5,13 +5,7 @@ import CategoryBarContainer from 'containers/CategoryBar/CategoryBarContainer'
 import OrderContainer from 'containers/OrderSection/OrderContainer';
 import ModalContainer from 'containers/ModalContainer/ModalContainer'
 
-// import { Route } from 'react-router-dom';
-// import { 
-//   Menu,
-//   Home
-// } from 'pages';
 const layout = (props) => {
-  console.log(props);
   return(
     <>
     <ToolbarContainer/>

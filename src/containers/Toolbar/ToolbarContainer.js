@@ -17,14 +17,14 @@ class ToolbarContainer extends Component {
   }
   openCategory = () =>{
     const { MenuDataUIActions, toolbar } = this.props;
-    if(toolbar === false) { 
-      MenuDataUIActions.backDraw(true); 
-      MenuDataUIActions.toolbar(true);
-    }
-    else if( toolbar === true ) { 
-      MenuDataUIActions.backDraw(false); 
-      MenuDataUIActions.toolbar(false);
-    }
+      if(toolbar === false) { 
+        MenuDataUIActions.backDraw(true); 
+        MenuDataUIActions.toolbar(true);
+      }
+      else if( toolbar === true ) { 
+        MenuDataUIActions.backDraw(false); 
+        MenuDataUIActions.toolbar(false);
+      }
   }
   closeOrderListMobile = () => {
     const { MenuDataUIActions } = this.props;
@@ -33,24 +33,32 @@ class ToolbarContainer extends Component {
   }
   openOrderListMobile = () => {
     const { MenuDataUIActions, ol_mobile } = this.props;
-    if(ol_mobile === false) { 
-      MenuDataUIActions.backDraw(true); 
-      MenuDataUIActions.ol_mobile(true);
-    }
-    else if(ol_mobile === true) { 
-      this.closeOrderListMobile();
+    try {
+      if(ol_mobile === false) { 
+        MenuDataUIActions.backDraw(true); 
+        MenuDataUIActions.ol_mobile(true);
+      }
+      else if(ol_mobile === true) { 
+        this.closeOrderListMobile();
+      }
+    } catch(err) {
+      console.log(err);
     }
   } 
   componentDidMount() {
     const { LoginDataActions, isLogined , loginUser } = this.props
-    if(!isLogined && loginUser === null) {
-      const unLoginUserKey = this.randomKey();
-      LoginDataActions.getUnLoginUser(unLoginUserKey)
-    } else return;
+    try {
+      if(!isLogined && loginUser === null) {
+        LoginDataActions.getUnLoginUser()
+      } else return;
+    } catch(err) {
+      console.log(err)
+    }
   }
   render() {
     const { openOrderListMobile,openCategory, closeOrderListMobile } = this;
     const { backDraw, unLoginUser, isLogined ,loginUser } = this.props
+    console.log('toolbar')
     return (
       <>
         <Backdrop 
@@ -74,7 +82,7 @@ export default connect((state) => ({
   ol_mobile : state.menuDataUI.get('ol_mobile'),
   backDraw : state.menuDataUI.get('backDraw'),
   unLoginUser : state.loginData.getIn(['unLoginUser','id']),
-  loginUser : state.loginData.getIn(['loginUser','id']),
+  loginUser : state.loginData.getIn(['loginUser','userId']),
   isLogined : state.loginData.get('isLogined')
 }),
   (dispatch) => ({

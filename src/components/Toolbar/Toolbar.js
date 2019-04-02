@@ -6,6 +6,7 @@ const toolbar = ({loginUser, openCategory, openOrderListMobile}) => {
   const sty = {
     textDecoration : 'none'
   }
+  console.log(loginUser);
   return(
     <header className = {classes.Toolbar}>
       <nav className  = {classes.Hamburger} onClick = {(e) => {e.stopPropagation(); openCategory()}}>

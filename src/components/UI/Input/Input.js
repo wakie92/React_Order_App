@@ -9,7 +9,6 @@ const input = ({invalid, shouldValidate, elementType, label,
   if(invalid && shouldValidate && touched) {
     inputClasses.push(classes.Invalid);
   }
-  
   switch(elementType) {
     case 'input' :
       inputElement = <input

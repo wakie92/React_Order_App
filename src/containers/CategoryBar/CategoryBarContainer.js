@@ -1,19 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CategoryBar from 'components/CategoryBar/CategoryBar';
-// import {
-//   Menu,
-//   Login,
-//   Log
-// } from 'pages';
 class CategoryBarContainer extends Component {
   //코드스플리팅 중 깜박임현상 잡기 위한 코드
-  blockToBlink = (tg) => {
-    import('pages/index').then((Pages) => {
-      Pages.tg.preload()
-    })
-  }
-
   handleMouseOver = (tg) => {
     try {
       switch(tg) {
@@ -33,8 +22,8 @@ class CategoryBarContainer extends Component {
         default :  console.log('error');
         break;
       }
-    } catch{
-      console.log('error with loading page')
+    } catch(err){
+      console.log(err)
     }
   };
   render() {
