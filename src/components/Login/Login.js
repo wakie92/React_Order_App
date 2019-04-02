@@ -10,11 +10,12 @@ const login = ({onLogin , onInput , onKeyPress, isSignup, isLogined, onChangeMod
         <div className = {classes.LoginAccount}>
           <form  className = {classes.FormWrapper} onSubmit = {onLogin}>
             {form}
-            <Button className = {classes.LoginAccess}  btnType = 'Login'>로그인</Button>
+            <Button className = {classes.LoginAccess}  btnType = 'Login'>{isSignup ? '회원가입' : '로그인'}</Button>
           </form>
+          
           <Button 
                     clicked={onChangeMode}
-                    btnType="Danger">SWITCH TO {isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>
+                    btnType="Danger">  {isSignup ? 'SIGNIN' : '회원가입'}</Button>
         </div>
       </div>
         :
