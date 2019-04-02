@@ -51,7 +51,8 @@ const order = (props) => {
           
           <div className = {classes.Required}>
           {
-            props.checkedTF['card'] ? <>
+            props.checkedTF['card'] ? 
+            <>
             <select style = {{display : 'none'}}>
               <option value = "">----------------</option>
               <option value = "10000">10000원</option>
@@ -59,8 +60,7 @@ const order = (props) => {
               <option value = "20000">20000원</option>
               <option value = "10000">금액에 맞게</option>
             </select>
-           
-           </>    :
+            </>    :
             <>
               <select onChange = {props.howMuchToPay} value = {props.amountToPay}>
                 <option value = "select">----------------</option>

@@ -17,8 +17,10 @@ export const getUnLoginUser = createAction(UNLOGIN_USER);
 const initialState = fromJS({
   isLogined : false,
   loginUser : {
-    id : null,
-    password : ''
+    token: null,
+    userId: null,
+    error: null,
+    loading: false
   },
   
 })
@@ -26,11 +28,25 @@ const initialState = fromJS({
 export default handleActions({
   ...pender({
     type : GET_USER_ID,
+    onSucces : (state, action) => {
+        const { idToken, userId }  = action.payload;
+        console.log(action);
+        return state.setIn(['loginUser', 'userId'], userId)
+                    .setIn(['loginUser', 'token'], idToken)
+                    .setIn(['loginUser', 'error'], null)
+                    .setIn(['loginUser', 'loading'], false)
+                    .set('isLogined', true)
+    },
     onPending : (state, action) => {
-      return console.log('[Pending] : GET_USER_ID');
+      // const {email, password, isSignUp} = action.payload;
+      // console.log(email);
+      console.log(action);
+      // return authData;
     },
     onFailure : (state, action) => {
-      return console.log('[Error] : GET_USER_ID');
+      const {error} = action.payload;
+      return state.setIn(['loginUser','error'],error)
+                  .setIn(['loginUser', 'loading'], false)
     },
   }),
   [ISLOGINED] : (state, action) => {
@@ -41,6 +57,11 @@ export default handleActions({
     const id = action.payload;
     return state.setIn(['loginUser', 'id'], id)
   },
+  // [USER_ID] : (state, action) => {
+  //   const id = action.payload;
+  //   return state.setIn(['loginUser', 'id'], id)
+  // },
+  
   [UNLOGIN_USER] : (state, action) => {
     const id = action.payload;
     return state.setIn(['loginUser', 'id'],id);

@@ -5,7 +5,7 @@ import classes from './Button.module.scss'
 const button = (props) => {
   return(
     <button className = {[classes.Button, classes[props.btnType]].join(' ')}
-      onClick = {(e) => {e.stopPropagation(); props.clicked()}}    
+      onClick = {props.clicked}    
     > {props.children}
     </button>
   )

@@ -12,6 +12,7 @@ class OrderRequirement extends Component {
  
   render() {
     console.log('render [OrderRequirement]')
+    //inputUI
     return(
       <textarea 
         className = {classes.ReValue} 

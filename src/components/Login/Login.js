@@ -1,15 +1,14 @@
 import React from 'react';
 import classes from './Login.module.scss'
 import Button from 'components/UI/Button/Button'
-
-const login = ({onLogin , onInput , onKeyPress, isLogined, loginID, onLogout }) => {
+const login = ({onLogin , onInput , onKeyPress, isSignup, isLogined, onChangeMode, form, loginID, onLogout }) => {
   return (
     <div className = {classes.LoginWrapper}>
        {
          !isLogined ?
       <div className = {classes.LoginBox}>
         <div className = {classes.LoginAccount}>
-          <div className  = {classes.LoginId}>
+          {/* <div className  = {classes.LoginId}>
             <span>아이디</span>
             <input 
               type = 'text' 
@@ -29,9 +28,15 @@ const login = ({onLogin , onInput , onKeyPress, isLogined, loginID, onLogout }) 
               placeholder = '패스워드를 입력해주세요'
               name = 'password'>
             </input>
-          </div>
+          </div> */}
+          <form onSubmit = {onLogin}>
+            {form}
+            <Button className = {classes.LoginAccess}  btnType = 'Login'>로그인</Button>
+          </form>
+          <Button 
+                    clicked={onChangeMode}
+                    btnType="Danger">SWITCH TO {isSignup ? 'SIGNIN' : 'SIGNUP'}</Button>
         </div>
-        <Button className = {classes.LoginAccess} clicked = {onLogin} btnType = 'Login'>로그인</Button>
       </div>
         :
         <div  className = {classes.LoginBox}>

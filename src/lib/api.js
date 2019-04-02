@@ -1,12 +1,12 @@
 import api from 'axios-order';
 import firebase from 'firebase';
-
+import axios from 'axios';
 export const getMenuList = () => api.get(`menu.json`);
 export const postOrderedMenu = (orderSummary) => api.post(`orderSummary.json`,orderSummary);
 export const putCounterUp = (id,count) => firebase.database().ref().child('menu/' + id).update({
   count : count
 })
-export const getUserId = (user) =>  api.get(`users/${user}.json`)
+export const getUserId = (url, userData) =>  axios.post(url, userData)
 export const getOrderHistory = (user) => firebase.database().ref().child('orderSummary')
                                                   .orderByChild('os_userId').equalTo(user)
                                                   .once('value').then((data) => 
