@@ -41,6 +41,8 @@ class LoginContainer extends Component {
 }
 
 checkValidity ( value, rules ) {
+  //유효성검사
+
   let isValid = true;
   if ( !rules ) {
       return true;

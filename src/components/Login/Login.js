@@ -8,28 +8,7 @@ const login = ({onLogin , onInput , onKeyPress, isSignup, isLogined, onChangeMod
          !isLogined ?
       <div className = {classes.LoginBox}>
         <div className = {classes.LoginAccount}>
-          {/* <div className  = {classes.LoginId}>
-            <span>아이디</span>
-            <input 
-              type = 'text' 
-              onChange = {onInput}
-              autoFocus
-              onKeyPress = {onKeyPress}
-              placeholder = '아이디를 입력해주세요'
-              name = 'id'>
-            </input>
-          </div>
-          <div className  = {classes.LoginPassword}>
-            <span>패스워드</span>
-            <input 
-              type = 'password' 
-              onChange = {onInput} 
-              onKeyPress = {onKeyPress}
-              placeholder = '패스워드를 입력해주세요'
-              name = 'password'>
-            </input>
-          </div> */}
-          <form onSubmit = {onLogin}>
+          <form  className = {classes.FormWrapper} onSubmit = {onLogin}>
             {form}
             <Button className = {classes.LoginAccess}  btnType = 'Login'>로그인</Button>
           </form>

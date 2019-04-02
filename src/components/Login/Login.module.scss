@@ -17,8 +17,11 @@
     flex-direction: column;
     .LoginAccount {
       width : 75%;
-      height : 60px;
-      span{
+      .FormWrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      span {
         color : #F3E3D1;
         font-weight: 600;
       }
