@@ -7,7 +7,6 @@ class CategoryBarContainer extends Component {
     try {
       switch(tg) {
         case 'Menu' : import('pages/index').then((pages) => {
-          // console.log(pages.Menu);
           pages.Menu.preload();
         }) 
               break;

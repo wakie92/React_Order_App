@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as menuDataUIActions from 'store/modules/menuDataUI'
-import * as loginDataActions from 'store/modules/loginData'
+import * as loginDataActions from 'store/modules/loginData';
+import * as formDataActions from 'store/modules/formData';
+import * as menuDataUIActions from 'store/modules/menuDataUI';
 import Login from 'components/Login/Login';
 import Input  from 'components/UI/Input/Input'
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 class LoginContainer extends Component {
   //왜 state를 썼는지 설명할 수 있어야함.
   state = {
@@ -40,7 +41,8 @@ class LoginContainer extends Component {
             touched: false
         }
     },
-    isSignUp: true
+    isSignUp: true,
+    test : {}
 }
 
 checkValidity ( value, rules ) {
@@ -69,6 +71,8 @@ checkValidity ( value, rules ) {
   }
 }
   inputData = (e, controlUser) => {
+    const { FormDataActions, loginAuthData } = this.props;
+    console.log(loginAuthData);
     try {
       const updatedAuthUser = {
         ...this.state.userAuthData,
@@ -79,6 +83,16 @@ checkValidity ( value, rules ) {
           touched: true
         }
       };
+      // const updatedAuthUser = {
+      //   ...this.state.userAuthData,
+      //   [controlUser] : {
+      //     ...this.state.userAuthData[controlUser],
+      //     value : e.target.value,
+      //     valid : this.checkValidity(e.target.value, this.state.userAuthData[controlUser].validation),
+      //     touched: true
+      //   }
+      // };
+      FormDataActions.getLoginFormData(updatedAuthUser);
       this.setState({userAuthData : updatedAuthUser});
     } catch(err) {
       console.log(err);
@@ -141,19 +155,48 @@ checkValidity ( value, rules ) {
     
   }
   
+  createForm = () => {
+    const { FormDataActions , loginAuthData,initialState}  = this.props;
+    const { inputData } = this;
+    const test = initialState;
+    console.log(test);
+    console.log(loginAuthData);
+    const formElementsArr = [];
+    // for (let key in userAuth ) {
+    //   formElementsArr.push({
+    //     id : key,
+    //     config : userAuth[key]
+    //   })
+    // }
+    // const form = formElementsArr.map(formElement => (
+    //   <Input
+    //     key = {formElement.id}
+    //     elementType = {formElement.config.elementType}
+    //     elementConfig = {formElement.config.elementConfig}
+    //     value = {formElement.config.value}
+    //     invalid = {!formElement.config.valid}
+    //     shouldValidate={formElement.config.validation}
+    //     touched = {formElement.config.touched}
+    //     changed = {(e) => inputData(e, formElement.id)}
+    //   />
+    // ))
+    // return form
+  }
 
+  componentDidMount() {
+    this.createForm();
+  }
   render() {
     const { handleLogin , inputData,  handleLogout , changeIsSignUp, handleEnterKey } = this;
-    const { loginID , isLogined , error}  = this.props;
+    const { loginID , isLogined , os, loginAuthData, isSignUp2, FormDataActions}  = this.props;
     const { userAuthData , isSignUp } = this.state;
-
+    const userAuth = loginAuthData.toJS();
     console.log('render [ LoginContainer ]')
-    console.log(this.state)
     const formElementsArr = [];
-    for (let key in userAuthData ) {
+    for (let key in userAuth ) {
       formElementsArr.push({
         id : key,
-        config : userAuthData[key]
+        config : userAuth[key]
       })
     }
     const form = formElementsArr.map(formElement => (
@@ -168,23 +211,11 @@ checkValidity ( value, rules ) {
         changed = {(e) => inputData(e, formElement.id)}
       />
     ))
-    let errorMessage = null;
-    if (error) {
-      errorMessage = (
-          <p>{this.props.error.message}</p>
-      );
-  }
 
-  let authRedirect = null;
-  if (!isLogined) {
-      authRedirect = <Redirect to='/'/>
-  }
     return (
       <Login
         onLogin = { handleLogin }
         onInput = { inputData }
-        authRedirect = {authRedirect}
-        errMsg = {errorMessage}
         isLogined = { isLogined }
         loginID = {loginID}
         onLogout = {handleLogout}
@@ -201,9 +232,13 @@ export default connect((state) => ({
   isLogined : state.loginData.get('isLogined'),
   loginID : state.loginData.getIn(['loginUser','userId']),
   error : state.loginData.getIn(['loginUser','error']),
+  loginAuthData : state.formData.get('loginAuthData'),
+  isSignUp2 : state.formData.get('test'),
+  initialState : state.formData.get('initialState'),
 }),
   (dispatch) => ({
     LoginDataActions : bindActionCreators(loginDataActions,dispatch),
-    MenuDataUIActions : bindActionCreators(menuDataUIActions, dispatch)
+    FormDataActions : bindActionCreators(formDataActions, dispatch),
+    MenuDataUIActions : bindActionCreators(menuDataUIActions, dispatch),
   })
 )(LoginContainer);
