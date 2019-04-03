@@ -6,19 +6,24 @@ import {
   Login,
   Log
 } from 'pages';
+import Footer from 'components/UI/Footer/Footer';
+
 class App extends Component {
 
  render() {
 
    return (
-     <div>
-       <Switch>
-         <Route exact path = '/menu' component = {Menu} />
-         <Route exact path = '/' component = {Home} />
-         <Route exact path = '/login' component = {Login} />
-         <Route exact path = '/log' component = {Log} />
-       </Switch>
-     </div>
+     <>
+      <div>
+        <Switch>
+          <Route exact path = '/menu' component = {Menu} />
+          <Route exact path = '/' component = {Home} />
+          <Route exact path = '/login' component = {Login} />
+          <Route exact path = '/log' component = {Log} />
+        </Switch>
+      </div>
+      <Footer/>
+     </>
    )
  }
 }

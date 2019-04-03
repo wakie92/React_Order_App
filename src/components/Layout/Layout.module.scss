@@ -1,7 +1,11 @@
 @import 'styles/utils.scss';
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
 
 .Layout {
   width:  100%;
+  height: 100%;
+  font-family: 'Do Hyeon', sans-serif;
+  letter-spacing: 1pt;
   .Content {
     padding-top: 12vh;
     display : grid;

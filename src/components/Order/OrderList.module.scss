@@ -1,7 +1,9 @@
 @import 'styles/utils.scss';
 
 .OrederdItemList{
-  height: calc(100% - 8vh);
+  height: calc(100% - 3vh);
+  width : 100%;
+  flex:5;
   overflow:  hidden scroll;
   text-align: center;
   font-size : 2.5vh;
@@ -17,22 +19,33 @@
     'oc otp';
     grid-gap : 5px 0;
     border-bottom : none;
-    margin : 5px 0;
+    margin : 10px 0;
     align-items: center;
-    padding : 5px;
+    padding : 0 10px;
+    color : black;
+    font-weight: bolder;
     .OrderedItemName {
       grid-area : on;
       text-align: left;
+      font-weight: bold;
+      font-size : 3.5vh;
     }
     .OrderedItemPrice{
       grid-area: op;
       text-align :right;
+      color : $lightpink;
+    }
+    .OrderedItemCount, .OrderedItemTotalPrice {
+      font-weight: 400;
+      font-size: 3vh;
+      color : grey;
     }
     .OrderedItemCount {
       grid-area : oc;
     }
     .OrderedItemTotalPrice {
-      grid-area: otp;
+        text-align :right;
+        grid-area: otp;
     }
   }
 }
