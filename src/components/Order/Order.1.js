@@ -14,9 +14,8 @@ const order = (props) => {
   return (
     <>
       <div className = {attachedClasses.join(' ')} onClick = {() =>props.closeOrderMobile()}>
-        <div className = {classes.Header}> 장바구니</div>
         <div className = {classes.OrderList} onClick = {(e) =>  e.stopPropagation()}>
-          {/* <div className = {classes.OrderColumn}>
+          <div className = {classes.OrderColumn}>
             <div className = {classes.OrderColumnTop}>
               <span>상품 주문 목록</span>
             </div>
@@ -28,7 +27,7 @@ const order = (props) => {
             <span className = {classes.ListItemPrice}>판매금액</span>
             <span className = {classes.ListItemCount}>수량</span>
             <span className = {classes.ListItemTotalPrice}>최종금액</span>
-          </div> */}
+          </div>
           <OrderListContainer/>
           {/* <div className = {classes.OrederdItemList}>{orderedItems}</div> */}
         </div>
