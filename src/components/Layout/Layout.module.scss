@@ -7,15 +7,11 @@
     grid-auto-columns: minmax(0px,1fr);
     grid-auto-rows: minmax(auto, 120px);
     grid-template-areas: 
-    "c i i i i i"
-    "c i i i i i"
-    "c i i i i i"
-    "c i i i i i"
-    "c i i i i i"
-    "c i i i i i"
-    "o o o o o o"
-    "o o o o o o"
-    "o o o o o o"
+    "c i i i i o o"
+    "c i i i i o o"
+    "c i i i i o o"
+    "c i i i i o o"
+    "c i i i i o o"
   }
   @media screen and (max-width : 1024px) {
     .Content{
