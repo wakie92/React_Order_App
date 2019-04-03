@@ -5,13 +5,3 @@ export const postOrderedMenu = (orderSummary) => api.post(`orderSummary.json`,or
 export const putCounterUp = (id,count) => firebase.database().ref().child('menu/' + id).update({
   count : count
 })
-export const getOrderHistory = (user) => firebase.database().ref().child('orderSummary')
-                                                  .orderByChild('os_userId').equalTo(user)
-                                                  .once('value').then((data) => 
-                                                  { 
-                                                    let userMenu = [];
-                                                    for (var a in data.val()) {
-                                                      userMenu.push(data.val()[a]);
-                                                    }
-                                                     return userMenu;       
-                                                  })

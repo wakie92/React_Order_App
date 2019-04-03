@@ -68,6 +68,7 @@ const initialState = fromJS({
     os_paymentMethod : '',
     os_purchasingMenu : [],
     os_totalPrice : 0,
+    os_userId : ''
   },
   modalShow : false,
   selectedItem : null,

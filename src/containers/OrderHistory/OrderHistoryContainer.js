@@ -9,9 +9,9 @@ import * as loginDataActions from 'store/modules/loginData'
 class OrderHistoryContainer extends Component {
 
   getDataTest = async () => {
-    const { OrderHistoryDataActions , loginUser}  = this.props;
-    const user = loginUser;
-    await OrderHistoryDataActions.getOrderHistory(user);
+    const { OrderHistoryDataActions , loginUser, firebase }  = this.props;
+    const user =  await firebase.orderHistory(loginUser);
+    await OrderHistoryDataActions.saveHistory(user);
   }
 
   componentDidMount () {
@@ -19,6 +19,7 @@ class OrderHistoryContainer extends Component {
   }
   render() {
     const { orderHistoryItems }  = this.props;
+    console.log(this.props);
     console.log('render [ OrderHistoryContainer ]')
     return (
       <OrderHistory
@@ -30,7 +31,7 @@ class OrderHistoryContainer extends Component {
 
 export default connect((state) => ({
   orderHistoryItems : state.orderHistoryData.get('orderHistoryItems'),
-  loginUser : state.loginData.getIn(['loginUser', 'id']),
+  loginUser : state.loginData.getIn(['loginUser', 'userId']),
 }),
 (dispatch) => ({
     MenuDataUIActions : bindActionCreators(menuDataUIActions, dispatch),

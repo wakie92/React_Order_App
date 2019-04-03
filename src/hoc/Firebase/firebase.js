@@ -35,21 +35,23 @@ class Firebase {
           .child('menu')
           .child('1')
           .once('value',  (data)  => {
-            console.log( data.val());
           }).then(  (data) =>  { 
             const  result =   data.val();
-            console.log('s')
             return  result
           })
 
-    orderHistory = () => this.db.ref().child('orderSummary').child('os_purchasingMenu').orderByKey('os_userId').equalTo().once('value').then((data) =>  { 
-      const  result =   data.val();
-      return  result
-    })
-
-    joinTest = () => this.db.ref().child('users').once('child_added', snap => {
-      console.log(snap.val());
-    })
+    orderHistory = (user) =>  this.db.ref()
+                          .child('orderSummary')
+                          .orderByChild('os_userId')
+                          .equalTo(user)
+                          .once('value')
+                          .then((data) => { 
+                              const  userMenu = [];
+                              for (let item in data.val()){
+                                userMenu.push(data.val()[item]);
+                              }
+                              return  userMenu;
+                            })
     menu1 = () => this.db.ref('menu');
 }
 export default Firebase;

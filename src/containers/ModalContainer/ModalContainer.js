@@ -82,8 +82,7 @@ export default connect ((state) => ({
   amountToPay : state.menuDataUI.get('amountToPay'),
   totalPrice : state.menuDataUI.get('totalPrice'),
   orderSummary : state.menuDataUI.get('orderSummary'),
-  loginId : state.loginData.getIn(['loginUser','id']),
-  unLoginId : state.loginData.getIn(['unLoginUser', 'id']),
+  loginId : state.loginData.getIn(['loginUser','userId']),
   isLogined : state.loginData.get('isLogined')
 }),
   (dispatch) => ({
