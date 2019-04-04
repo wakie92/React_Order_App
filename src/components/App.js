@@ -6,7 +6,6 @@ import {
   Login,
   Log
 } from 'pages';
-import Footer from 'components/UI/Footer/Footer';
 
 class App extends Component {
 
@@ -22,7 +21,6 @@ class App extends Component {
           <Route exact path = '/log' component = {Log} />
         </Switch>
       </div>
-      <Footer/>
      </>
    )
  }
