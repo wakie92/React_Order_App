@@ -4,7 +4,7 @@
   grid-area: i;
   display : flex;
   justify-content: center;
-  background-color: #212529;
+  background-color: $darknavy;
 
   .ContentsWrapper{
     display: flex;
@@ -52,25 +52,22 @@
       width : 85%;
       margin : 10px 0;
     }
-    // .OrderHistorDivLine{
-    //   width : 85%;
-    // }
     .HistoryWrapper::-webkit-scrollbar-thumb{
       border-radius: 10px;
       box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-      background-color: rgb(185, 183, 183);
+      background-color: $scrollbarShadow;
     }
     .HistoryWrapper::-webkit-scrollbar-track
     {
       box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
       border-radius: 10px;
-      background-color: #F5F5F5;
+      background-color: $scrollbar;
     }
 
    .HistoryWrapper::-webkit-scrollbar
     {
       width: 12px;
-      background-color: #F5F5F5;
+      background-color: $scrollbar;
     }
     .HistoryWrapper{
       width : 85%;

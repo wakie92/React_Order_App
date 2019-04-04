@@ -8,6 +8,7 @@
   cursor: pointer;
   font: inherit;
   font-weight: bold;
+  letter-spacing: 2pt;
   font-size : 2.5vh;
 }
 .ConfirmOrder {
@@ -20,7 +21,7 @@
   font-weight: 600;
 }
 .Login {
-  background-color: #da3450;
+  background-color: $lightpink;
   margin : 10px;
 }
 .ShoppingCart {
@@ -35,7 +36,7 @@
   font-size : 2vh;
   padding : 1vh;
   color : white;
-  background-color: #da3450;
+  background-color: $lightpink;
   margin : 10px;
 }
 @media screen and (max-width : 768px) {

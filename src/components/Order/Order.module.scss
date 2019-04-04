@@ -6,7 +6,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-around;
-  border: #DCAB8B 5px solid;
+  border: $lightorange 5px solid;
   .Header {
     text-align: center;
     font-size : 2vw;
@@ -33,7 +33,7 @@
       flex : 2;
       width :95%;
       margin :10px;
-      background-color: #da3450;
+      background-color: $lightpink;
     }
   }
 }
@@ -90,7 +90,7 @@
         flex : 2;
         width :95%;
         margin :10px;
-        background-color: #da3450;
+        background-color: $lightpink;
       }
     }
   }
