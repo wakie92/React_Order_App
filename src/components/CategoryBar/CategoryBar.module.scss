@@ -23,15 +23,10 @@
     display : none;
     width : 50%;
     z-index: 15;
-    transition : transform 0.3s ease-in-out;
   }
   .Open{
-    transform: translateX(0);
     display : block;
     position : fixed;
     height: 100%;
-  }
-  .Close {
-    transform: translateX(-80%);
   }
 }
