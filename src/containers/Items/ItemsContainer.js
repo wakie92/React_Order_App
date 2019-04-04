@@ -12,12 +12,10 @@ class ItemsContainer extends Component {
 
   componentDidMount()  {
     const { MenuDataUIActions } = this.props;
-    console.log('didmount')
     MenuDataUIActions.checkedTF({cash : false, card:false});
     MenuDataUIActions.getMenuList();
   }
   render() {
-    console.log('[ITEMS_CONTAINER] : render')
     const { menuData } = this.props;
     let controledMENU = [...menuData];
   return(

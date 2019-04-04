@@ -34,44 +34,6 @@ class OrderContainer extends Component {
     MenuDataUIActions.amountToPay(e.target.value);
   }
 
-  handleCount = (sign) => {
-    const { MenuDataUIActions, selectedMenu, selectedItem } = this.props;
-    let { totalPrice }  = this.props;
-    let arr = [...selectedMenu];
-    const index = arr.findIndex(item => item.id === selectedItem.id);
-    switch(sign) {
-      case  '+' :  
-        selectedItem.counter++;
-        totalPrice += selectedItem.price;
-        MenuDataUIActions.totalPrice(totalPrice);
-        arr = [
-          ...arr.slice(0,index),
-          selectedItem,
-          ...arr.slice(index+1,arr.length)
-              ]
-        MenuDataUIActions.selectedMenu(arr);
-      break;
-      case '-' :
-        totalPrice -= selectedItem.price;
-        MenuDataUIActions.totalPrice(totalPrice);
-        if(selectedItem.counter === 1 ) {
-          arr.splice(index,1);
-          MenuDataUIActions.selectedMenu(arr);
-        }else {
-          selectedItem.counter--;
-          arr = [
-            ...arr.slice(0,index),
-            selectedItem,
-            ...arr.slice(index+1,arr.length)
-                ]
-          MenuDataUIActions.selectedMenu(arr);
-        }
-      break;
-      default : 
-      break;
-    }
-    
-  }
   closeOrderListMobile = () => {
     const {MenuDataUIActions, } = this.props;
     MenuDataUIActions.backDraw(false) 
@@ -86,9 +48,8 @@ class OrderContainer extends Component {
         || nextProps.amoutToPay !== this.props.amountToPay
   } 
   render() {
-    console.log('[ORDER_CONTAINER] : render')
     const { totalPrice , selectedMenu ,ol_mobile , checkedTF, amountToPay} = this.props;
-    const { confirmOrderHandler, closeOrderListMobile,handleSelect, handleCount, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
+    const { confirmOrderHandler, closeOrderListMobile,handleSelect, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}
@@ -100,7 +61,6 @@ class OrderContainer extends Component {
         howMuchToPay = {handleAmountToPay}
         amountToPay = {amountToPay}
         toggleSelect = {handleSelect}
-        countControl = {handleCount}
         orderMobileV = {ol_mobile}
         closeOrderMobile = {closeOrderListMobile}
       >

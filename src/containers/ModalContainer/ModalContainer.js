@@ -50,7 +50,6 @@ class ModalContainer extends Component {
     return nextProps.modalShow !== this.props.modalShow;
   }
   render() {
-    console.log('[Modal_Containder] : render()')
     const {  getCloseModal , finalConfirm} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
     return (

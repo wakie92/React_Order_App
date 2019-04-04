@@ -58,7 +58,6 @@ class ToolbarContainer extends Component {
   render() {
     const { openOrderListMobile,openCategory, closeOrderListMobile } = this;
     const { backDraw, unLoginUser, isLogined ,loginUser } = this.props
-    console.log('toolbar')
     return (
       <>
         <Backdrop 

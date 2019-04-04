@@ -46,7 +46,7 @@ class LoginContainer extends Component {
     isSignUp: false,
 }
 
-checkValidity ( value, rules ) {
+checkValidity( value, rules ) {
   //유효성검사
   try {
     let isValid = true;
@@ -151,7 +151,6 @@ checkValidity ( value, rules ) {
     const { handleLogin , inputData,  handleLogout , changeIsSignUp, handleEnterKey } = this;
     const { loginID , isLogined }  = this.props;
     const {  isSignUp, userAuthData } = this.state;
-    console.log('render [ LoginContainer ]')
     const formElementsArr = [];
     for (let key in userAuthData ) {
       formElementsArr.push({

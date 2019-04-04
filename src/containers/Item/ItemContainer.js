@@ -8,8 +8,6 @@ class ItemContainer extends Component {
 
   
   shouldComponentUpdate (nextProps, nextState) {
-    //성공
-    //다시한번 봐보기 
     return this.props.counter !== nextProps.counter;
   }
   render() {

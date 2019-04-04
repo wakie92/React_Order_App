@@ -12,7 +12,6 @@ class OrderListContainer extends Component {
   }
   
   shouldComponentUpdate(nextProps, nextState) {
-    //성공
     return nextProps.selectedMenu !== this.props.selectedMenu;
   }
   render() {

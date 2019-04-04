@@ -19,8 +19,6 @@ class OrderHistoryContainer extends Component {
   }
   render() {
     const { orderHistoryItems }  = this.props;
-    console.log(this.props);
-    console.log('render [ OrderHistoryContainer ]')
     return (
       <OrderHistory
         Oh_List = {orderHistoryItems} 
