@@ -26,39 +26,43 @@ const modal = (props) => {
         <div className = {classes.ModalTop}>
           <span>주문확인</span>
         </div>
-        <div className = {classes.OrderSummary}>
-          <div className = {classes.DetailInfo}>
-            {os_menu}
+        <div className = { classes.ModalMain}> 
+          <div className = {classes.OrderSummaryWrapper}>
+            <div className = {classes.DetailInfo}>
+              {os_menu}
+            </div>
+            
+            <div className = {classes.ClientReq}>
           </div>
-          
-          <div className = {classes.ClientReq}>
-            <div className = {`${classes.OrderPrice} ${classes.Dist}`}>
-              <span className = {classes.ColumnName}>주문금액</span>
-              <div className = {classes.Contents}><span>{props.totalPrice}원</span></div>
-            </div>
-            <hr/>
-            <div className = {`${classes.PaymentWay} ${classes.Dist}`} >
-              <span className = {classes.ColumnName}>결제방법</span>
-              {
-                props.checkedTF['card'] 
-                ? <div className = {classes.Contents}> <span>카드결제</span> </div> 
-                : <div className = {classes.Contents}> <span>현금결제 {props.amountToPay}원</span></div> 
-              }
-            </div>
-            <hr/>
-            <div className = {`${classes.MessageSection} ${classes.Dist}`}>
-              <span className = {classes.ColumnName}>요청사항</span>
-              {
-                props.req === ""
-                ? <div className = {classes.Message}>(없음)</div>
-                : <div className = {classes.Message}>{props.req}</div>
-              }
-            </div>
-            <hr/>
+              <div className = {`${classes.OrderPrice} ${classes.Dist}`}>
+                <span className = {classes.ColumnName}>주문금액</span>
+                <div className = {classes.Contents}><span>{props.totalPrice}원</span></div>
+              </div>
+              <hr/>
+              <div className = {`${classes.PaymentWay} ${classes.Dist}`} >
+                <span className = {classes.ColumnName}>결제방법</span>
+                {
+                  props.checkedTF['card'] 
+                  ? <div className = {classes.Contents}> <span>카드결제</span> </div> 
+                  : <div className = {classes.Contents}> <span>현금결제 {props.amountToPay}원</span></div> 
+                }
+              </div>
+              <hr/>
+              <div className = {`${classes.MessageSection} ${classes.Dist}`}>
+                <span className = {classes.ColumnName}>요청사항</span>
+                {
+                  props.req === ""
+                  ? <div className = {classes.Message}>(없음)</div>
+                  : <div className = {classes.Message}>{props.req}</div>
+                }
+              </div>
+              <hr/>
         </div>
-        <Button btnType = "Confirm" clicked = {() => {props.finalConfirm()} }>주문확정</Button>
-      </div>
+          <div className = {classes.PaymentMethod}>
+          </div>
+        </div>
     </div>
+        <Button btnType = "Confirm" clicked = {() => {props.finalConfirm()} }>주문확정</Button>
     </div>
     : null
   )

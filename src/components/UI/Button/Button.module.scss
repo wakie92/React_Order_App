@@ -11,15 +11,16 @@
   font-size : 2.5vh;
 }
 .ConfirmOrder {
-  color: rgb(223, 73, 98);
-  font-size : 3vh;
+  font-size : 6vh;
   padding : 0 20px;
+  color : white;
+  font-weight: 300;
 }
 .CountBtn {
   font-weight: 600;
 }
 .Login {
-  background-color: rgb(223, 73, 98);
+  background-color: #da3450;
   margin : 10px;
 }
 .ShoppingCart {
@@ -33,7 +34,6 @@
 .Confirm {
   font-size : 2vh;
   padding : 1vh;
-  background-color: #F39278;
   color : white;
 }
 @media screen and (max-width : 1024px) {
