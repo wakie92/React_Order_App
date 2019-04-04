@@ -64,13 +64,16 @@
     .InfoWrapper {
       font-size: 16px;
       .DetailInfo, .ControlCount {
-        padding: 0 15px;
+        padding: 0 10px;
       }
     }
   }
   @media (max-width : 480px) {
     .InfoWrapper {
       font-size : 25px;
+      .DetailInfo, .ControlCount {
+        padding: 0 15px;
+      }
     }
   }
 }

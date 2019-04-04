@@ -9,14 +9,15 @@ const categoryBar = (props) => {
     attachedClasses = [classes.CategoryBar, classes.Close]
   }
   const sty = {
-    textDecoration : 'none'
+    textDecoration : 'none',
+    color : '#0C202D'
   }
   return (
     <nav className = {attachedClasses.join(' ')}>
       <div className = {classes.All}> 
         <NavLink  exact to = '/menu' 
                   style = {sty}
-                  onMouseOver = {(e) => {e.stopPropagation(); props.onPreload('Menu')}}> 모든 음식 </NavLink>
+                  onMouseOver = {(e) => {e.stopPropagation();  props.onPreload('Menu')}}> 모든 음식 </NavLink>
       </div>
       <div className = {classes.Login}> 
         <NavLink  exact to ='/login' 
