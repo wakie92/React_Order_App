@@ -9,14 +9,14 @@ import OrderRequirement from 'components/Order/OrderRequirement';
 class OrderContainer extends Component {
 
   confirmOrderHandler = () =>{
-    const {MenuDataUIActions, checkedTF, selectedMenu, amountToPay} = this.props;
+    const {MenuDataUIActions, selectedMenu, amountToPay} = this.props;
     //immutable 속성인 selectedMenu
     //객체를 set한 후에는 prototype이 Array로변하는 것을 이용
     return selectedMenu.hasOwnProperty('_root') ? 
-    alert('장바구니가 비어있습니다.') : (checkedTF['card'] && checkedTF['cash'] )=== false ?
-    alert('결제수단을 선택해주세요') : checkedTF['cash'] && amountToPay === 'select' ? 
-    alert('지불할 금액을 선택해주세요') : 
+    alert('장바구니가 비어있습니다.') : amountToPay === '' 
+    ? alert('지불할 금액과 방법을 선택해주세요') :
     import('components/UI/Modal/Modal').then(({default :  modalShow}) => {
+      this.closeOrderListMobile()
       MenuDataUIActions.confirm(true)
     }).then(() => {
       MenuDataUIActions.modalShow(true)

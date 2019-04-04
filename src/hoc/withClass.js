@@ -35,7 +35,6 @@ const withClass =(WrappedComponent) => {
       let controledCount = this.state.counter;
       const {price} = controledItem;
       let arr = [...selectedMenu];
-      console.log(userId)
       this.itemCountHandler(id);
       if(controledCount !== 0) {
         controledItem.counter = controledCount;

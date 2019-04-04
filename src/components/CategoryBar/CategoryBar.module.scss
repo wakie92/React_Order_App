@@ -7,17 +7,23 @@
   align-items: flex-start;
   grid-area : c;
   flex-direction: column;
+  font-size :25px;
   .All, .Login , .CheckOrderHistory{
     width: 100%;
     background-color: #DCAB8B;
     text-align: center;
-    font-size : 2.5vh;
     cursor: pointer;
     padding : 10px 0 ;
-    
+    .aTag{
+      width : 100%;
+    }
   }
 }
-
+@media screen and (max-width : 1024px) {
+  .CategoryBar {
+    font-size : 20px;
+  }
+}
 @media screen and (max-width : 768px) {
   .CategoryBar {
     display : none;

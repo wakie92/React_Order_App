@@ -1,10 +1,10 @@
 @import 'styles/utils.scss';
 
-.ReValue{
-  flex : 3;
-  width : 99.7%;
-  font-size : 2vh;
-  padding : 5px 0;
+.ReqBox{
+  display :flex;
+  flex-direction: row;
+  width : 100%;
+  align-items: center;
 }
 @media screen and (max-width : 1024px) {
   .ReValue{

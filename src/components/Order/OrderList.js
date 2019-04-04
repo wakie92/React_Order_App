@@ -2,17 +2,17 @@ import React from 'react';
 import classes from './OrderList.module.scss';
 
 
-const orderList = ({selectedMenu,toggleSelect}) => {
+const orderList = ({selectedMenu,deleteItem,key}) => {
+  
   const orderedItems = selectedMenu 
-  .map(item=> {
+  .map((item, idx)=> {
   return (
     <>
-      <div  className = {classes.OrderedItems} 
-            onClick = {(e) => {e.stopPropagation(); toggleSelect(item.id)}}
-            key = {item.id}
-            >
+      <div  className = {classes.OrderedItems} key = {key}>
         <span className = {classes.OrderedItemName}>{item.name}</span>
-        <span className = {classes.OrderedItemPrice}>취소</span>
+            
+        <span className = {classes.OrderedItemPrice} 
+              onClick = {(e) => {e.stopPropagation(); deleteItem(item.id)}} >취소</span>
         <span className = {classes.OrderedItemCount}>{item.counter}</span>
         <span className = {classes.OrderedItemTotalPrice}>{item.counter * item.price}원</span>
       </div>
@@ -21,9 +21,7 @@ const orderList = ({selectedMenu,toggleSelect}) => {
       )
   }) 
   return (
-    
-      
-    <div className = {classes.OrederdItemList }>{orderedItems}</div>
+    <div className = {classes.OrederdItemList } key = {key}>{orderedItems}</div>
   )
 }
 export default orderList;

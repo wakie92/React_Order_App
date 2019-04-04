@@ -5,14 +5,9 @@ import { connect } from 'react-redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
 class OrderListContainer extends Component {
   
-  handleSelect = (id) => {
+  handleDelete = (id) => {
     const { MenuDataUIActions, selectedMenu } = this.props;
-    let arr = [...selectedMenu];
-    const index = arr.findIndex(item => item.id === id);
-    arr.map(item => {
-      return item.id === id ? item.selected = true : item.selected = false
-    })
-    MenuDataUIActions.selectedItem(arr[index])
+    let arr = selectedMenu.filter(item => item.id !==id )
     MenuDataUIActions.selectedMenu(arr);
   }
   
@@ -22,10 +17,10 @@ class OrderListContainer extends Component {
   }
   render() {
     const { selectedMenu }  = this.props;
-    const { handleSelect }  = this;
+    const { handleDelete }  = this;
     return (
       <OrderList 
-        toggleSelect = {handleSelect}
+        deleteItem = {handleDelete}
         selectedMenu = {selectedMenu}
       />
     );

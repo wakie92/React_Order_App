@@ -42,7 +42,6 @@ class ModalContainer extends Component {
     arr.length = 0;
     MenuDataUIActions.getMenuList();
     MenuDataUIActions.selectedMenu(arr);
-    MenuDataUIActions.checkedTF({cash : false, card : false});
     MenuDataUIActions.requirement('');
     MenuDataUIActions.amountToPay('');
   }

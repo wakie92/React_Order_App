@@ -8,9 +8,6 @@ const categoryBar = (props) => {
   } else if (props.toolbar === false) {
     attachedClasses = [classes.CategoryBar, classes.Close]
   }
-  const activStyle = {
-    backgroundColor : 'rgb(146, 130, 119)',
-  }
   const sty = {
     textDecoration : 'none'
   }
@@ -18,20 +15,17 @@ const categoryBar = (props) => {
     <nav className = {attachedClasses.join(' ')}>
       <div className = {classes.All}> 
         <NavLink  exact to = '/menu' 
-                  style = {sty} 
-                  activeStyle = {activStyle} 
+                  style = {sty}
                   onMouseOver = {(e) => {e.stopPropagation(); props.onPreload('Menu')}}> 모든 음식 </NavLink>
       </div>
       <div className = {classes.Login}> 
         <NavLink  exact to ='/login' 
                   style = {sty} 
-                  activeStyle = {activStyle} 
                   onMouseOver = {(e) => {e.stopPropagation(); props.onPreload('Login')}}>로그인 </NavLink>
                   </div>
       <div className = {classes.CheckOrderHistory}> 
         <NavLink  exact to = '/log' 
                   style = {sty} 
-                  activeStyle = {activStyle} 
                   onMouseOver = {(e) => {e.stopPropagation(); props.onPreload('Log')}}>주문내역확인 </NavLink></div>
     </nav>
   )

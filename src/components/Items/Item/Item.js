@@ -4,7 +4,7 @@ import Button from 'components/UI/Button/Button';
 import ShoppingCart from 'react-icons/lib/md/shopping-cart';
 const item = (props) => {
   return (
-    <div className = {classes.Item}>
+    <div className = {classes.Item} key = {props.name}>
       <div className = {classes.MenuName}>{props.name}</div>
       <div className = {classes.WrapperImg}>
         <img src = {props.img} alt = {props.name}/>

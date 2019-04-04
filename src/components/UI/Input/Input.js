@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Input.module.scss';
 
 const input = ({invalid, shouldValidate, elementType, label,
-                changed, value, elementConfig, touched}) => {
+                changed, value, name, elementConfig, touched}) => {
   let inputElement = null;
   const inputClasses = [classes.InputElement];
 
@@ -22,6 +22,7 @@ const input = ({invalid, shouldValidate, elementType, label,
                         className = {inputClasses.join(' ')}
                         {...elementConfig}
                         value = {value}
+                        name = {name}
                         onChange  = {changed} /> 
       break;
     case 'select' : 

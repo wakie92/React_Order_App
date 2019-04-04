@@ -3,22 +3,88 @@ import classes from './OrderRequirement.module.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
+import Input from 'components/UI/Input/Input';
 class OrderRequirement extends Component {
+  state = {
+    reqForm : {
+      requirement: {
+          elementType: 'textarea',
+          elementConfig: {
+              type: 'textarea',
+              placeholder: '요청사항',
+              name : 'req'
+          },
+          value: '',
+          validation: {
+              required: true,
+          },
+          valid: true,
+          touched: false
+      },
+      payments: {
+        elementType: 'select',
+        elementConfig: {
+            type: 'select',
+            placeholder: '요청사항',
+            name : 'payments',
+            options : [
+              {value : '', displayValue : '----------------'}
+              ,{value : '카드', displayValue : '카드'}
+              ,{value : '10000', displayValue : '10000원'}
+              ,{value : '15000', displayValue : '15000원'}
+              ,{value : '20000', displayValue : '20000원'}
+              ,{value : this.props.totalPrice, displayValue : '금액에 맞게'}
+            ]
+        },
+        value: '',
+        validation: {
+            required: true,
+        },
+        valid: true,
+        touched: false
+    },
+    }
+}
+  handleRequirementChange = (e, controlForm) => {
+    const { MenuDataUIActions } = this.props;
+    try {
+      console.log(e.target.value);
+      controlForm === 'requirement' ?  MenuDataUIActions.requirement(e.target.value)
+      : e.target.value === '카드' ? MenuDataUIActions.checkedTF({card : true}).amountToPay(e.target.value) 
+      : MenuDataUIActions.amountToPay(e.target.value)
 
-  handleRequirementChange = (e) => {
-    const { MenuDataUIActions} = this.props;
-    MenuDataUIActions.requirement(e.target.value)
+    } catch(err) {
+      console.log(err);
+    }
   }
- 
   render() {
     console.log('render [OrderRequirement]')
-    //inputUI
+    const {reqForm} = this.state;
+    const {handleRequirementChange} = this;
+    let formElements = []
+    for (let key in reqForm ) {
+      formElements.push({
+        id : key,
+        config : reqForm[key]
+      })
+    }
+    const form = formElements.map(formElement => (
+      <Input
+        key = {formElement.id}
+        elementType = {formElement.config.elementType}
+        elementConfig = {formElement.config.elementConfig}
+        value = {this.props.req_before}
+        name = { formElement.config.name}
+        invalid = {!formElement.config.valid}
+        shouldValidate={formElement.config.validation}
+        touched = {formElement.config.touched}
+        changed = {(e) => handleRequirementChange(e, formElement.id)}
+      />
+    ))
     return(
-      <textarea 
-        className = {classes.ReValue} 
-        onChange = {this.handleRequirementChange}
-        value = {this.props.req_before} 
-        placeholder = "요청사항" />
+      <div className = {classes.ReqBox}>
+        {form}
+      </div>
     )
   }
 }

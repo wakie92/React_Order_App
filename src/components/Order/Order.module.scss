@@ -66,6 +66,11 @@
       width :100%;
       font-size : 50px;
     }
+    .ReqBox {
+      display : flex;
+      flex-direction: row;
+      width : 100%;
+    }
     .Payment {
       flex : 2;
       width : 100%;

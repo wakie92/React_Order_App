@@ -33,7 +33,6 @@ const modal = (props) => {
             </div>
             
             <div className = {classes.ClientReq}>
-          </div>
               <div className = {`${classes.OrderPrice} ${classes.Dist}`}>
                 <span className = {classes.ColumnName}>주문금액</span>
                 <div className = {classes.Contents}><span>{props.totalPrice}원</span></div>
@@ -57,12 +56,13 @@ const modal = (props) => {
                 }
               </div>
               <hr/>
-        </div>
-          <div className = {classes.PaymentMethod}>
           </div>
+            <Button btnType = "Confirm" clicked = {() => {props.finalConfirm()} }>주문확정</Button>
+        </div>
+          {/* <div className = {classes.PaymentMethod}>
+          </div> */}
         </div>
     </div>
-        <Button btnType = "Confirm" clicked = {() => {props.finalConfirm()} }>주문확정</Button>
     </div>
     : null
   )

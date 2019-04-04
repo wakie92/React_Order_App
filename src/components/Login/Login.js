@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Login.module.scss'
 import Button from 'components/UI/Button/Button'
-const login = ({onLogin , onInput , onKeyPress, isSignup, isLogined, onChangeMode, form, loginID, onLogout }) => {
+const login = ({onLogin , isSignup, isLogined, onChangeMode, form, loginID, onLogout }) => {
   return (
     <div className = {classes.LoginWrapper}>
        {
