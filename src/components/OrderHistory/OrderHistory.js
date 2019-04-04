@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './OrderHistory.module.scss';
 
-const HistoryLog = ({oh_req, oh_time, oh_totalPrice,  oh_userid, oh_menu,}) => {
+const HistoryLog = ({ oh_time, oh_menu,}) => {
   const oh_menu_list = oh_menu.map((data,idx) => {
     const { counter,  name, price }  = data;
     return(
@@ -24,7 +24,6 @@ const HistoryLog = ({oh_req, oh_time, oh_totalPrice,  oh_userid, oh_menu,}) => {
   })
   return (
     <>
-        {/* {oh_req} {oh_totalPrice} {oh_userid} {oh_time} */}
       <div className = {classes.OrderHistoryList}>
           {oh_menu_list}
       </div>

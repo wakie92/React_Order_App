@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import OrderHistory from 'components/OrderHistory'
+import OrderHistory from 'components/OrderHistory/OrderHistory'
 import {withFirebase}  from 'hoc/Firebase';
 import * as menuDataUIActions from 'store/modules/menuDataUI'
 import * as orderHistoryDataActions from 'store/modules/orderHistoryData';
