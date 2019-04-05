@@ -32,7 +32,7 @@
     }
     Button{
       flex : 2;
-      width :95%;
+      width : 100%;
       // margin :10px;
       background-color: $lightpink;
     }
@@ -41,7 +41,6 @@
 
 @media screen and (max-width : 1024px ) {
   .Order {
-    height: 100%;
     .TotalPrice{
       font-size : 2vh;
     }
@@ -71,7 +70,7 @@
     align-items: flex-start;
     .Header {
       width :100%;
-      font-size : 50px;
+      font-size : 5vh;
     }
     .ReqBox {
       display : flex;
@@ -95,15 +94,9 @@
       }
       Button{
         flex : 2;
-        width :95%;
-        margin :10px;
+        // margin :10px;
         background-color: $lightpink;
       }
     }
-  }
-}
-@media screen and (max-width : 480px) {
-    .TotalPrice{
-      font-size : 20px;
   }
 }
