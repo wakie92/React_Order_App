@@ -9,10 +9,10 @@
   font: inherit;
   font-weight: bold;
   letter-spacing: 2pt;
-  font-size : 2.5vh;
+  // font-size : 2.5vh;
 }
 .ConfirmOrder {
-  font-size : 6vh;
+  font-size : 60px;
   padding : 0 20px;
   color : white;
   font-weight: 300;
@@ -22,6 +22,7 @@
 }
 .Login {
   background-color: $lightpink;
+  font-size : 20px;
   margin : 10px;
 }
 .ShoppingCart {
@@ -39,14 +40,18 @@
   background-color: $lightpink;
   margin : 10px;
 }
+@media screen and (max-width : 1024px) {
+  .ConfirmOrder {
+    font-size : 45px;
+  }
+}
 @media screen and (max-width : 768px) {
   .ShoppingCart {
     font-size : 4vw;
   }
   .ConfirmOrder {
-    font-size : 4vh;
-    margin : 0 5px;
-    padding : 0 10px;
+    font-size : 45px;
+    margin: none;
   }
 }
 @media screen and (max-width : 450px) {

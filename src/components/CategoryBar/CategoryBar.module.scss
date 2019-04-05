@@ -26,13 +26,19 @@
 }
 @media screen and (max-width : 768px) {
   .CategoryBar {
-    display : none;
+    position : fixed;
     width : 50%;
-    z-index: 15;
+    z-index: 16;
+    transform: translate(-500px, 60px);
+    transition-timing-function: ease-in-out;
+    border: none;
   }
   .Open{
-    display : block;
+    display : flex;
     position : fixed;
     height: 100%;
+    transform: translate(0, 60px);
+    transition-timing-function: ease-in-out;
+    transition : 0.3s;
   }
 }

@@ -7,9 +7,10 @@
   flex-direction: column;
   justify-content: space-around;
   border: $lightorange 5px solid;
+  height: calc(100% - 10px);
   .Header {
     text-align: center;
-    font-size : 2vw;
+    font-size : 30px;
     flex: 1;
     @include ArrangeCenter;
   }
@@ -26,13 +27,13 @@
       align-items: center;
       flex: 1;
       width: 95%;
-      font-size : 4vh;
-      margin : 10px;
+      font-size : 25px;
+      // margin : 10px;
     }
     Button{
       flex : 2;
       width :95%;
-      margin :10px;
+      // margin :10px;
       background-color: $lightpink;
     }
   }
@@ -40,25 +41,31 @@
 
 @media screen and (max-width : 1024px ) {
   .Order {
-    padding-bottom: 10px;
+    height: 100%;
+    .TotalPrice{
+      font-size : 2vh;
+    }
   }
 }
 @media screen and (max-width : 768px) {
   .Order{
-    position: absolute;
+    position: fixed;
     right : 80px;
-    transform: translateX(500px);
+    height : 80%;
+    opacity: 0;
+    transform: translate(500px, 60px);
     transition-timing-function: ease-in-out;
     border: none;
   }
   .Mobile {
     display: flex;
     position: fixed;
-    transform: translateX(80px);
+    transform: translate(80px, 60px);
     transition-timing-function: ease-in-out;
     transition : 0.3s;
     z-index: 15;
     height: 80%;
+    opacity: 1;
     width: 80%;
     background-color: white;
     align-items: flex-start;
@@ -84,7 +91,7 @@
         flex: 1;
         width: 95%;
         font-size : 4vh;
-        margin : 10px;
+        margin : 5px;
       }
       Button{
         flex : 2;
@@ -93,5 +100,10 @@
         background-color: $lightpink;
       }
     }
+  }
+}
+@media screen and (max-width : 480px) {
+    .TotalPrice{
+      font-size : 20px;
   }
 }

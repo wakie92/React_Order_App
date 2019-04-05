@@ -21,7 +21,6 @@ const order = (props) => {
           <div className = {classes.TotalPrice}>
             <span>주문금액</span><span>{props.totalPrice}원</span>
           </div>
-          <hr/>
           <Button btnType = "ConfirmOrder"  clicked = {props.ConfirmOrder}>주문하기</Button>
         </div>
       </div>

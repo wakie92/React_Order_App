@@ -68,3 +68,15 @@
     }
   }
 }
+@media screen and (max-width : 430px) {
+}
+@media screen and (max-width : 375px) {
+  .Toolbar {
+    .Logo {
+      font-size : 16px
+    }
+    .User, .Hamburger {
+      font-size : 12px;
+    }
+  }
+}
