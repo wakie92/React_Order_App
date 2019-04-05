@@ -29,7 +29,7 @@
     position : fixed;
     width : 50%;
     z-index: 16;
-    transform: translate(-500px, 60px);
+    transform: translate(-500px);
     transition-timing-function: ease-in-out;
     border: none;
   }
@@ -37,8 +37,17 @@
     display : flex;
     position : fixed;
     height: 100%;
-    transform: translate(0, 60px);
+    transform: translate(0);
     transition-timing-function: ease-in-out;
     transition : 0.3s;
+  }
+}
+
+@media screen and (max-width : 480px) {
+  .CategoryBar {
+    transform: translate(-500px, 60px);
+  }
+  .Open{
+    transform: translate(0, 60px);
   }
 }
