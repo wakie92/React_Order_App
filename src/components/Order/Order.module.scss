@@ -52,14 +52,14 @@
     right : 80px;
     height : 80%;
     opacity: 0;
-    transform: translate(500px, 60px);
+    transform: translate(500px);
     transition-timing-function: ease-in-out;
     border: none;
   }
   .Mobile {
     display: flex;
     position: fixed;
-    transform: translate(80px, 60px);
+    transform: translate(80px);
     transition-timing-function: ease-in-out;
     transition : 0.3s;
     z-index: 15;
@@ -98,5 +98,13 @@
         background-color: $lightpink;
       }
     }
+  }
+}
+@media screen and (max-width : 480px) {
+  .Order{
+    transform: translate(500px, 60px);
+  }
+  .Mobile {
+    transform: translate(80px, 60px);
   }
 }
