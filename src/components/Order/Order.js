@@ -15,7 +15,7 @@ const order = (props) => {
           <span>장바구니</span>
         </div>
         <hr/>
-        <OrderListContainer/>
+        <OrderListContainer />
         <OrderRequirement totalPrice = {props.totalPrice}/>
         <div className = {classes.Payment} onClick = {(e) =>  e.stopPropagation()}>
           <div className = {classes.TotalPrice}>

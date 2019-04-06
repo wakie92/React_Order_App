@@ -50,7 +50,6 @@ checkValidity( value, rules ) {
   //유효성검사
   try {
     let isValid = true;
-    
     if ( !rules ) {
         return true;
     }

@@ -7,13 +7,18 @@ class OrderListContainer extends Component {
   
   handleDelete = (id) => {
     const { MenuDataUIActions, selectedMenu } = this.props;
+    let idx = selectedMenu.findIndex(item => item.id === id);
     let arr = selectedMenu.filter(item => item.id !==id )
-    MenuDataUIActions.selectedMenu(arr);
+    console.log(selectedMenu);
+    alert('s');
+    console.log(arr);
+    // MenuDataUIActions.deletePrice(arr);
+    // MenuDataUIActions.selectedMenu(arr);
   }
   
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.selectedMenu !== this.props.selectedMenu;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   // return nextProps.selectedMenu !== this.props.selectedMenu;
+  // }
   render() {
     const { selectedMenu }  = this.props;
     const { handleDelete }  = this;
