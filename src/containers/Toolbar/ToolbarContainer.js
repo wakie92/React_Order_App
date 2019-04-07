@@ -8,13 +8,6 @@ import Backdrop from 'components/UI/Modal/Backdrop/Backdrop';
 
 class ToolbarContainer extends Component {
 
-  randomKey = () => {
-    let key = '';
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for( var i=0; i < 5; i++ )
-        key += possible.charAt(Math.floor(Math.random() * possible.length));
-    return key;
-  }
   openCategory = () =>{
     const { MenuDataUIActions, toolbar } = this.props;
       if(toolbar === false) { 

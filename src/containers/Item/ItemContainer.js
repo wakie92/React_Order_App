@@ -32,7 +32,7 @@ class ItemContainer extends Component {
 export default connect((state) => ({
   selectedMenu : state.menuDataUI.get('selectedMenu'),
   totalPrice : state.menuDataUI.get('totalPrice'),
-  userId : state.loginData.getIn(['loginUser','id'])
+  userId : state.loginData.getIn(['loginUser','userId'])
 }),
 (dispatch) => ({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

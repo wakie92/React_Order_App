@@ -3,7 +3,8 @@ import React ,{Component} from 'react';
 const withClass =(WrappedComponent) => {
   return  class CounterControl extends Component {
     state = {
-      counter : 0
+      counter : 0,
+      key : null
     }
   
     //count 코드 최적화 해야함//
@@ -37,15 +38,17 @@ const withClass =(WrappedComponent) => {
       let arr = [...selectedMenu];
       this.itemCountHandler(id);
       if(controledCount !== 0) {
+        console.log('item')
         controledItem.counter = controledCount;
-        //차후에 concat으로 변경 시도해보기
         arr.push({...controledItem, key : id, userId});
         totalPrice += controledCount*price;
         MenuDataUIActions.totalPrice(totalPrice);
         MenuDataUIActions.selectedMenu(arr);  
-        }
+      }
+      console.log(arr);
       this.setState({counter : 0})
     }
+    
       render() {
         const {itemCountHandler, orderedItemHandler } = this;
         const { counter }  = this.state

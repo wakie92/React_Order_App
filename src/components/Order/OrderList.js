@@ -3,7 +3,7 @@ import classes from './OrderList.module.scss';
 
 
 const orderList = ({selectedMenu,deleteItem}) => {
-  
+  console.log('sdfd')
   const orderedItems = selectedMenu 
   .map((item, idx)=> {
   return (
