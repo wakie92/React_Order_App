@@ -1,14 +1,13 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import classes from './OrderList.module.scss';
 
 
 const orderList = ({selectedMenu,deleteItem}) => {
-  console.log('sdfd')
   const orderedItems = selectedMenu 
   .map((item, idx)=> {
   return (
-    <>
-      <div  className = {classes.OrderedItems} key = {item.id + idx}>
+    <Fragment key = {item.name + item.id}>
+      <div  className = {classes.OrderedItems} >
         <span className = {classes.OrderedItemName}>{item.name}</span>
         <span className = {classes.OrderedItemPrice} 
               onClick = {(e) => {e.stopPropagation(); deleteItem(item.id)}} >취소</span>
@@ -16,7 +15,7 @@ const orderList = ({selectedMenu,deleteItem}) => {
         <span className = {classes.OrderedItemTotalPrice}>{item.counter * item.price}원</span>
       </div>
       <hr/>
-    </>
+    </Fragment>
       )
   }) 
   return (

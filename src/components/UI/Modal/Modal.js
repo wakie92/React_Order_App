@@ -1,12 +1,12 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import classes from './Modal.module.scss';
-import Button from 'components/UI/Button/Button'
+import Button from 'components/UI/Button/Button';
 const modal = (props) => {
   const os_menu = props.selectedMenu.map(
     (item) => {
       return(
-        <>
-          <div className = {classes.ArrangedItem}>
+        <Fragment key = {item.name + item.id}>
+          <div className = {classes.ArrangedItem} key = {item.name+item.id}>
             <img className = {classes.ItemImg} alt = {item.name} src = {item.img}/>
             <div className = {classes.Info}>
               <span> {item.name} </span>
@@ -15,7 +15,7 @@ const modal = (props) => {
             </div>
           </div>
           <hr/>
-        </>
+        </Fragment>
       )
     }
   )
