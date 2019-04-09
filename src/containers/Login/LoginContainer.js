@@ -145,7 +145,6 @@ checkValidity( value, rules ) {
   componentDidMount() {
     const {LoginDataActions}= this.props;
     let isLogin = localStorage.getItem('emailId') ? true : false;
-    console.log(isLogin);
     return LoginDataActions.isLogined(isLogin);
   }
   render() {

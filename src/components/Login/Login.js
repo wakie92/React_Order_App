@@ -1,9 +1,8 @@
 import React from 'react';
 import classes from './Login.module.scss'
 import Button from 'components/UI/Button/Button'
-const login = ({onLogin , isSignup, isLogined, onChangeMode, form, loginID, onLogout }) => {
-  console.log(isLogined);
-  console.log(localStorage.getItem('emailId'));
+const login = ({onLogin , isSignup, isLogined, onChangeMode, form, onLogout }) => {
+  const localEmail = localStorage.getItem('emailId');
   return (
     <div className = {classes.LoginWrapper}>
        {
@@ -21,7 +20,7 @@ const login = ({onLogin , isSignup, isLogined, onChangeMode, form, loginID, onLo
         :
           <div  className = {classes.LoginBox}>
             <span className  = {classes.WelcomeMessage}>
-              [{loginID}]님 로그인 되셨습니다.
+              [{localEmail}]님 로그인 되셨습니다.
             </span>
             <Button className = {classes.Logout} clicked = {onLogout} btnType = 'Logout'>로그아웃</Button>
           </div>

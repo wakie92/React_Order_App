@@ -6,6 +6,9 @@ const toolbar = ({loginUser, openCategory, openOrderListMobile}) => {
   const sty = {
     textDecoration : 'none'
   }
+  let isLogin =  localStorage.getItem('emailId') ? localStorage.getItem('emailId') : loginUser;
+  console.log(localStorage.getItem('eamilId'));
+  console.log(loginUser);
   return(
     <header className = {classes.Toolbar}>
       <nav className  = {classes.Hamburger} onClick = {(e) => {e.stopPropagation(); openCategory()}}>
@@ -17,7 +20,7 @@ const toolbar = ({loginUser, openCategory, openOrderListMobile}) => {
         <NavLink exact to = '/' style = {sty}>Order machine</NavLink>
       </div>
       <div className = { classes.User}>
-            <span> [{localStorage.getItem('emailId')}] </span>
+            <span> [{isLogin}] </span>
         <Payment className = {classes.Payment} onClick = {(e) => {e.stopPropagation(); openOrderListMobile()}}/>
       </div>
     </header>

@@ -28,8 +28,7 @@ const initialState = fromJS({
 export default handleActions({
   [GET_USER_ID] :(state, action) => {
     const { idToken, email ,expiresIn, localId}  = action.payload;
-    let isLogined = localStorage.getItem('emailId') ? true : false;
-    console.log(isLogined);
+    let isLogined = localStorage.getItem('emailId') === null ? true : false;
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
           localStorage.setItem('token', idToken);
           localStorage.setItem('expirationDate', expirationDate);
@@ -60,6 +59,7 @@ export default handleActions({
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for( var i=0; i < 5; i++ )
         key += possible.charAt(Math.floor(Math.random() * possible.length));
+    console.log(key);
     return state.setIn(['loginUser', 'userId'],key);
   }
 }, initialState)
