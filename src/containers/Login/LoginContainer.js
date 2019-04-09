@@ -48,7 +48,6 @@ class LoginContainer extends Component {
 
 checkValidity( value, rules ) {
   //유효성검사
-  try {
     let isValid = true;
     if ( !rules ) {
         return true;
@@ -66,10 +65,7 @@ checkValidity( value, rules ) {
         isValid = pattern.test( value ) && isValid
     }
     return isValid;
-  } catch(err) {
-    console.log(err);
   }
-}
   inputData = (e, controlUser) => {
     try {
       const updatedAuthUser = {
@@ -145,6 +141,12 @@ checkValidity( value, rules ) {
       console.log(err);
     }
     
+  }
+  componentDidMount() {
+    const {LoginDataActions}= this.props;
+    let isLogin = localStorage.getItem('emailId') ? true : false;
+    console.log(isLogin);
+    return LoginDataActions.isLogined(isLogin);
   }
   render() {
     const { handleLogin , inputData,  handleLogout , changeIsSignUp, handleEnterKey } = this;

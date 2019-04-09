@@ -28,24 +28,29 @@ const initialState = fromJS({
 export default handleActions({
   [GET_USER_ID] :(state, action) => {
     const { idToken, email ,expiresIn, localId}  = action.payload;
+    let isLogined = localStorage.getItem('emailId') ? true : false;
+    console.log(isLogined);
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
           localStorage.setItem('token', idToken);
           localStorage.setItem('expirationDate', expirationDate);
           localStorage.setItem('userId', localId);
+          localStorage.setItem('emailId',email);
     return state.setIn(['loginUser', 'userId'], email)
                 .setIn(['loginUser', 'token'], idToken)
                 .setIn(['loginUser', 'error'], null)
                 .setIn(['loginUser', 'loading'], false)
-                .set('isLogined', true)
+                .set('isLogined', isLogined)
   },
   [ISLOGINED] : (state, action) => {
     const isLogined = action.payload;
-    return state.set('isLogined', isLogined);
+    return state.set('isLogined', isLogined)
+
   },
   [LOGOUT] :  (state, action) => {
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
     localStorage.removeItem('userId');
+    localStorage.removeItem('emailId');
     return state.setIn(['loginUser', 'userId'], null)
                 .setIn(['loginUser','token'], null)
                 .set('isLogined', false)
