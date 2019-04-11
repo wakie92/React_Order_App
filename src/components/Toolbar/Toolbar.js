@@ -6,7 +6,7 @@ const toolbar = ({loginUser, openCategory, openOrderListMobile}) => {
   const sty = {
     textDecoration : 'none'
   }
-  let isLogin =  localStorage.getItem('emailId') ? localStorage.getItem('emailId') : loginUser;
+  let isLogin =  localStorage.getItem('emailId') ? '로그아웃' : loginUser;
   console.log(localStorage.getItem('eamilId'));
   console.log(loginUser);
   return(
