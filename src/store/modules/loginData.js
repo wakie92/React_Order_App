@@ -59,7 +59,6 @@ export default handleActions({
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for( var i=0; i < 5; i++ )
         key += possible.charAt(Math.floor(Math.random() * possible.length));
-    console.log(key);
     return state.setIn(['loginUser', 'userId'],key);
   }
 }, initialState)
