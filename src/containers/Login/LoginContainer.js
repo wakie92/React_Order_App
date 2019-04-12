@@ -125,17 +125,27 @@ checkValidity( value, rules ) {
         password : userAuthData.password.value,
         returnSecureToken : true,
       }
-      let errorMessage = '존재하는 아이디입니다.';
+      let errorMessage = 
+      [
+        '존재하는 아이디입니다.',
+        '이메일 주소와 비밀번호를 확인해주세요',
+        '비밀번호 형식이 맞지 않습니다'
+      ];
       let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyAVbIamQ34eNUx7XuoQvKq8CSfXJku30qU'
       if(!isSignUp) {
         url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAVbIamQ34eNUx7XuoQvKq8CSfXJku30qU'
-        errorMessage = '이메일 주소와 비밀번호를 확인해주세요'
       }
       await axios.post(url,authData).then(res => {
         LoginDataActions.getUserId(res.data);
       }).catch(err => {
         console.log(err);
-        alert(errorMessage);
+        if(!userAuthData.password.valid) {
+          alert(errorMessage[2])
+        } else if(!isSignUp) {
+          alert(errorMessage[1])
+        } else {
+          alert(errorMessage[0])
+        }
       })
     } catch(err) {
       console.log(err);
