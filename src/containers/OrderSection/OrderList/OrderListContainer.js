@@ -5,10 +5,9 @@ import { connect } from 'react-redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
 class OrderListContainer extends Component {
 
-  handleDelete = (id) => {
+  handleDelete = (idx) => {
     const { MenuDataUIActions, selectedMenu, totalPrice } = this.props;
-    const idx = selectedMenu.findIndex(item => item.id === id);
-    let deletedArr = selectedMenu.filter(item => item.id !==id )
+    let deletedArr = selectedMenu.filter((item, index) => index!==idx );
     let deletedPrice = totalPrice - selectedMenu[idx].price;
     MenuDataUIActions.selectedMenu(deletedArr);
     MenuDataUIActions.totalPrice(deletedPrice);
@@ -20,6 +19,7 @@ class OrderListContainer extends Component {
   render() {
     const { selectedMenu }  = this.props;
     const { handleDelete }  = this;
+    console.log(selectedMenu);
     return (
       <OrderList 
         deleteItem = {handleDelete}
