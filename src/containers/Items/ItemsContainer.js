@@ -5,10 +5,6 @@ import { bindActionCreators } from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
 
 class ItemsContainer extends Component {
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   //성공
-  //   return nextProps.controledMENU !== this.props.controledMENU;
-  // }
 
   componentDidMount()  {
     const { MenuDataUIActions } = this.props;

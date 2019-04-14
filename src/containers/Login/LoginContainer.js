@@ -49,25 +49,24 @@ class LoginContainer extends Component {
 checkValidity( value, rules ) {
   //유효성검사
     let isValid = true;
-    if ( !rules ) {
+    if(!rules) {
         return true;
     }
   
-    if ( rules.required ) {
+    if(rules.required) {
         isValid = value.trim() !== '' && isValid;
     }
-    if ( rules.minLength ) {
+    if(rules.minLength) {
         isValid = value.length >= rules.minLength && isValid
     }
   
-    if ( rules.isEmail ) {
+    if (rules.isEmail) {
         const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
         isValid = pattern.test( value ) && isValid
     }
     return isValid;
   }
   inputData = (e, controlUser) => {
-    try {
       const updatedAuthUser = {
         ...this.state.userAuthData,
         [controlUser] : {
@@ -78,9 +77,6 @@ checkValidity( value, rules ) {
         }
       };
       this.setState({userAuthData : updatedAuthUser});
-    } catch(err) {
-      console.log(err);
-    }
   }
   
   handleEnterKey = (e) => {
@@ -88,6 +84,7 @@ checkValidity( value, rules ) {
       this.handleLogin();
     }
   }
+  
   handleLogout = () => {
     const { LoginDataActions }  = this.props;
     const { userAuthData } = this.state;
