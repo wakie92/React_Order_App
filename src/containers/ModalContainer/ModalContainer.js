@@ -17,23 +17,28 @@ class ModalContainer extends Component {
 
   finalConfirm = async () => {
     const { MenuDataUIActions, req,  loginId ,checkedTF, selectedMenu, totalPrice } = this.props;
-    await selectedMenu.map((item) =>  {
+    try{
+      const userId =  loginId ;
+      const orderTime = new Date();
+      const os_time = [orderTime.getFullYear(), orderTime.getMonth()+1, orderTime.getDate()].join('-')
+      await selectedMenu.map((item) =>  {
         item.count++
         return MenuDataUIActions.counterUp(item.id, item.count)
       })
-    const userId =  loginId ;
-    const orderTime = new Date();
-    const os_time = [orderTime.getFullYear(), orderTime.getMonth()+1, orderTime.getDate()].join('-')
-    await MenuDataUIActions.postMenuAsync({ 
-      os_req : req,
-      os_paymentMethod : checkedTF,
-      selectedMenu,
-      os_totalPrice : totalPrice,
-      os_userId : userId,
-      os_time : os_time
-    });
-    this.getCloseModal();
-    this.getInitialize();
+      await MenuDataUIActions.postMenuAsync({ 
+        os_req : req,
+        os_paymentMethod : checkedTF,
+        selectedMenu,
+        os_totalPrice : totalPrice,
+        os_userId : userId,
+        os_time : os_time
+      });
+      this.getCloseModal();
+      this.getInitialize();
+    } catch(err) {
+      console.log(err)
+    }
+    
   }
 
   getInitialize = () => {
