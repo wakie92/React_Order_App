@@ -4,7 +4,6 @@ import CategoryBar from 'components/CategoryBar/CategoryBar';
 class CategoryBarContainer extends Component {
   //코드스플리팅 중 깜박임현상 잡기 위한 코드
   handleMouseOver = (tg) => {
-    try {
       switch(tg) {
         case 'Menu' : import('pages/index').then((pages) => {
           pages.Menu.preload();
@@ -20,9 +19,6 @@ class CategoryBarContainer extends Component {
               break;
         default :  console.log('error');
         break;
-      }
-    } catch(err){
-      console.log(err)
     }
   };
   render() {
