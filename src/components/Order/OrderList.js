@@ -14,8 +14,8 @@ const orderList = ({selectedMenu,deleteItem}) => {
       <Fragment key = {key}>
         <div  className = {classes.OrderedItems} >
           <span className = {classes.OrderedItemName}>{item.name}</span>
-          <span className = {classes.OrderedItemPrice} 
-                onClick = {(e) => {e.stopPropagation(); deleteItem(idx)}} >취소</span>
+          <div className = {classes.OrderedItemPrice}> 
+            <span className = {classes.Deleted} onClick = {(e) => {e.stopPropagation(); deleteItem(idx)}} >취소</span></div>
           <span className = {classes.OrderedItemCount}>{item.counter}</span>
           <span className = {classes.OrderedItemTotalPrice}>{item.counter * item.price}원</span>
         </div>
