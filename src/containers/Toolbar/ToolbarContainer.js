@@ -26,16 +26,12 @@ class ToolbarContainer extends Component {
   }
   openOrderListMobile = () => {
     const { MenuDataUIActions, ol_mobile } = this.props;
-    try {
-      if(ol_mobile === false) { 
-        MenuDataUIActions.backDraw(true); 
-        MenuDataUIActions.ol_mobile(true);
-      }
-      else if(ol_mobile === true) { 
-        this.closeOrderListMobile();
-      }
-    } catch(err) {
-      console.log(err);
+    if(ol_mobile === false) { 
+      MenuDataUIActions.backDraw(true); 
+      MenuDataUIActions.ol_mobile(true);
+    }
+    else if(ol_mobile === true) { 
+      this.closeOrderListMobile();
     }
   } 
   componentDidMount() {

@@ -48,7 +48,7 @@ class OrderContainer extends Component {
         || nextProps.amoutToPay !== this.props.amountToPay
   } 
   render() {
-    const { totalPrice , selectedMenu ,ol_mobile , checkedTF, amountToPay} = this.props;
+    const { totalPrice, selectedMenu ,ol_mobile , checkedTF, amountToPay} = this.props;
     const { confirmOrderHandler, closeOrderListMobile, handleSelect, 
             handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
     return (

@@ -15,17 +15,17 @@ class ModalContainer extends Component {
     MenuDataUIActions.backDraw(false);
   }
 
-  finalConfirm =   () => {
+  finalConfirm = async () => {
     const { MenuDataUIActions, req, loginId ,checkedTF, selectedMenu, totalPrice } = this.props;
     try {
       const userId =  loginId ;
       const orderTime = new Date();
       const os_time = [orderTime.getFullYear(), orderTime.getMonth()+1, orderTime.getDate()].join('-')
-      selectedMenu.map((item) =>  {
+      await selectedMenu.map((item) =>  {
         item.count++
         return MenuDataUIActions.counterUp(item.id, item.count)
       })
-      MenuDataUIActions.postMenuAsync({ 
+      await MenuDataUIActions.postMenuAsync({ 
         os_req : req,
         os_paymentMethod : checkedTF,
         selectedMenu,
