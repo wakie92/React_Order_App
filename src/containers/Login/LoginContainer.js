@@ -12,6 +12,7 @@ class LoginContainer extends Component {
   //1. render후 바로 state를 이용할 수 있음.
   //2. 기본적인 데이터의 틀이 필요할때는 local state를 만들어서 사용하는 것이 유용
   // 만일 다른 component들도 필요하거나 공유해야만 하는 경우에는 local state와 같은 모양의  action을 만드는 것이 낫다고 생각함.
+  
   state = {
     userAuthData: {
         email: {
