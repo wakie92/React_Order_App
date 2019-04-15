@@ -49,7 +49,8 @@ class OrderContainer extends Component {
   } 
   render() {
     const { totalPrice , selectedMenu ,ol_mobile , checkedTF, amountToPay} = this.props;
-    const { confirmOrderHandler, closeOrderListMobile,handleSelect, handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
+    const { confirmOrderHandler, closeOrderListMobile, handleSelect, 
+            handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}

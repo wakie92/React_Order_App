@@ -31,21 +31,19 @@ const withClass =(WrappedComponent) => {
       }
     }
     orderedItemHandler = (id, userId) => {
-      let {  MenuDataUIActions,selectedMenu,totalPrice } = this.props;
+      let { MenuDataUIActions, selectedMenu, totalPrice } = this.props;
       let controledItem = {...this.props.menu};
       let controledCount = this.state.counter;
       const {price} = controledItem;
-      let arr = [...selectedMenu];
+      let orderedListArr = [...selectedMenu];
       this.itemCountHandler(id);
       if(controledCount !== 0) {
-        console.log('item')
         controledItem.counter = controledCount;
-        arr.push({...controledItem, key : id, userId});
+        orderedListArr.push({...controledItem, key : id, userId});
         totalPrice += controledCount*price;
         MenuDataUIActions.totalPrice(totalPrice);
-        MenuDataUIActions.selectedMenu(arr);  
+        MenuDataUIActions.selectedMenu(orderedListArr);  
       }
-      console.log(arr);
       this.setState({counter : 0})
     }
     

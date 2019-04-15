@@ -19,7 +19,6 @@ class OrderListContainer extends Component {
   render() {
     const { selectedMenu }  = this.props;
     const { handleDelete }  = this;
-    console.log(selectedMenu);
     return (
       <OrderList 
         deleteItem = {handleDelete}

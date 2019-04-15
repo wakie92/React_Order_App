@@ -23,8 +23,15 @@ class Firebase {
                               for (let item in data.val()){
                                 userMenu.push(data.val()[item]);
                               }
-                              return  userMenu;
-                            });
+                          return  userMenu;
+    });
+
+    postOrderedMenu = (orderSummary) => this.db.ref()
+                                      .child('orderSummary')
+                                      .update({orderSummary})
+
+    
+
   
 }
 export default Firebase;

@@ -8,24 +8,24 @@ import * as menuDataUIActions from 'store/modules/menuDataUI';
 class ModalContainer extends Component {
 
   getCloseModal = () => {
-    const {MenuDataUIActions} = this.props;
+    const { MenuDataUIActions } = this.props;
     MenuDataUIActions.modalShow(false);
     MenuDataUIActions.confirm(false);
     MenuDataUIActions.ol_mobile(false);
     MenuDataUIActions.backDraw(false);
   }
 
-  finalConfirm = async () => {
-    const { MenuDataUIActions, req,  loginId ,checkedTF, selectedMenu, totalPrice } = this.props;
-    try{
+  finalConfirm =   () => {
+    const { MenuDataUIActions, req, loginId ,checkedTF, selectedMenu, totalPrice } = this.props;
+    try {
       const userId =  loginId ;
       const orderTime = new Date();
       const os_time = [orderTime.getFullYear(), orderTime.getMonth()+1, orderTime.getDate()].join('-')
-      await selectedMenu.map((item) =>  {
+      selectedMenu.map((item) =>  {
         item.count++
         return MenuDataUIActions.counterUp(item.id, item.count)
       })
-      await MenuDataUIActions.postMenuAsync({ 
+      MenuDataUIActions.postMenuAsync({ 
         os_req : req,
         os_paymentMethod : checkedTF,
         selectedMenu,
@@ -57,6 +57,7 @@ class ModalContainer extends Component {
   render() {
     const {  getCloseModal , finalConfirm} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
+
     return (
       <>
         <Backdrop 
@@ -86,7 +87,7 @@ export default connect ((state) => ({
   totalPrice : state.menuDataUI.get('totalPrice'),
   orderSummary : state.menuDataUI.get('orderSummary'),
   loginId : state.loginData.getIn(['loginUser','userId']),
-  isLogined : state.loginData.get('isLogined')
+  isLogined : state.loginData.get('isLogined'),
 }),
   (dispatch) => ({
     MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

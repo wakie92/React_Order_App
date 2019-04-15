@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
 import Input from 'components/UI/Input/Input';
+
 class OrderRequirement extends Component {
   state = {
     reqForm : {
@@ -47,15 +48,17 @@ class OrderRequirement extends Component {
 }
   handleRequirementChange = (e, controlForm) => {
     const { MenuDataUIActions } = this.props;
-    try {
-      console.log(e.target.value);
-      controlForm === 'requirement' ?  MenuDataUIActions.requirement(e.target.value)
-      : e.target.value === '카드' ? MenuDataUIActions.checkedTF({card : true}).amountToPay(e.target.value) 
-      : MenuDataUIActions.amountToPay(e.target.value)
-
-    } catch(err) {
-      console.log(err);
-    }
+    if(controlForm === 'requirement') {
+      MenuDataUIActions.requirement(e.target.value);
+    } else {
+      if(e.target.value === '카드') {
+        MenuDataUIActions.checkedTF({card : true});
+        MenuDataUIActions.amountToPay(e.target.value);
+      }else {
+        MenuDataUIActions.checkedTF({card : null})
+        MenuDataUIActions.amountToPay(e.target.value);
+      }
+     }
   }
   render() {
     console.log('render [OrderRequirement]')

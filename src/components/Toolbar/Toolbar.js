@@ -7,8 +7,6 @@ const toolbar = ({loginUser, openCategory, openOrderListMobile}) => {
     textDecoration : 'none'
   }
   let isLogin =  localStorage.getItem('emailId') ? '로그아웃' : loginUser;
-  console.log(localStorage.getItem('eamilId'));
-  console.log(loginUser);
   return(
     <header className = {classes.Toolbar}>
       <nav className  = {classes.Hamburger} onClick = {(e) => {e.stopPropagation(); openCategory()}}>
