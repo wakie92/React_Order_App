@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './OrderHistory.module.scss';
 
-const HistoryLog = ({ oh_time, oh_menu,}) => {
+const HistoryLog = ({oh_time, oh_menu}) => {
   const oh_menu_list = oh_menu.map((data,idx) => {
     const { counter,  name, price }  = data;
     return(

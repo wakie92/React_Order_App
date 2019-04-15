@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './Backdrop.module.scss';
 
-const backdrop = (props) => {
+const backdrop = ({show}) => {
   return(
-    props.show ? 
+    show ? 
     <div className = {classes.Backdrop}>
     </div>
     : null

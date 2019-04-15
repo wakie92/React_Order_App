@@ -5,7 +5,7 @@ import CategoryBarContainer from 'containers/CategoryBar/CategoryBarContainer'
 import OrderContainer from 'containers/OrderSection/OrderContainer';
 import ModalContainer from 'containers/ModalContainer/ModalContainer'
 
-const layout = (props) => {
+const layout = ({children}) => {
   return(
     <>
     <ToolbarContainer/>
@@ -13,7 +13,7 @@ const layout = (props) => {
     <div className = {classes.Layout}>
       <div className = {classes.Content}>
         <CategoryBarContainer/>
-          {props.children}
+          {children}
         <OrderContainer/>
       </div>
     </div>
