@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './Items.module.scss'
 import ItemContainer from 'containers/Item/ItemContainer';
-const items = (props) => {
-  const menuList = props.menuList
+const items = ({menuList}) => {
+  const items = menuList
     .map(menu => {
       return(
       <ItemContainer 
@@ -14,7 +14,7 @@ const items = (props) => {
   return (
     <>
       <div className = {classes.Items}>
-        {menuList}
+        {items}
       </div>
     </>
   )
