@@ -39,6 +39,7 @@
       grid-area: op;
       text-align :right;
       color : $lightpink;
+      cursor: pointer;
     }
     .OrderedItemCount, .OrderedItemTotalPrice {
       font-weight: 400;
