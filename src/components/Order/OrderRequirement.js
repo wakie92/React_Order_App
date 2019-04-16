@@ -61,7 +61,6 @@ class OrderRequirement extends Component {
      }
   }
   render() {
-    console.log('render [OrderRequirement]')
     const {reqForm} = this.state;
     const {handleRequirementChange} = this;
     let formElements = []
