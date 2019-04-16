@@ -42,12 +42,3 @@
     transition : 0.3s;
   }
 }
-
-@media screen and (max-width : 480px) {
-  .CategoryBar {
-    transform: translate(-500px, 60px);
-  }
-  .Open{
-    transform: translate(0, 60px);
-  }
-}
