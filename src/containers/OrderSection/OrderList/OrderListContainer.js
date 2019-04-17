@@ -8,7 +8,7 @@ class OrderListContainer extends Component {
   handleDelete = (idx) => {
     const { MenuDataUIActions, selectedMenu, totalPrice } = this.props;
     let deletedArr = selectedMenu.filter((item, index) => index!==idx );
-    let deletedPrice = totalPrice - selectedMenu[idx].price;
+    let deletedPrice = totalPrice - (selectedMenu[idx].price * selectedMenu[idx].counter);
     MenuDataUIActions.selectedMenu(deletedArr);
     MenuDataUIActions.totalPrice(deletedPrice);
   }
