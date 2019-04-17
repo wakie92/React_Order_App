@@ -69,7 +69,7 @@ export default connect((state) => ({
   toolbar :  state.menuDataUI.get('toolbar'),
   ol_mobile : state.menuDataUI.get('ol_mobile'),
   backDraw : state.menuDataUI.get('backDraw'),
-  unLoginUser : state.loginData.getIn(['unLoginUser','id']),
+  unLoginUser : state.loginData.get('unLoginUser'),
   loginUser : state.loginData.getIn(['loginUser','userId']),
   isLogined : state.loginData.get('isLogined')
 }),

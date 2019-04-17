@@ -22,7 +22,7 @@ const initialState = fromJS({
     error: null,
     loading: false
   },
-  
+  unLoginUser: null
 })
 
 export default handleActions({
@@ -34,6 +34,7 @@ export default handleActions({
           localStorage.setItem('expirationDate', expirationDate);
           localStorage.setItem('userId', localId);
           localStorage.setItem('emailId',email);
+          console.log(email);
     return state.setIn(['loginUser', 'userId'], email)
                 .setIn(['loginUser', 'token'], idToken)
                 .setIn(['loginUser', 'error'], null)
@@ -57,8 +58,9 @@ export default handleActions({
   [UNLOGIN_USER] : (state, action) => {
     let key = '';
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    console.log('sdfsdf');
     for( var i=0; i < 5; i++ )
         key += possible.charAt(Math.floor(Math.random() * possible.length));
-    return state.setIn(['loginUser', 'userId'],key);
+    return state.set('unLoginUser',key);
   }
 }, initialState)
