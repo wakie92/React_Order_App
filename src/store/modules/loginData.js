@@ -7,6 +7,7 @@ const GET_USER_ID = 'loginData/GET_USER_ID';
 const USER_ID = 'loginData/USER_ID';
 const UNLOGIN_USER = 'loginData/UNLOGIN_USER';
 const LOGOUT = 'loginData/LOGOUT';
+const CHECK_LOGIN = 'loginData/CHECK_LOGIN'
 
 export const isLogined = createAction(ISLOGINED);
 export const changeLoginInfo = createAction(CHANGE_LOGIN_INFO);
@@ -14,6 +15,8 @@ export const getUserId = createAction(GET_USER_ID);
 export const userId = createAction(USER_ID);
 export const getUnLoginUser = createAction(UNLOGIN_USER);
 export const logOut = createAction(LOGOUT);
+export const checkLogin = createAction(CHECK_LOGIN);
+
 const initialState = fromJS({
   isLogined : false,
   loginUser : {
@@ -44,7 +47,6 @@ export default handleActions({
   [ISLOGINED] : (state, action) => {
     const isLogined = action.payload;
     return state.set('isLogined', isLogined)
-
   },
   [LOGOUT] :  (state, action) => {
     localStorage.removeItem('token');
@@ -62,5 +64,9 @@ export default handleActions({
     for( var i=0; i < 5; i++ )
         key += possible.charAt(Math.floor(Math.random() * possible.length));
     return state.set('unLoginUser',key);
+  },
+  [CHECK_LOGIN] : (state, action) => {
+    
   }
+
 }, initialState)

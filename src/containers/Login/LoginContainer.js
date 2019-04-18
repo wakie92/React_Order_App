@@ -148,8 +148,8 @@ checkValidity( value, rules ) {
     } catch(err) {
       console.log(err);
     }
-    
   }
+  
   componentDidMount() {
     const {LoginDataActions}= this.props;
     let isLogin = localStorage.getItem('emailId') ? true : false;
