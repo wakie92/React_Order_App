@@ -15,16 +15,6 @@ class OrderHistoryContainer extends Component {
     OrderHistoryDataActions.saveHistory(user);
   }
 
-  handleCheckLogin = () => {
-    const { OrderHistoryDataActions,LoginDataActions, isLogined   } = this.props;
-    console.log(localStorage.getItem('emailId'));
-    let LoginedUser = localStorage.getItem('emailId');
-    if(LoginedUser) {
-      // const
-      // 여기서부터 작업 localstorage에 저장되어있는 정보를 action에 담기
-    }
-
-  }
   componentDidMount () {
     const { OrderHistoryDataActions,LoginDataActions, isLogined   } = this.props;
     this.handleCheckLogin()

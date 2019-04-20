@@ -66,7 +66,12 @@ export default handleActions({
     return state.set('unLoginUser',key);
   },
   [CHECK_LOGIN] : (state, action) => {
-    
+    const { idToken, email ,isLogined}  = action.payload;
+    return state.setIn(['loginUser', 'userId'], email)
+                .setIn(['loginUser', 'token'], idToken)
+                .setIn(['loginUser', 'error'], null)
+                .setIn(['loginUser', 'loading'], false)
+                .set('isLogined', isLogined)
   }
 
 }, initialState)
