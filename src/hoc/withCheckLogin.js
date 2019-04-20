@@ -5,7 +5,7 @@ const withCheckLogin  = (WrappedComponent) => {
   return class LoginCheckingContorol extends Component {
 
     handleCheckLogin = () => {
-      const { OrderHistoryDataActions,LoginDataActions, isLogined   } = this.props;
+      const { LoginDataActions   } = this.props;
       console.log(localStorage.getItem('emailId'));
       let LoginedUser = localStorage.getItem('emailId');
       if(LoginedUser) {
@@ -16,13 +16,23 @@ const withCheckLogin  = (WrappedComponent) => {
           isLogined : true
         }
         LoginDataActions.checkLogin(userInfo);
+      } else {
+        const isLogined = false
+        LoginDataActions.isLogined(isLogined)
       }
     }
+
+    exprirationDateOver = () => {
+      const { LoginDataActions   } = this.props;
+      console.log(localStorage.getItem('expirationDate'))
+    }
     render() {
+      const {handleCheckLogin} = this;
       return (
-        <div>
-          
-        </div>
+        <WrappedComponent 
+            {...this.props} 
+            handleCheckLogin = {handleCheckLogin}
+          />
       );
     }
   }

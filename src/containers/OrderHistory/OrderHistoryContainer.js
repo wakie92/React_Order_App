@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import OrderHistory from 'components/OrderHistory/OrderHistory'
 import {withFirebase}  from 'hoc/Firebase';
+import withCheckLogin from 'hoc/withCheckLogin';
 import * as menuDataUIActions from 'store/modules/menuDataUI'
 import * as orderHistoryDataActions from 'store/modules/orderHistoryData';
 import * as loginDataActions from 'store/modules/loginData'
@@ -16,8 +17,8 @@ class OrderHistoryContainer extends Component {
   }
 
   componentDidMount () {
-    const { OrderHistoryDataActions,LoginDataActions, isLogined   } = this.props;
-    this.handleCheckLogin()
+    const { handleCheckLogin,LoginDataActions, isLogined   } = this.props;
+    handleCheckLogin()
     this.getData();
   }
   render() {
@@ -44,4 +45,4 @@ export default connect((state) => ({
     OrderHistoryDataActions : bindActionCreators(orderHistoryDataActions, dispatch),
     LoginDataActions : bindActionCreators(loginDataActions, dispatch)
     // firebase 사용법 실험용 
-}))(withFirebase(OrderHistoryContainer));
+}))(withFirebase(withCheckLogin(OrderHistoryContainer)));
