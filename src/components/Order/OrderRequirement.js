@@ -55,10 +55,15 @@ class OrderRequirement extends Component {
         MenuDataUIActions.checkedTF({card : true});
         MenuDataUIActions.amountToPay(e.target.value);
       }else {
-        MenuDataUIActions.checkedTF({card : null})
+        MenuDataUIActions.checkedTF({cash : true})
         MenuDataUIActions.amountToPay(e.target.value);
       }
      }
+  }
+  shouldComponentUpdate(nextProps, nextState ) {
+    console.log(this.props.selectedMenu)
+    console.log(nextProps.selectedMenu)
+    return nextProps.selectedMenu !== this.props.selectedMenu
   }
   render() {
     const {reqForm} = this.state;
@@ -92,7 +97,8 @@ class OrderRequirement extends Component {
 }
 export default connect((state) => ({
   modalshow : state.menuDataUI.get('modalshow'),
-  confirm : state.menuDataUI.get('confirm')
+  confirm : state.menuDataUI.get('confirm'),
+  selectedMenu : state.menuDataUI.get('selectedMenu')
 }),
 (dispatch) =>({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

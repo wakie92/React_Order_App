@@ -9,10 +9,10 @@ import * as orderHistoryDataActions from 'store/modules/orderHistoryData';
 import * as loginDataActions from 'store/modules/loginData'
 class OrderHistoryContainer extends Component {
 
-  getData =  () => {
+  getData = async () => {
     const { OrderHistoryDataActions , loginUser, firebase }  = this.props;
-    const user =   firebase.orderHistory(loginUser);
     console.log(loginUser)
+    const user =  await firebase.orderHistory(loginUser);
     OrderHistoryDataActions.saveHistory(user);
   }
 

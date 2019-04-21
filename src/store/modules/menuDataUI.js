@@ -68,7 +68,6 @@ const initialState = fromJS({
   orderSummary : {
     os_req: '',
     os_paymentMethod : '',
-    os_purchasingMenu : [],
     os_totalPrice : 0,
     os_userId : ''
   },
@@ -131,6 +130,7 @@ export default handleActions({
   },
   [REQUIREMENT] : (state, action) =>{
     const req = action.payload;
+    console.log(req)
     return state.set('req', req)
   },
   [TOOLBAR] : (state, action) => {

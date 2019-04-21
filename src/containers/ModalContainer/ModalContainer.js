@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
-
+import withCheckLogin from 'hoc/withCheckLogin';
 import Backdrop from 'components/UI/Modal/Backdrop/Backdrop';
 import Modal from 'components/UI/Modal/Modal';
 import * as menuDataUIActions from 'store/modules/menuDataUI';
+import * as loginDataActions from 'store/modules/loginData'
+
 class ModalContainer extends Component {
 
   getCloseModal = () => {
@@ -15,17 +17,18 @@ class ModalContainer extends Component {
     MenuDataUIActions.backDraw(false);
   }
 
-  finalConfirm = async () => {
+  finalConfirm =  () => {
     const { MenuDataUIActions, req, loginId ,checkedTF, selectedMenu, totalPrice } = this.props;
     try {
+      console.log(checkedTF)
       const userId =  loginId ;
       const orderTime = new Date();
       const os_time = [orderTime.getFullYear(), orderTime.getMonth()+1, orderTime.getDate()].join('-')
-      await selectedMenu.map((item) =>  {
+       selectedMenu.map((item) =>  {
         item.count++
         return MenuDataUIActions.counterUp(item.id, item.count)
       })
-      await MenuDataUIActions.postMenuAsync({ 
+       MenuDataUIActions.postMenuAsync({ 
         os_req : req,
         os_paymentMethod : checkedTF,
         selectedMenu,
@@ -49,8 +52,12 @@ class ModalContainer extends Component {
     MenuDataUIActions.selectedMenu(arr);
     MenuDataUIActions.requirement('');
     MenuDataUIActions.amountToPay('');
+    MenuDataUIActions.checkedTF({card :null, cash : null});
   }
-
+  componentDidMount() {
+    this.props.handleCheckLogin();
+    console.log(this.props.userData.toJS())
+  }
   shouldComponentUpdate (nextProps, nextState) {
     return nextProps.modalShow !== this.props.modalShow;
   }
@@ -88,8 +95,10 @@ export default connect ((state) => ({
   orderSummary : state.menuDataUI.get('orderSummary'),
   loginId : state.loginData.getIn(['loginUser','userId']),
   isLogined : state.loginData.get('isLogined'),
+  userData : state.loginData.get('loginUser')
 }),
   (dispatch) => ({
-    MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
+    MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch),
+    LoginDataActions : bindActionCreators(loginDataActions, dispatch)
   })
-)(ModalContainer);
+)(withCheckLogin(ModalContainer));
