@@ -18,6 +18,7 @@ class OrderHistoryContainer extends Component {
 
   componentDidMount () {
     const { handleCheckLogin,LoginDataActions, isLogined   } = this.props;
+    handleCheckLogin();
     this.getData();
   }
   render() {
@@ -44,4 +45,4 @@ export default connect((state) => ({
     OrderHistoryDataActions : bindActionCreators(orderHistoryDataActions, dispatch),
     LoginDataActions : bindActionCreators(loginDataActions, dispatch)
     // firebase 사용법 실험용 
-}))(withFirebase(OrderHistoryContainer));
+}))(withFirebase(withCheckLogin(OrderHistoryContainer)));

@@ -10,9 +10,8 @@ const withCheckLogin  = (WrappedComponent) => {
       let LoginedUser = localStorage.getItem('emailId');
       if(LoginedUser) {
         const userInfo = {
-          userId : localStorage.getItem('userId'),
+          userId : LoginedUser,
           idToken : localStorage.getItem('token'),
-          emailId :LoginedUser,
           isLogined : true
         }
         console.log(userInfo)

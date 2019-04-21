@@ -31,6 +31,7 @@ const initialState = fromJS({
 export default handleActions({
   [GET_USER_ID] :(state, action) => {
     const { idToken, email ,expiresIn, localId}  = action.payload;
+    console.log(action.payload)
     let isLogined = localStorage.getItem('emailId') === null ? true : false;
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
           localStorage.setItem('token', idToken);
@@ -66,9 +67,9 @@ export default handleActions({
     return state.set('unLoginUser',key);
   },
   [CHECK_LOGIN] : (state, action) => {
-    const { idToken, email ,isLogined}  = action.payload;
+    const { idToken, userId ,isLogined}  = action.payload;
     console.log(action.payload);
-    return state.setIn(['loginUser', 'userId'], email)
+    return state.setIn(['loginUser', 'userId'], userId)
                 .setIn(['loginUser', 'token'], idToken)
                 .setIn(['loginUser', 'error'], null)
                 .setIn(['loginUser', 'loading'], false)
