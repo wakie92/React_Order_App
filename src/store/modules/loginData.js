@@ -67,6 +67,7 @@ export default handleActions({
   },
   [CHECK_LOGIN] : (state, action) => {
     const { idToken, email ,isLogined}  = action.payload;
+    console.log(action.payload);
     return state.setIn(['loginUser', 'userId'], email)
                 .setIn(['loginUser', 'token'], idToken)
                 .setIn(['loginUser', 'error'], null)

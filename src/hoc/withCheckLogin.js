@@ -15,6 +15,7 @@ const withCheckLogin  = (WrappedComponent) => {
           emailId :LoginedUser,
           isLogined : true
         }
+        console.log(userInfo)
         LoginDataActions.checkLogin(userInfo);
       } else {
         const isLogined = false
