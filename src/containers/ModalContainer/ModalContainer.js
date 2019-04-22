@@ -37,26 +37,28 @@ class ModalContainer extends Component {
         os_time : os_time
       });
       this.getCloseModal();
-      this.getInitialize();
+      // this.getInitialize();
+      MenuDataUIActions.getMenuList();
+      
     } catch(err) {
       console.log(err)
     }
     
   }
 
-  getInitialize = () => {
-    const {MenuDataUIActions, selectedMenu} = this.props;
-    let arr = [...selectedMenu];
-    arr.length = 0;
-    MenuDataUIActions.getMenuList();
-    MenuDataUIActions.selectedMenu(arr);
-    MenuDataUIActions.requirement('');
-    MenuDataUIActions.amountToPay('');
-    MenuDataUIActions.checkedTF({card :null, cash : null});
-  }
+  // getInitialize = () => {
+  //   const {MenuDataUIActions, selectedMenu} = this.props;
+  //   let arr = [...selectedMenu];
+  //   arr.length = 0;
+  //   // let emp = ''
+    // MenuDataUIActions.getMenuList();
+    // MenuDataUIActions.selectedMenu(arr);
+    // MenuDataUIActions.requirement(emp);
+    // MenuDataUIActions.amountToPay(emp);
+  //   MenuDataUIActions.checkedTF({card :null, cash : null});
+  // }
   componentDidMount() {
     this.props.handleCheckLogin();
-    console.log(this.props.userData.toJS())
   }
   shouldComponentUpdate (nextProps, nextState) {
     return nextProps.modalShow !== this.props.modalShow;
@@ -64,7 +66,7 @@ class ModalContainer extends Component {
   render() {
     const {  getCloseModal , finalConfirm} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
-
+    console.log(selectedMenu);
     return (
       <>
         <Backdrop 

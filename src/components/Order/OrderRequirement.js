@@ -47,7 +47,7 @@ class OrderRequirement extends Component {
     }
 }
   handleRequirementChange = (e, controlForm) => {
-    const { MenuDataUIActions } = this.props;
+    const { MenuDataUIActions, selectedMenu } = this.props;
     if(controlForm === 'requirement') {
       MenuDataUIActions.requirement(e.target.value);
     } else {
@@ -58,13 +58,13 @@ class OrderRequirement extends Component {
         MenuDataUIActions.checkedTF({cash : true})
         MenuDataUIActions.amountToPay(e.target.value);
       }
-     }
+    }
   }
-  shouldComponentUpdate(nextProps, nextState ) {
-    console.log(this.props.selectedMenu)
-    console.log(nextProps.selectedMenu)
-    return nextProps.selectedMenu !== this.props.selectedMenu
-  }
+  // shouldComponentUpdate(nextProps, nextState ) {
+  //   //초기화
+  //   return nextProps.selectedMenu !== this.props.selectedMenu
+        
+  // }
   render() {
     const {reqForm} = this.state;
     const {handleRequirementChange} = this;
@@ -75,12 +75,14 @@ class OrderRequirement extends Component {
         config : reqForm[key]
       })
     }
+    //valuePaymentMethodr가 현금일때 카드일때 props 확인해서 넘기기
     const form = formElements.map(formElement => (
       <Input
         key = {formElement.id}
         elementType = {formElement.config.elementType}
         elementConfig = {formElement.config.elementConfig}
-        value = {this.props.req_before}
+        valueReq = {this.props.req}
+        // valuePaymentMethod = {this.props.}
         name = { formElement.config.name}
         invalid = {!formElement.config.valid}
         shouldValidate={formElement.config.validation}
@@ -98,7 +100,8 @@ class OrderRequirement extends Component {
 export default connect((state) => ({
   modalshow : state.menuDataUI.get('modalshow'),
   confirm : state.menuDataUI.get('confirm'),
-  selectedMenu : state.menuDataUI.get('selectedMenu')
+  selectedMenu : state.menuDataUI.get('selectedMenu'),
+  req :  state.menuDataUI.get('req')
 }),
 (dispatch) =>({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

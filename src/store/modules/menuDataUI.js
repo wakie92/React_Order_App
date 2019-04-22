@@ -130,7 +130,7 @@ export default handleActions({
   },
   [REQUIREMENT] : (state, action) =>{
     const req = action.payload;
-    console.log(req)
+    console.log(action.payload)
     return state.set('req', req)
   },
   [TOOLBAR] : (state, action) => {
