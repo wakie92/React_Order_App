@@ -47,7 +47,7 @@ class OrderRequirement extends Component {
     }
 }
   handleRequirementChange = (e, controlForm) => {
-    const { MenuDataUIActions, selectedMenu } = this.props;
+    const { MenuDataUIActions } = this.props;
     if(controlForm === 'requirement') {
       MenuDataUIActions.requirement(e.target.value);
     } else {
@@ -60,11 +60,6 @@ class OrderRequirement extends Component {
       }
     }
   }
-  // shouldComponentUpdate(nextProps, nextState ) {
-  //   //초기화
-  //   return nextProps.selectedMenu !== this.props.selectedMenu
-        
-  // }
   render() {
     const {reqForm} = this.state;
     const {handleRequirementChange} = this;
@@ -76,13 +71,14 @@ class OrderRequirement extends Component {
       })
     }
     //valuePaymentMethodr가 현금일때 카드일때 props 확인해서 넘기기
+    console.log(formElements);
     const form = formElements.map(formElement => (
       <Input
         key = {formElement.id}
         elementType = {formElement.config.elementType}
         elementConfig = {formElement.config.elementConfig}
         valueReq = {this.props.req}
-        // valuePaymentMethod = {this.props.}
+        valuePaymentMethod = {this.props.checkedTF}
         name = { formElement.config.name}
         invalid = {!formElement.config.valid}
         shouldValidate={formElement.config.validation}
@@ -101,7 +97,8 @@ export default connect((state) => ({
   modalshow : state.menuDataUI.get('modalshow'),
   confirm : state.menuDataUI.get('confirm'),
   selectedMenu : state.menuDataUI.get('selectedMenu'),
-  req :  state.menuDataUI.get('req')
+  req :  state.menuDataUI.get('req'),
+  checkedTF : state.menuDataUI.get('checkedTF')
 }),
 (dispatch) =>({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

@@ -72,7 +72,7 @@ const initialState = fromJS({
     os_userId : ''
   },
   modalShow : false,
-  selectedItem : null,
+  selectedItem : null,``
   confirm : false,
   toolbar : false,
   ol_mobile : false,

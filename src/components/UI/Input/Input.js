@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Input.module.scss';
 
 const input = ({invalid, shouldValidate, elementType, label,
-                changed, value, name, elementConfig, touched}) => {
+                changed, value, valueReq,valuePaymentMethod, name, elementConfig, touched}) => {
   let inputElement = null;
   const inputClasses = [classes.InputElement];
 
@@ -21,14 +21,14 @@ const input = ({invalid, shouldValidate, elementType, label,
       inputElement = <textarea
                         className = {inputClasses.join(' ')}
                         {...elementConfig}
-                        value = {value}
+                        value = {valueReq}
                         name = {name}
                         onChange  = {changed} /> 
       break;
     case 'select' : 
       inputElement =  <select
                         className={inputClasses.join(' ')}
-                        value={value}
+                        value={valuePaymentMethod}
                         onChange={changed}>
                         {elementConfig.options.map(option => (
                             <option key={option.value} value={option.value}>
