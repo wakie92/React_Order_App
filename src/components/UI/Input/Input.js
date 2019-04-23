@@ -5,7 +5,6 @@ const input = ({invalid, shouldValidate, elementType, label,
                 changed, value, valueReq,valuePaymentMethod, name, elementConfig, touched}) => {
   let inputElement = null;
   const inputClasses = [classes.InputElement];
-
   if(invalid && shouldValidate && touched) {
     inputClasses.push(classes.Invalid);
   }
@@ -28,10 +27,11 @@ const input = ({invalid, shouldValidate, elementType, label,
     case 'select' : 
       inputElement =  <select
                         className={inputClasses.join(' ')}
-                        value={valuePaymentMethod}
-                        onChange={changed}>
+                        onChange={changed}
+                        >
                         {elementConfig.options.map(option => (
-                            <option key={option.value} value={option.value}>
+                            <option key={option.value} 
+                                    value={option.value}>
                                 {option.displayValue}
                             </option>
                             ))}

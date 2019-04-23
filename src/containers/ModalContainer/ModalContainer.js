@@ -20,7 +20,6 @@ class ModalContainer extends Component {
   finalConfirm =  () => {
     const { MenuDataUIActions, req, loginId ,checkedTF, selectedMenu, totalPrice } = this.props;
     try {
-      console.log(checkedTF)
       const userId =  loginId ;
       const orderTime = new Date();
       const os_time = [orderTime.getFullYear(), orderTime.getMonth()+1, orderTime.getDate()].join('-')
@@ -39,7 +38,7 @@ class ModalContainer extends Component {
       this.getCloseModal();
       // this.getInitialize();
       MenuDataUIActions.getMenuList();
-      
+      MenuDataUIActions.amountToPay('');
     } catch(err) {
       console.log(err)
     }
@@ -66,7 +65,6 @@ class ModalContainer extends Component {
   render() {
     const {  getCloseModal , finalConfirm} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
-    console.log(selectedMenu);
     return (
       <>
         <Backdrop 
@@ -97,7 +95,7 @@ export default connect ((state) => ({
   orderSummary : state.menuDataUI.get('orderSummary'),
   loginId : state.loginData.getIn(['loginUser','userId']),
   isLogined : state.loginData.get('isLogined'),
-  userData : state.loginData.get('loginUser')
+  userData : state.loginData.get('loginUser'),
 }),
   (dispatch) => ({
     MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch),

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
-
 const withCheckLogin  = (WrappedComponent) => {
   return class LoginCheckingContorol extends Component {
 
     handleCheckLogin = () => {
       const { LoginDataActions   } = this.props;
-      console.log(localStorage.getItem('emailId'));
       let LoginedUser = localStorage.getItem('emailId');
       if(LoginedUser) {
         const userInfo = {
@@ -14,7 +12,6 @@ const withCheckLogin  = (WrappedComponent) => {
           idToken : localStorage.getItem('token'),
           isLogined : true
         }
-        console.log(userInfo)
         LoginDataActions.checkLogin(userInfo);
       } else {
         const isLogined = false
@@ -23,8 +20,17 @@ const withCheckLogin  = (WrappedComponent) => {
     }
 
     exprirationDateOver = () => {
-      const { LoginDataActions   } = this.props;
-      console.log(localStorage.getItem('expirationDate'))
+      const { LoginDataActions } = this.props;
+      const exDateInfo = localStorage.getItem('expirationTime')
+      let currFullTimeInfo = new Date().getTime()
+      if(exDateInfo <= currFullTimeInfo) {
+        LoginDataActions.logOut();
+        LoginDataActions.getUnLoginUser();
+      }
+       
+    }
+    componentDidMount() {
+      this.exprirationDateOver();
     }
     render() {
       const {handleCheckLogin} = this;
