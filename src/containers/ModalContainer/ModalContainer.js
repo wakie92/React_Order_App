@@ -18,9 +18,9 @@ class ModalContainer extends Component {
   }
 
   finalConfirm =  () => {
-    const { MenuDataUIActions, req, loginId ,checkedTF, selectedMenu, totalPrice } = this.props;
+    const { MenuDataUIActions,isLogined, req,unLoginedUser, loginId ,checkedTF, selectedMenu, totalPrice } = this.props;
     try {
-      const userId =  loginId ;
+      const userId =  isLogined ? loginId : unLoginedUser ;
       const orderTime = new Date();
       const os_time = [orderTime.getFullYear(), orderTime.getMonth()+1, orderTime.getDate()].join('-')
        selectedMenu.map((item) =>  {
@@ -94,6 +94,7 @@ export default connect ((state) => ({
   totalPrice : state.menuDataUI.get('totalPrice'),
   orderSummary : state.menuDataUI.get('orderSummary'),
   loginId : state.loginData.getIn(['loginUser','userId']),
+  unLoginedUser : state.loginData.get('unLoginUser'),
   isLogined : state.loginData.get('isLogined'),
   userData : state.loginData.get('loginUser'),
 }),

@@ -20,7 +20,6 @@ class Firebase {
                           .once('value')
                           .then((data) => { 
                               const  userMenu = [];
-                              
                               for (let item in data.val()){
                                 userMenu.push(data.val()[item]);
                               }
