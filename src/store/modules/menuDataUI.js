@@ -60,11 +60,11 @@ const initialState = fromJS({
   totalPrice : 0,
   show : true,
   checkedTF : {
-    card : null,
-    cash : null
+    card : false,
+    cash : false
   },
   req : "",
-  amountToPay : 0,
+  amountToPay : '',
   orderSummary : {
     os_req: '',
     os_paymentMethod : '',

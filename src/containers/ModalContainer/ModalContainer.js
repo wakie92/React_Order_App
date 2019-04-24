@@ -38,7 +38,7 @@ class ModalContainer extends Component {
       this.getCloseModal();
       // this.getInitialize();
       MenuDataUIActions.getMenuList();
-      MenuDataUIActions.amountToPay(0);
+      MenuDataUIActions.amountToPay('unable');
     } catch(err) {
       console.log(err)
     }
@@ -63,7 +63,7 @@ class ModalContainer extends Component {
     return nextProps.modalShow !== this.props.modalShow;
   }
   render() {
-    const {  getCloseModal , finalConfirm} = this;
+    const {  getCloseModal , finalConfirm, handleMouseOver} = this;
     const {  modalShow, selectedMenu, req, checkedTF , totalPrice, amountToPay} = this.props;
     return (
       <>
@@ -79,6 +79,7 @@ class ModalContainer extends Component {
           finalConfirm = {finalConfirm}
           amountToPay = {amountToPay}
           totalPrice = {totalPrice}
+          onPreload = {handleMouseOver}
         />
       </>
     );

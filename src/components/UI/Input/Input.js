@@ -28,7 +28,7 @@ const input = ({invalid, shouldValidate, elementType, label,
       inputElement =  <select
                         className={inputClasses.join(' ')}
                         onChange={changed}
-                        // value = {valuePaymentMethod}
+                        value = {valuePaymentMethod}
                         >
                         {elementConfig.options.map(option => (
                             <option key={option.value} 

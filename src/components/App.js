@@ -1,10 +1,5 @@
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
-// import withCheckLogin from 'hoc/withCheckLogin';
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import * as loginDataActions from 'store/modules/loginData'
-
 import {
   Menu,
   Home,

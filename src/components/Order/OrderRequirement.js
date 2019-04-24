@@ -64,7 +64,7 @@ class OrderRequirement extends Component {
     }
   }
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.totalPay !== this.props.totalPay
+    return nextProps.amountToPay !== this.props.amountToPay
         || nextProps.req !== this.props.req
   }
   render() {
@@ -84,8 +84,9 @@ class OrderRequirement extends Component {
         key = {formElement.id}
         elementType = {formElement.config.elementType}
         elementConfig = {formElement.config.elementConfig}
-        valueReq = {this.props.req}
         name = { formElement.config.name}
+        valueReq = {this.props.req}
+        valuePaymentMethod = {this.props.amountToPay}
         invalid = {!formElement.config.valid}
         shouldValidate={formElement.config.validation}
         touched = {formElement.config.touched}
@@ -105,7 +106,7 @@ export default connect((state) => ({
   selectedMenu : state.menuDataUI.get('selectedMenu'),
   req :  state.menuDataUI.get('req'),
   checkedTF : state.menuDataUI.get('checkedTF'),
-  totalPay : state.menuDataUI.get('amountToPay')
+  amountToPay : state.menuDataUI.get('amountToPay')
 }),
 (dispatch) =>({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)
