@@ -40,7 +40,6 @@ class OrderContainer extends Component {
     MenuDataUIActions.ol_mobile(false)
   }
   shouldComponentUpdate(nextProps, nextState) {
-    //성공
     return nextProps.confirm !== this.props.confirm 
         || nextProps.totalPrice !== this.props.totalPrice
         || nextProps.ol_mobile !== this.props.ol_mobile

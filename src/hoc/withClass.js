@@ -7,9 +7,6 @@ const withClass =(WrappedComponent) => {
       key : null
     }
   
-    //count 코드 최적화 해야함//
-    //itemsContainer에서 id찾고 카운트 올릴 필요 없음.
-    //해결한다면 렌더링 횟수 줄어들것으로 예상
     itemCountHandler = (sign) => {
       let controledCount = this.state.counter;
       switch(sign) {

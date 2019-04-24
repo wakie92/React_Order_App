@@ -29,9 +29,5 @@ class Firebase {
     postOrderedMenu = (orderSummary) => this.db.ref()
                                       .child('orderSummary')
                                       .update({orderSummary})
-
-    
-
-  
 }
 export default Firebase;

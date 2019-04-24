@@ -36,26 +36,12 @@ class ModalContainer extends Component {
         os_time : os_time
       });
       this.getCloseModal();
-      // this.getInitialize();
       MenuDataUIActions.getMenuList();
-      MenuDataUIActions.amountToPay('unable');
     } catch(err) {
       console.log(err)
     }
-    
   }
 
-  // getInitialize = () => {
-  //   const {MenuDataUIActions, selectedMenu} = this.props;
-  //   let arr = [...selectedMenu];
-  //   arr.length = 0;
-  //   // let emp = ''
-    // MenuDataUIActions.getMenuList();
-    // MenuDataUIActions.selectedMenu(arr);
-    // MenuDataUIActions.requirement(emp);
-    // MenuDataUIActions.amountToPay(emp);
-  //   MenuDataUIActions.checkedTF({card :null, cash : null});
-  // }
   componentDidMount() {
     this.props.handleCheckLogin();
   }

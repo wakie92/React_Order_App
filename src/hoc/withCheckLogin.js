@@ -4,7 +4,7 @@ const withCheckLogin  = (WrappedComponent) => {
   return class LoginCheckingContorol extends Component {
 
     handleCheckLogin = () => {
-      const { LoginDataActions   } = this.props;
+      const { LoginDataActions } = this.props;
       let LoginedUser = localStorage.getItem('emailId');
       if(LoginedUser) {
         const userInfo = {
@@ -27,8 +27,8 @@ const withCheckLogin  = (WrappedComponent) => {
         LoginDataActions.logOut();
         LoginDataActions.getUnLoginUser();
       }
-       
     }
+    
     componentDidMount() {
       this.exprirationDateOver();
     }
