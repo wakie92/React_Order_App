@@ -1,69 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# `React_Order_App`
+이 프로젝트는 개인프로젝트입니다. <br/>
 
-## Available Scripts
+### `기술스택`
+    라이브러리 : React.js
+    CSS : Sass, grid, flex
+    사용모듈 : Redux, Redux-thunk, Sass, Axios, Pender, Firebase, React-router, immutable , Webpack 등
+    데이터베이스 : Firebase realTime database,
+    정적파일저장소 : Amazon S3
+    배포 : Amazon S3 
+    주요기능 : 메뉴 주문, 비로그인 로그인 주문내역확인, 로그인
+## `설명`  <br/>
+    기본에 충실한 프로젝트를 만들어봤습니다. 
+    퍼블리싱은 gird와 flex를 이용하여 반응형에 잘 어울리게 했습니다. 
+    Sass는 css전처리기로 코드를 짤 때 유지보수하기 편하게 짤 수 있습니다. 색깔이나 기본적인 설정을 변수에 담아 할수 있어 사용했습니다.
+    코드는 자바스크립트 ES6를 주로 사용하여 짰습니다.
+    상태관리는 Redux를 이용해서 관리를 했습니다. 
+    Redux를 사용한 이유는 부모자식 관계의 컴포넌트들만 주고받는 것이 아니라 여러 컴포넌트에서 상태를 관리하고 사용하기 위해 입니다.
+    Redux는 중간자 역할을 하여 여러 컴포넌트를 거치지 않고, subscribe하고있는 컴포넌트에게 직접 원하는 상태값을 가져올수 있습니다.
+    Redux구조를 잡고 ducks구조를 사용하여, reducer와 action을 짰습니다.
+    axios를 이용하여 비동기 통신을 하였고, pender를 미들웨어로 사용하여 통신에 성공했을때, 
+    실패했을때 결과값을 달리하여 통신결과를 알수 있게 했습니다.
+    파이어베이스를 사용해 데이터베이스를 구축하고, 아마존 S3에 url의 형태로 저장한 이미지파일들을 불러썼습니다.
+    create-react-app V2가 릴리즈 되어 빌드시 이전버전과 다르게 Webpack설정을 따로 하지 않아도 되어 좀더 편하게 사용하였습니다.
+    이 프로젝트는 정적웹사이트이기 때문에 아마존 S3에 저장하여 배포하였습니다. 
+    S3설정 시 접근권한을 public으로 설정해 주어야만 다른 곳에서도 접근가능하기 때문에 설정해 주었습니다.
+    로그인 기능은 파이어베이스의 Athentication을 이용하여 구축하였습니다.
 
-In the project directory, you can run:
+  ## `배운점`
+    이번 프로젝트에서 배운점은 다음과 같습니다. 
+      1. 파이어베이스 사용법 
+       - 파이어베이스의 데이터베이스와 로그인인증방법을 다루는 법을 알게 되었고, 
+         고생도 많이 하긴 했지만 많은 공부가 되었습니다. 데이터를 받아서 사용할 때 내가 사용하기 좋게 정제하기 위해, 
+         자바스크립트 공부도 많이 할 수 있었습니다. 
+      2. grid사용법 
+      - flex는 이전에 사용해 봤지만 grid는 사용해 본적이 없어서 공부를 하여 사용해 봤습니다.
+        말 그대로 flex를 사용할때는 유연한 느낌을 받았고, grid는 판에 찍어내는 듯한 느낌을 받았습니다. 
+        둘다 장단점이 있어 같이 사용했을때 더 효율이 좋다고 느꼈습니다. 
+      3. Redux-Thunk 
+      - Redux를 비동기적으로 사용해 본적이 없었지만, 이번 프로젝트에서는 필요해 처음 사용해 봤습니다. 
+        promise나, async await처럼 작업의 순서를 정할 수 있어 편했습니다. 
+        4. Build하는법 
+      - 처음으로 프로젝트를 build를 해보았습니다. build를 하기 위해서 Webpack설정을 많이 해야한 다는 것도 알게되었고,
+        Webpack를 조금이나마 공부 할 수있는 기회였습니다. 
 
+ ## `아쉬운점`
+      1. Redux-Thunk 말고 다음에는 Redux-saga를 한번 사용해보고싶습니다.
+      2. Reducer를 더 잘 짰으면 코드가 간결해지지 않았을까 하는 아쉬움이있습니다.
+      3. 더 많은 기능을 추가해보고 싶습니다.
+      4. 코드질에 대한 아쉬움이있습니다.
+      5. 다음 개인 프로젝트 때는 TypeScript와 MobX를 사용하여 구현해보고 싶습니다.
 ### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-"# React_Order_App" 
+      실행전 npm install 후 실행해 주세요
+      [http://localhost:3000](http://localhost:3000) 의 주소로 열리게됩니다.
