@@ -8,6 +8,10 @@ const input = ({invalid, shouldValidate, elementType, label,
   if(invalid && shouldValidate && touched) {
     inputClasses.push(classes.Invalid);
   }
+  let key = '';
+  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for( var i=0; i < 5; i++ )
+    key += possible.charAt(Math.floor(Math.random() * possible.length));
   switch(elementType) {
     case 'input' :
       inputElement = <input
@@ -42,9 +46,9 @@ const input = ({invalid, shouldValidate, elementType, label,
   }
 
   return (
-    <div className = {classes.Input}>
+    <div className = {classes.Input} key = {key}>
       <label className = {classes.Label}>{label}</label>
-      {inputElement}
+        {inputElement}
     </div>
   )
 };

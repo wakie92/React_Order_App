@@ -11,21 +11,17 @@ class OrderHistoryContainer extends Component {
 
   getData = async () => {
     const { OrderHistoryDataActions , loginUser, firebase }  = this.props;
-    console.log(loginUser)
     const user =  await firebase.orderHistory(loginUser);
     OrderHistoryDataActions.saveHistory(user);
   }
 
   componentDidMount () {
-    const { handleCheckLogin,LoginDataActions, isLogined   } = this.props;
+    const { handleCheckLogin } = this.props;
     handleCheckLogin();
     this.getData();
   }
   render() {
-    const { orderHistoryItems, loginUser,isLogined,UserData }  = this.props;
-    console.log(loginUser);
-    console.log(UserData.toJS());
-    console.log(isLogined);
+    const { orderHistoryItems }  = this.props;
     return (
       <OrderHistory
         Oh_List = {orderHistoryItems} 

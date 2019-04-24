@@ -159,6 +159,7 @@ checkValidity( value, rules ) {
     const { handleLogin , inputData,  handleLogout , changeIsSignUp, handleEnterKey } = this;
     const { loginID , isLogined }  = this.props;
     const {  isSignUp, userAuthData } = this.state;
+    console.log('login : ' + this.props.total)
     const formElementsArr = [];
     for (let key in userAuthData ) {
       formElementsArr.push({
@@ -199,6 +200,7 @@ export default connect((state) => ({
   isLogined : state.loginData.get('isLogined'),
   loginID : state.loginData.getIn(['loginUser','userId']),
   error : state.loginData.getIn(['loginUser','error']),
+  total : state.menuDataUI.get('amountToPay')
 }),
   (dispatch) => ({
     LoginDataActions : bindActionCreators(loginDataActions,dispatch),

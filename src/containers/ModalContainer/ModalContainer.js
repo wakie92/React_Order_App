@@ -38,7 +38,7 @@ class ModalContainer extends Component {
       this.getCloseModal();
       // this.getInitialize();
       MenuDataUIActions.getMenuList();
-      MenuDataUIActions.amountToPay('');
+      MenuDataUIActions.amountToPay(0);
     } catch(err) {
       console.log(err)
     }

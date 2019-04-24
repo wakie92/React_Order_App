@@ -63,10 +63,15 @@ class OrderRequirement extends Component {
       }
     }
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.totalPay !== this.props.totalPay
+        || nextProps.req !== this.props.req
+  }
   render() {
     const {reqForm} = this.state;
     const {handleRequirementChange} = this;
     let formElements = []
+    console.log('Req : ' + this.props.totalPay);
     for (let key in reqForm ) {
       formElements.push({
         id : key,
