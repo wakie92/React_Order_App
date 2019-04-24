@@ -49,7 +49,6 @@ class OrderContainer extends Component {
     const { totalPrice, selectedMenu ,ol_mobile , checkedTF, amountToPay} = this.props;
     const { confirmOrderHandler, closeOrderListMobile, handleSelect, 
             handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
-            console.log('sdf11');
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}

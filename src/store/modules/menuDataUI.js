@@ -130,7 +130,6 @@ export default handleActions({
   },
   [REQUIREMENT] : (state, action) =>{
     const req = action.payload;
-    console.log(action.payload)
     return state.set('req', req)
   },
   [TOOLBAR] : (state, action) => {
@@ -143,7 +142,6 @@ export default handleActions({
   },
   [AMOUNT_TO_PAY] : (state, action) => {
     const amountToPay = action.payload;
-    console.log(amountToPay)
     return state.set('amountToPay', amountToPay); 
   },
   [ORDERSUMMARY] : (state, action) => {
@@ -165,10 +163,5 @@ export default handleActions({
   [BACKDRAW] : (state, action) => {
     const backDraw = action.payload;
     return state.set('backDraw',backDraw)
-  },
-  [DELETE_PRICE] : (state, action) => {
-    const deletedItem  = action.payload;
-    console.log(deletedItem)
-    // return state.update('totalPrice', totalPrice => totalPrice-deletedItem.price)
   },
 },initialState)
