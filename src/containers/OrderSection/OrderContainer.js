@@ -43,14 +43,13 @@ class OrderContainer extends Component {
     //성공
     return nextProps.confirm !== this.props.confirm 
         || nextProps.totalPrice !== this.props.totalPrice
-        || nextProps.checkedTF !== this.props.checkedTF
         || nextProps.ol_mobile !== this.props.ol_mobile
-        || nextProps.amoutToPay !== this.props.amountToPay
   } 
   render() {
     const { totalPrice, selectedMenu ,ol_mobile , checkedTF, amountToPay} = this.props;
     const { confirmOrderHandler, closeOrderListMobile, handleSelect, 
             handlePayMethodChange ,handleRequirementChange, handleAmountToPay } = this;
+            console.log('sdf11');
     return (
       <Order
         ConfirmOrder = {confirmOrderHandler}
