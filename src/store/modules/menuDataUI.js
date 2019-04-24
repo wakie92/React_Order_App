@@ -143,6 +143,7 @@ export default handleActions({
   },
   [AMOUNT_TO_PAY] : (state, action) => {
     const amountToPay = action.payload;
+    console.log(amountToPay)
     return state.set('amountToPay', amountToPay); 
   },
   [ORDERSUMMARY] : (state, action) => {
