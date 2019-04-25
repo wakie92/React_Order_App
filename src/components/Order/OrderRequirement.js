@@ -34,7 +34,7 @@ class OrderRequirement extends Component {
               ,{value : '10000', displayValue : '10000원'}
               ,{value : '15000', displayValue : '15000원'}
               ,{value : '20000', displayValue : '20000원'}
-              ,{value : this.props.totalPrice, displayValue : '금액에 맞게'}
+              ,{value : 'totalPrice', displayValue : '금액에 맞게'}
             ]
         },
         value: '',
@@ -47,25 +47,33 @@ class OrderRequirement extends Component {
     }
 }
   handleRequirementChange = (e, controlForm) => {
-    const { MenuDataUIActions } = this.props;
+    const { MenuDataUIActions, totalPrice } = this.props;
     if(controlForm === 'requirement') {
       MenuDataUIActions.requirement(e.target.value);
     } else {
       if(e.target.value === '카드') {
         MenuDataUIActions.checkedTF({card : true});
         MenuDataUIActions.amountToPay(e.target.value);
+        MenuDataUIActions.selectView(e.target.value)
       } else if(e.target.value === '') {
         MenuDataUIActions.checkedTF({cash : false , card : false});
         MenuDataUIActions.amountToPay(e.target.value);
+        MenuDataUIActions.selectView(e.target.value)
+      } else if(e.target.value === 'totalPrice') {
+        MenuDataUIActions.checkedTF({cash : true});
+        MenuDataUIActions.amountToPay(totalPrice);
+        MenuDataUIActions.selectView(e.target.value)
       } else {
         MenuDataUIActions.checkedTF({cash : true});
         MenuDataUIActions.amountToPay(e.target.value);
+        MenuDataUIActions.selectView(e.target.value)
       }
     }
   }
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.amountToPay !== this.props.amountToPay
         || nextProps.req !== this.props.req
+        || nextProps.totalPrice !== this.props.totalPrice
   }
   render() {
     const {reqForm} = this.state;
@@ -84,7 +92,7 @@ class OrderRequirement extends Component {
         elementConfig = {formElement.config.elementConfig}
         name = { formElement.config.name}
         valueReq = {this.props.req}
-        valuePaymentMethod = {this.props.amountToPay}
+        valuePaymentMethod = {this.props.selectView}
         invalid = {!formElement.config.valid}
         shouldValidate={formElement.config.validation}
         touched = {formElement.config.touched}
@@ -104,7 +112,9 @@ export default connect((state) => ({
   selectedMenu : state.menuDataUI.get('selectedMenu'),
   req :  state.menuDataUI.get('req'),
   checkedTF : state.menuDataUI.get('checkedTF'),
-  amountToPay : state.menuDataUI.get('amountToPay')
+  amountToPay : state.menuDataUI.get('amountToPay'),
+  totalPrice : state.menuDataUI.get('totalPrice'),
+  selectView : state.menuDataUI.get('selectView')
 }),
 (dispatch) =>({
   MenuDataUIActions : bindActionCreators(menuDataUIActions,dispatch)

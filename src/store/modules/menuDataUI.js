@@ -25,7 +25,7 @@ const BACKDRAW = 'menuDataUI/BACKDRAW';
 const COUNTER_UP = 'menuDataUI/COUNTER_UP';
 const REQUIREMENT_BEFORE = 'menuDataUI/REQUIREMENT_BEFORE';
 const DELETE_PRICE = 'menuDataUI/DELETE_PRICE';
-
+const SELECT_VIEW = 'menuDataUI/SELECT_VIEW'
 export const controledCount = createAction(CONTROLED_COUNT);
 export const addItem = createAction(ADD_ITEM);
 export const selectedMenu = createAction(SELECTED_MENU);
@@ -45,6 +45,7 @@ export const confirm = createAction(CONFIRM);
 export const toolbar = createAction(TOOLBAR);
 export const ol_mobile = createAction(OL_MOBILE);
 export const backDraw = createAction(BACKDRAW);
+export const selectView = createAction(SELECT_VIEW);
 export const deletePrice = createAction(DELETE_PRICE);
 export const requirement_before = createAction(REQUIREMENT_BEFORE);
 export const counterUp = createAction(COUNTER_UP,api.putCounterUp);
@@ -164,4 +165,8 @@ export default handleActions({
     const backDraw = action.payload;
     return state.set('backDraw',backDraw)
   },
+  [SELECT_VIEW] : (state, action) => {
+    const selectView = action.payload;
+    return state.set('selectView', selectView)
+  }
 },initialState)
