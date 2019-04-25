@@ -71,14 +71,12 @@ class OrderRequirement extends Component {
     const {reqForm} = this.state;
     const {handleRequirementChange} = this;
     let formElements = []
-    console.log('Req : ' + this.props.totalPay);
     for (let key in reqForm ) {
       formElements.push({
         id : key,
         config : reqForm[key]
       })
     }
-    //valuePaymentMethodr가 현금일때 카드일때 props 확인해서 넘기기
     const form = formElements.map(formElement => (
       <Input
         key = {formElement.id}

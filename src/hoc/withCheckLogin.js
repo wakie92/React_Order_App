@@ -23,12 +23,12 @@ const withCheckLogin  = (WrappedComponent) => {
       const { LoginDataActions } = this.props;
       const exDateInfo = localStorage.getItem('expirationTime')
       let currFullTimeInfo = new Date().getTime()
-      if(exDateInfo <= currFullTimeInfo) {
+      if(exDateInfo !== null && exDateInfo <= currFullTimeInfo) {
         LoginDataActions.logOut();
         LoginDataActions.getUnLoginUser();
       }
     }
-    
+
     componentDidMount() {
       this.exprirationDateOver();
     }

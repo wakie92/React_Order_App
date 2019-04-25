@@ -35,8 +35,8 @@ class ToolbarContainer extends Component {
     }
   } 
   componentDidMount() {
-    const { LoginDataActions, isLogined , loginUser } = this.props
-      if(!isLogined && loginUser === null) {
+    const { LoginDataActions, isLogined , unLoginUser} = this.props
+      if(!isLogined && unLoginUser === null) {
         LoginDataActions.getUnLoginUser()
       } else return;
   }
