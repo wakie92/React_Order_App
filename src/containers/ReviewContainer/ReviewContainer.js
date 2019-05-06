@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as orderHistoryDataActions from 'store/modules/orderHistoryData';
 import Input from 'components/UI/Input/Input';
-
+import ReviewLayout from 'components/Review/ReviewLayout/ReviewLayout';
+import ReviewInput from 'components/Review/ReviewInput/ReviewInput'
+// import Reviews from 'components/Review/Reviews/Reviews'
 class ReviewContainer extends Component {
   state = {
     reviewForm : {
@@ -48,9 +50,12 @@ class ReviewContainer extends Component {
     ))
     return (
       <>
-        <div></div>
-        {form}
-
+        <ReviewLayout>
+          <ReviewInput
+            inputForm = {form}
+          />
+          {/* <Reviews/> */}
+        </ReviewLayout>
       </>
     );
   }
