@@ -1,0 +1,9 @@
+@import 'styles/utils.scss';
+
+  .ReviewLayout {
+    grid-area : i;
+    display : flex;
+    align-items: center;
+    background-color: $darknavy;
+    flex-direction: column;
+  }
