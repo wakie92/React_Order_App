@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from 'components/Layout/Layout'
-import ReviewContainer from 'containers/ReviewContainer';
+import ReviewContainer from 'containers/ReviewContainer/ReviewContainer';
 import Footer from 'components/UI/Footer/Footer';
 
 const review = ({location}) => {

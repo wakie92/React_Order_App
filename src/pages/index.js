@@ -20,4 +20,8 @@ export const Log = Loadable({
   loader : () => import ('./log'),
   loading : Loading
 });
+export const Review = Loadable({
+  loader : () => import ('./review'),
+  loading : Loading
+});
 

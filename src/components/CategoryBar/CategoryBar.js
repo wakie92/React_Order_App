@@ -28,6 +28,10 @@ const categoryBar = ({toolbar, onPreload, }) => {
         <NavLink  exact to = '/log' 
                   style = {sty} 
                   onMouseOver = {(e) => {e.stopPropagation(); onPreload('Log')}}>주문내역확인 </NavLink></div>
+      <div className = {classes.CheckOrderHistory}> 
+        <NavLink  exact to = '/review' 
+                  style = {sty} 
+                  onMouseOver = {(e) => {e.stopPropagation(); onPreload('review')}}>리뷰 </NavLink></div>
     </nav>
   )
 }
