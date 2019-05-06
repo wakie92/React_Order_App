@@ -4,7 +4,8 @@ import {
   Menu,
   Home,
   Login,
-  Log
+  Log,
+  Review
 } from 'pages';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route exact path = '/' component = {Home} />
           <Route exact path = '/login' component = {Login} />
           <Route exact path = '/log' component = {Log} />
+          <Route exact path = '/review' component = {Review} />
         </Switch>
       </div>
      </>
